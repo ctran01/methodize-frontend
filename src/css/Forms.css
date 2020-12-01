@@ -1,0 +1,48 @@
+.form-header {
+}
+
+.textarea {
+  box-sizing: border-box;
+  resize: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+  outline: none;
+}
+.form-top-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-input {
+  padding: 10px 5px;
+  /* width: 100%; */
+  border: 1px solid lightgray;
+  outline: none;
+  margin: 10px 0;
+  text-overflow: ellipsis;
+}
+.name-textarea {
+  line-height: 32px;
+  height: 42px;
+  font-weight: 500;
+  font-size: 24px;
+  width: 100%;
+  padding: 4px 0px 0px 0px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #c5cad1;
+}
+
+.form-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.error-message {
+  color: red;
+  margin: 1px;
+  font-size: 13px;
+  width: 200px;
+}
