@@ -1,7 +1,7 @@
 import React from "react";
 import "../../css/LandingPage.css";
 import logo from "../../assets/logo3.png";
-// import picture from "../../assets/Methodize.jpg";
+import picture from "../../assets/Methodize.jpg";
 import { BsCardChecklist } from "react-icons/bs";
 import { AiOutlineTeam } from "react-icons/ai";
 import { MdAssignment } from "react-icons/md";
@@ -51,7 +51,7 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="landing-main-picture">
-            {/* <img src={picture} alt="landing" className="landing-picture" /> */}
+            <img src={picture} alt="landing" className="landing-picture" />
           </div>
           <div className="landing-main-bottom">
             <div className="landing-main-bottom-icons-container">
