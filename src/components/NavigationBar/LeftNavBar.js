@@ -114,12 +114,15 @@ const LeftNavBar = ({ showSidebar, sidebar }) => {
             </div>
             <div className="social-links">
               <div>
-                <a href="https://github.com/ctran01/Methodize">
+                <a href="https://github.com/ctran01/Methodize" target="__blank">
                   <ImGithub className="social-icon" />
                 </a>
               </div>
               <div>
-                <a href="https://www.linkedin.com/in/chris-tran-">
+                <a
+                  href="https://www.linkedin.com/in/chris-tran-"
+                  target="__blank"
+                >
                   <ImLinkedin className="social-icon" />
                 </a>
               </div>
