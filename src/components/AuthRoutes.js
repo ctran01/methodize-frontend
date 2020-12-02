@@ -47,7 +47,7 @@ const AuthRoutes = () => {
     const res = await apiServer.get(`/project/user/${id}`);
     await projectdispatch({
       type: "get_user_projects",
-      payload: res.data[0].Projects,
+      payload: res.data,
     });
   };
 
