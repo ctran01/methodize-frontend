@@ -42,8 +42,8 @@ const TaskForm = ({ handleNewClose, clickClose, open }) => {
     clearErrors(projectSelect.name);
     clearErrors(assigneeSelect.name);
     clearErrors(tasklistSelect.name);
-    const res = await apiServer.get(`/project/${projectSelect.value}/users`);
-    setProjectUsers(res.data);
+    const res = await apiServer.get(`/project/${projectSelect.value}/team`);
+    setProjectUsers(res.data.Users);
     getProjectTasklists();
   };
 
@@ -83,15 +83,6 @@ const TaskForm = ({ handleNewClose, clickClose, open }) => {
     await taskdispatch({ type: "get_user_tasks", payload: res.data });
     // await projectdispatch({ type: "get_user_projects", payload: res.data });
 
-    // console.log(name, "name");
-    // var projectId = document.getElementById("project-select");
-    // console.log(projectId, "projectId");
-    // var assigneeId = document.getElementById("assignee-select");
-    // console.log(assigneeId, "assigneeId");
-    // console.log(due_date, "due_date");
-    // console.log(tasklistId, "tasklistId");
-    // console.log(completed, "completed");
-    // console.log(description, "description");
     window.location.reload();
 
     clickClose();

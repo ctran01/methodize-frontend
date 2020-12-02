@@ -40,13 +40,15 @@ const AuthRoutes = () => {
     const id = localStorage.getItem("userId");
     const res = await apiServer.get(`/team/user/${id}`);
     await teamdispatch({ type: "get_user_teams", payload: res.data });
-    // setTeams(res.data[0].Teams);
   };
 
   const getUserProjects = async () => {
     const id = localStorage.getItem("userId");
     const res = await apiServer.get(`/project/user/${id}`);
-    await projectdispatch({ type: "get_user_projects", payload: res.data });
+    await projectdispatch({
+      type: "get_user_projects",
+      payload: res.data[0].Projects,
+    });
   };
 
   useEffect(() => {
