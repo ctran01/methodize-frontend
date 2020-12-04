@@ -5,16 +5,15 @@ import { Modal } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import apiServer from "../../config/apiServer";
 import { Context as ProjectContext } from "../../context/store/ProjectStore";
+import { Context as TasklistContext } from "../../context/store/TasklistStore";
 import { Context as TaskContext } from "../../context/store/TaskStore";
 
-const TaskForm = ({ handleNewClose, clickClose, open }) => {
+const TaskForm = ({ handleNewClose, clickClose, open, setTasklists }) => {
   const { register, handleSubmit, errors, clearErrors } = useForm();
-
-  const [projectError] = useState();
-  const [assigneeError] = useState();
-  const [projectState] = useContext(ProjectContext);
-
-  const [taskdispatch] = useContext(TaskContext);
+  const [projectError, setProjectError] = useState();
+  const [assigneeError, setAssigneeError] = useState();
+  const [projectState, projectdispatch] = useContext(ProjectContext);
+  const [taskState, taskdispatch] = useContext(TaskContext);
   const [projectUsers, setProjectUsers] = useState([
     {
       id: "0",
@@ -75,22 +74,30 @@ const TaskForm = ({ handleNewClose, clickClose, open }) => {
       description,
     });
 
+    // console.log(name);
+    // console.log(projectId);
+    // console.log(assigneeId);
+    // console.log(due_date);
+    // console.log(completed);
+    // console.log(description);
     // const res = await apiServer.get(
     //   `/project/user/${localStorage.getItem("userId")}`
     // );
+
     const userId = localStorage.getItem("userId");
     const res = await apiServer.get(`/task/user/${userId}`);
     await taskdispatch({ type: "get_user_tasks", payload: res.data });
-    // await projectdispatch({ type: "get_user_projects", payload: res.data });
 
-    window.location.reload();
+    if (setTasklists) {
+      const taskResponse = await apiServer.get(
+        `/project/${projectId}/tasklists`
+      );
+
+      setTasklists(taskResponse.data);
+    }
 
     clickClose();
   };
-
-  // if (loading) {
-  //   return <Loader />;
-  // }
 
   const renderedProjects = projectState.projects.map((project, i) => {
     return (
@@ -215,6 +222,7 @@ const TaskForm = ({ handleNewClose, clickClose, open }) => {
                     style={{ margin: "10px 0" }}
                     type="checkbox"
                     name="completed"
+                    defaultChecked={false}
                     ref={register}
                   ></input>
                 </label>

@@ -9,7 +9,7 @@ import "../../css/Forms.css";
 const ProjectForm = ({ handleNewClose, clickClose, open, setTeamProjects }) => {
   const { register, handleSubmit, errors, clearErrors } = useForm();
   const [teamState, teamdispatch] = useContext(TeamContext);
-  const [projectdispatch] = useContext(ProjectContext);
+  const [projectState, projectdispatch] = useContext(ProjectContext);
   const userId = localStorage.getItem("userId");
 
   const onSubmit = async ({ name, teamId }) => {
@@ -29,7 +29,11 @@ const ProjectForm = ({ handleNewClose, clickClose, open, setTeamProjects }) => {
       type: `get_team_projects${teamId}`,
       payload: projectResponse.data,
     });
-    window.location.reload();
+    if (setTeamProjects) {
+      const teamResponse = await apiServer.get(`/team/${teamId}`);
+      setTeamProjects(teamResponse.data.Projects);
+    }
+    // window.location.reload();
 
     clickClose();
   };

@@ -16,9 +16,6 @@ const AddTaskProjectForm = ({
   setTasks,
 }) => {
   const { register, handleSubmit, errors } = useForm();
-  // const [taskListError, setTaskListError] = useState();
-  // const [projectError, setProjectError] = useState();
-  const [assigneeError] = useState();
 
   const { teamId } = useParams();
   const [projectUsers, setProjectUsers] = useState();
@@ -55,8 +52,6 @@ const AddTaskProjectForm = ({
     });
     const res = await apiServer.get(`/tasklist/${tasklistId}/tasks`);
     setTasks(res.data);
-
-    // window.location.reload();
 
     clickClose();
   };
@@ -104,7 +99,6 @@ const AddTaskProjectForm = ({
                   >
                     {renderedUsers}
                   </select>
-                  <p className="error-message">{assigneeError}</p>
                   {errors.assigneeId?.type === "required" && (
                     <p className="error-message">Please choose an assignee</p>
                   )}
@@ -132,6 +126,8 @@ const AddTaskProjectForm = ({
                     style={{ margin: "10px 0" }}
                     type="checkbox"
                     name="completed"
+                    //here
+                    defaultChecked={false}
                     ref={register}
                   ></input>
                 </label>
