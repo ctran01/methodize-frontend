@@ -7,7 +7,7 @@ import { Context as TeamContext } from "../../context/store/TeamStore";
 import "../../css/Forms.css";
 const TeamForm = ({ handleNewClose, clickClose, open }) => {
   const { register, handleSubmit, errors } = useForm();
-  const [teamdispatch] = useContext(TeamContext);
+  const [teamState, teamdispatch] = useContext(TeamContext);
   const userId = localStorage.getItem("userId");
 
   const onSubmit = async ({ name, description }) => {
