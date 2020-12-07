@@ -45,7 +45,7 @@ const HomePage = () => {
                 Greetings, {userState.user.name}!
               </h2>
               <p>
-                This is your homepage where you can see all the projects are you
+                This is your homepage where you can see all the projects you are
                 currently working on as well as any tasks due soon!{" "}
               </p>
             </div>
