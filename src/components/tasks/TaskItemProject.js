@@ -5,30 +5,32 @@ import TaskDetailsForm from "../tasks/TaskDetailsForm";
 import "../../css/Modal.css";
 
 //Project page task item for the task list
-const TaskItemProject = ({ task, index, setTasks }) => {
-  const [open, setOpen] = useState(false);
-  console.log(task);
-  const openModal = () => {
-    setOpen(true);
+const TaskItemProject = ({ task, index, setTasklistTasks }) => {
+  const [openTaskDetailForm, setOpenTaskDetailForm] = useState(false);
+  // console.log(task);
+  const openTaskDetailFormModal = () => {
+    setOpenTaskDetailForm(true);
   };
 
-  const closeModal = () => {
-    setOpen(false);
+  const closeTaskDetailFormModal = () => {
+    setOpenTaskDetailForm(false);
   };
-  const modalBody = (
+  const taskDetailModalBody = (
     <div className="modal-container">
       <TaskDetailsForm
-        setTasks={setTasks}
+        // setTasks={setTasks}
+        setTasklistTasks={setTasklistTasks}
         task={task}
-        closeModal={closeModal}
+        closeModal={closeTaskDetailFormModal}
       />
     </div>
   );
   return (
     <div>
       <Draggable
-        draggableId={`${task.name}-${task.id.toString()}`}
+        draggableId={`${task.id.toString()}`}
         type="task"
+        //this index needs to pull from tasksArray
         index={index}
       >
         {(provided, snapshot) => (
@@ -37,15 +39,15 @@ const TaskItemProject = ({ task, index, setTasks }) => {
             {...provided.dragHandleProps}
             ref={provided.innerRef}
             className="task-project-item"
-            onClick={openModal}
+            onClick={openTaskDetailFormModal}
           >
             {task.name}
           </div>
         )}
       </Draggable>
       <div>
-        <Modal open={open} onClose={closeModal}>
-          {modalBody}
+        <Modal open={openTaskDetailForm} onClose={closeTaskDetailFormModal}>
+          {taskDetailModalBody}
         </Modal>
       </div>
     </div>
