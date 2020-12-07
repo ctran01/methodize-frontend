@@ -14,9 +14,9 @@ const LoginForm = () => {
     if (!email && !password) {
       email = "demo@email.com";
       password = "password";
+      setFormEmail(email);
+      setPassword(password);
     }
-    setFormEmail(email);
-    setPassword(password);
 
     try {
       const res = await apiServer.post("/login", { email, password });
@@ -30,8 +30,7 @@ const LoginForm = () => {
       setEmail(res.data.email);
       setUser(res.data);
     } catch (err) {
-      console.log(err.status);
-      setErrorMessage("Something went wrong");
+      setErrorMessage("The provided credentials were invalid");
     }
   };
 

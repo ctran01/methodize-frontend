@@ -13,7 +13,7 @@ const TopNavBarTask = () => {
   const { logout } = useContext(AuthContext);
   const [userState] = useContext(UserContext);
   const { name } = userState.user;
-  const [taskState] = useContext(TaskContext);
+  const [taskState, taskdispatch] = useContext(TaskContext);
   const numTask = taskState.tasks.filter((task) => task.completed === true);
 
   const [anchorEl, setAnchorEl] = useState(null);
