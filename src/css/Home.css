@@ -1,6 +1,12 @@
+.home-container{
+  margin: 20px 120px;
+  height: 100%;
+  /* overflow-y: scroll; */
+} 
 .home-welcome-header {
   display: flex;
   align-items: center;
+  
 }
 
 .home-welcome-message {
@@ -11,6 +17,12 @@
 .home-tasks-container {
   height: 175px;
   margin: 32px auto;
+}
+
+
+.home-main-content-container{
+  display: flex;
+  flex-direction: row;
 }
 
 .home-tasks-header,
@@ -31,16 +43,17 @@
 }
 
 .home-projects--list {
-  display: flex;
-  flex-flow: row wrap;
+  /* display: flex;
+  flex-flow: row wrap; */
   padding-top: 20px;
   margin: 0px 25px;
 }
 
 .home-tasks--list {
-  border: 2px solid #e8ecee;
+  /* border: 2px solid #e8ecee; */
   border-radius: 5px;
-  overflow: hidden;
+  padding-top:20px;
+  /* overflow: hidden; */
   margin: 0px 25px;
 }
 

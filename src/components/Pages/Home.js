@@ -3,12 +3,13 @@ import React, { useContext } from "react";
 import { Context as UserContext } from "../../context/store/UserStore";
 import { Context as TaskContext } from "../../context/store/TaskStore";
 import { Context as ProjectContext } from "../../context/store/ProjectStore";
-import TaskItem from "../tasks/TaskItem";
+import TaskItemHome from "../tasks/TaskItemHome";
 import TopNavBarHome from "../NavigationBar/TopNavBarHome";
 import ProjectTile from "../projects/ProjectTile";
 import NewProjectTile from "../projects/NewProjectTile";
 import homeImage from "../../assets/codeVersion.png";
 import { Link } from "react-router-dom";
+import ProjectItemHome from "../projects/ProjectItemHome";
 
 const HomePage = () => {
   const [userState] = useContext(UserContext);
@@ -26,30 +27,36 @@ const HomePage = () => {
     .slice(sortedTaskList.length - 3)
     .reverse();
   const taskList = upcomingTasklist.map((task, i) => {
-    return !task.completed && <TaskItem task={task} key={i} />;
+    return !task.completed && <TaskItemHome task={task} key={i} />;
   });
 
-  const projectTiles = projectState.projects.map((project, i) => {
-    return <ProjectTile project={project} key={i} id={project.id} />;
+  const projectLists = projectState.projects
+  .slice(0,3)
+  
+
+
+  
+  const projectTiles = projectLists.map((project, i) => {
+    return <ProjectItemHome project={project} key={i} id={project.id}/>
+    // return <ProjectTile project={project} key={i} id={project.id} />;
   });
 
   return (
     <>
       <TopNavBarHome />
-      <section style={{ margin: "20px 120px", height: "100%" }}>
-        <div className="home-container">
+      <section className="home-container" >
+        {/* <div className="home-container"> */}
           <div className="home-welcome-header">
-            <img src={homeImage} alt="home" style={{ width: "400px" }}></img>
-            <div>
-              <h2 className="home-welcome-message">
-                Greetings, {userState.user.name}!
-              </h2>
-              <p>
-                This is your homepage where you can see all the projects you are
-                currently working on as well as any tasks due soon!{" "}
+            <div >
+              <p className="home-welcome-message">
+                Hi, {userState.user.name}!
+              </p>
+              <p style={{display:"flex", alignSelf:"center"}}>
+                Welcome to your dashboard.
               </p>
             </div>
           </div>
+          <div className="home-main-content-container">
           <div className="home-tasks-container">
             <div className="home-tasks-header">
               <div>
@@ -73,17 +80,28 @@ const HomePage = () => {
           </div>
           <div className="home-projects-container">
             <div className="home-projects-header">
+            <div>
               <h2 style={{ color: "#151b26", fontWeight: 500 }}>Projects</h2>
+              </div>
+              <div>
+                <Link
+                  to="/tasks"
+                  style={{ textDecoration: "none", color: "blue" }}
+                >
+                  <p style={{ fontSize: "14px" }}>See all my projects</p>
+                </Link>
+              </div>
             </div>
             <div className="home-projects--list">
               {/* call get all projects for specific user route */}
               {projectTiles}
-              <div>
+              {/* <div>
                 <NewProjectTile />
-              </div>
+              </div> */}
             </div>
           </div>
-        </div>
+          </div>
+        {/* </div> */}
       </section>
     </>
   );
