@@ -8,6 +8,7 @@ import {
   RiCheckboxCircleLine,
 } from "react-icons/ri";
 import { AiOutlineEllipsis } from "react-icons/ai";
+import { Menu, MenuItem } from "@material-ui/core";
 //Task item list for home and task page
 
 const TaskItemHome = ({ task }) => {
@@ -15,6 +16,7 @@ const TaskItemHome = ({ task }) => {
     task.due_date.substring(0, 10).replace("-", ""),
     "YYYYMMDD"
   );
+  const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
   const openModal = () => {
     setOpen(true);
@@ -24,9 +26,13 @@ const TaskItemHome = ({ task }) => {
     setOpen(false);
   };
 
-  const openMenu = () => {
-    console.log("Open");
+  const handleMenuClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
   //import component as body such as forms, details, etc
   const body = (
     <div className="modal-container">
@@ -39,41 +45,50 @@ const TaskItemHome = ({ task }) => {
   );
   return (
     <>
-      <div className="task-home-item" onClick={openModal}>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-around",
-          }}
-        >
-          <div>
-            {task.completed ? (
-              <RiCheckboxCircleLine
-                style={{ color: "green", fontSize: "16px" }}
-              />
-            ) : (
-              <RiCheckboxBlankCircleLine style={{ fontSize: "16px" }} />
-            )}
+      <div className="task-home-item">
+        <div className="task-home-item-inner-container">
+          <div className="task-home-item-inner-left" onClick={openModal}>
+            <div className="task-home-item-icon-container">
+              {/* {task.completed ? (
+                <RiCheckboxCircleLine
+                  style={{ color: "green", fontSize: "16px" }}
+                />
+              ) : (
+                <RiCheckboxBlankCircleLine style={{ fontSize: "16px" }} />
+              )} */}
+              <span className={`dot-task-${task.id}`}></span>
+            </div>
+            <div className="task-home-item-name-container">
+              <p
+                style={{
+                  fontSize: "15px",
+                  fontWeight: "500",
+                  margin: "0px",
+                }}
+              >
+                {task.name}
+              </p>
+              <p style={{ color: "grey", margin: "0" }}>
+                {date.format("MMM D")}
+              </p>
+            </div>
           </div>
-          <div className="task-home-item-name-container">
-            <p
-              style={{
-                fontSize: "15px",
-                fontWeight: "500",
-                margin: "15px 0px 0px",
-              }}
-            >
-              {task.name}
-            </p>
-            <p style={{ color: "grey", margin: "0" }}>{date.format("MMM D")}</p>
+          <div
+            className="task-home-item-more-menu"
+            style={{ height: "100%" }}
+            onClick={handleMenuClick}
+          >
+            <AiOutlineEllipsis style={{ fontSize: "24px" }} />
           </div>
-          <div>
-            <AiOutlineEllipsis
-              onClick={openMenu}
-              style={{ fontSize: "24px" }}
-            />
-          </div>
+          <Menu
+            style={{}}
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleMenuClose}
+          >
+            <MenuItem onClick={handleMenuClose}>Delete</MenuItem>
+          </Menu>
         </div>
       </div>
       <Modal open={open} onClose={closeModal}>
