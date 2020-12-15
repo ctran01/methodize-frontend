@@ -55,7 +55,7 @@
   height: 75px;
   padding: 5px;
   margin-bottom: 15px;
-  box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 10px 5px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   cursor: pointer;
   align-items: center;
@@ -86,6 +86,22 @@
   flex-direction: column;
   width: 150px;
   text-overflow: ellipsis;
+  margin-left: 25px;
+}
+
+.task-home-item-inner-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.task-home-item-inner-left {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+  width: 500px;
 }
 
 .task-section > div {
@@ -208,4 +224,285 @@
   outline: none;
   margin: 10px 0;
   text-overflow: ellipsis;
+}
+
+.dot-task-1 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: lightblue;
+}
+.dot-task-2 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: yellowgreen;
+}
+.dot-task-3 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: red;
+}
+.dot-task-4 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: salmon;
+}
+.dot-task-5 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: seagreen;
+}
+.dot-task-6 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: darkcyan;
+}
+.dot-task-7 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: slateblue;
+}
+.dot-task-8 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: skyblue;
+}
+.dot-task-9 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: blue;
+}
+.dot-task-10 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: lawngreen;
+}
+.dot-task-11 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: lightblue;
+}
+.dot-task-12 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: yellowgreen;
+}
+.dot-task-13 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: red;
+}
+.dt-task-14 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: salmon;
+}
+.dot-task-15 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: seagreen;
+}
+.dot-task-16 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: darkcyan;
+}
+.dot-task-17 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: slateblue;
+}
+.dot-task-18 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: skyblue;
+}
+.dot-task-19 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: blue;
+}
+.dot-task-20 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: lawngreen;
+}
+.dot-task-21 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: lightblue;
+}
+.dot-task-22 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: yellowgreen;
+}
+.dot-task-23 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: red;
+}
+.dt-task-24 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: salmon;
+}
+.dot-task-25 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: seagreen;
+}
+.dot-task-26 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: darkcyan;
+}
+.dot-task-27 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: slateblue;
+}
+.dot-task-28 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: skyblue;
+}
+.dot-task-29 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: blue;
+}
+.dot-task-30 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: lawngreen;
+}
+.dot-task-31 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: lightblue;
+}
+.dot-task-32 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: yellowgreen;
+}
+.dot-task-33 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: red;
+}
+.dt-task-34 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: salmon;
+}
+.dot-task-35 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: seagreen;
+}
+.dot-task-36 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: darkcyan;
+}
+.dot-task-37 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: slateblue;
+}
+.dot-task-38 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: skyblue;
+}
+.dot-task-39 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: blue;
+}
+.dot-task-40 {
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  background-color: lawngreen;
 }
