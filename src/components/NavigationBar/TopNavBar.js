@@ -6,6 +6,7 @@ import UserAvatar from "./UserAvatar";
 import { Menu, MenuItem } from "@material-ui/core";
 import ProjectForm from "../Forms/ProjectForm";
 import TaskForm from "../Forms/AddTaskForm";
+import { Context as UserContext } from "../../context/store/UserStore";
 
 const TopNavBar = ({ name, setTeamProjects, setTasklists }) => {
   const { logout } = useContext(AuthContext);
@@ -14,6 +15,7 @@ const TopNavBar = ({ name, setTeamProjects, setTasklists }) => {
   const [anchorEle, setAnchorEle] = useState(null);
   const [openProject, setOpenProject] = useState(false);
   const [openTask, setOpenTask] = useState(false);
+  const [userState, userdispatch] = useContext(UserContext);
 
   const clickOpenTask = () => {
     setOpenTask(true);
@@ -56,7 +58,7 @@ const TopNavBar = ({ name, setTeamProjects, setTasklists }) => {
         {/* <div style={{ display: "flex" }}>
           <input className="searchbar" placeholder={"Search"}></input>
         </div> */}
-        <div>
+        {/* <div>
           <GrAddCircle onClick={handleNewClick} className="top-nav-bar--icon" />
           <Menu
             style={{ marginTop: "40px" }}
@@ -80,10 +82,24 @@ const TopNavBar = ({ name, setTeamProjects, setTasklists }) => {
               setTeamProjects={setTeamProjects}
             />
           </Menu>
-        </div>
+        </div> */}
 
-        <div onClick={handleProfClick}>
-          <UserAvatar id={localStorage.getItem("userId")} />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ padding: "0" }}>
+            <UserAvatar id={localStorage.getItem("userId")} />
+          </div>
+          <div>{userState.user.name}</div>
+          <div
+            onClick={handleProfClick}
+            style={{ padding: "0", cursor: "pointer" }}
+          >
+            <i className="arrow"></i>
+          </div>
         </div>
 
         <Menu

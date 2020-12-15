@@ -8,7 +8,7 @@ import TopNavBarHome from "../NavigationBar/TopNavBarHome";
 import ProjectTile from "../projects/ProjectTile";
 import NewProjectTile from "../projects/NewProjectTile";
 import homeImage from "../../assets/codeVersion.png";
-import {AiOutlinePlusCircle} from "react-icons/ai"
+import { AiOutlinePlusCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import ProjectItemHome from "../projects/ProjectItemHome";
 
@@ -31,35 +31,37 @@ const HomePage = () => {
     return !task.completed && <TaskItemHome task={task} key={i} />;
   });
 
+  const projectLists = projectState.projects.slice(0, 4);
 
-  const projectLists = projectState.projects
-  .slice(0,4)
-  
   const projectTiles = projectLists.map((project, i) => {
-    return <ProjectItemHome project={project} key={i} id={project.id}/>
+    return <ProjectItemHome project={project} key={i} id={project.id} />;
     // return <ProjectTile project={project} key={i} id={project.id} />;
   });
 
   return (
     <>
       <TopNavBarHome />
-      <section className="home-container" >
+      <section className="home-container">
         {/* <div className="home-container"> */}
-          <div className="home-welcome-header">
-            <div >
-              <p className="home-welcome-message">
-                Hi, {userState.user.name}!
-              </p>
-              <p style={{display:"flex", alignSelf:"center"}}>
-                Welcome to your dashboard.
-              </p>
-            </div>
+        <div className="home-welcome-header">
+          <div>
+            <p className="home-welcome-message">Hi, {userState.user.name}!</p>
+            <p style={{ display: "flex", alignSelf: "center" }}>
+              Welcome to your dashboard.
+            </p>
           </div>
-          <div className="home-main-content-container">
+        </div>
+        <div className="home-main-content-container">
           <div className="home-tasks-container">
             <div className="home-tasks-header">
               <div>
-                <h2 style={{ color: "#151b26", fontWeight: 500 }}>
+                <h2
+                  style={{
+                    color: "#151b26",
+                    fontWeight: 500,
+                    fontSize: "20px",
+                  }}
+                >
                   Tasks Due Soon
                 </h2>
               </div>
@@ -76,17 +78,25 @@ const HomePage = () => {
               {/* call get all tasks for specific user route */}
               {taskList}
               <div className="new-home-item-container">
-              <div className="new-home-icon-container">
-                <AiOutlinePlusCircle className="new-home-item-icon" />
-              </div>
-              <div className="new-home-item-name">Create Task</div>
+                <div className="new-home-icon-container">
+                  <AiOutlinePlusCircle className="new-home-item-icon" />
+                </div>
+                <div className="new-home-item-name">Create Task</div>
               </div>
             </div>
           </div>
           <div className="home-projects-container">
             <div className="home-projects-header">
-            <div>
-              <h2 style={{ color: "#151b26", fontWeight: 500 }}>Projects</h2>
+              <div>
+                <h2
+                  style={{
+                    color: "#151b26",
+                    fontWeight: 500,
+                    fontSize: "20px",
+                  }}
+                >
+                  Projects
+                </h2>
               </div>
               <div>
                 <Link
@@ -101,15 +111,14 @@ const HomePage = () => {
               {/* call get all projects for specific user route */}
               {projectTiles}
               <div className="new-home-item-container">
-              <div className="new-home-icon-container">
-                <AiOutlinePlusCircle className="new-home-item-icon" />
+                <div className="new-home-icon-container">
+                  <AiOutlinePlusCircle className="new-home-item-icon" />
+                </div>
+                <div className="new-home-item-name">Create Project</div>
               </div>
-              <div className="new-home-item-name">Create Project</div>
-              </div>
-              
             </div>
           </div>
-          </div>
+        </div>
         {/* </div> */}
       </section>
     </>
