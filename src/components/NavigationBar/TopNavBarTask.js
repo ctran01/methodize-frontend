@@ -11,7 +11,7 @@ import TaskForm from "../Forms/AddTaskForm";
 
 const TopNavBarTask = () => {
   const { logout } = useContext(AuthContext);
-  const [userState] = useContext(UserContext);
+  const [userState, userdispatch] = useContext(UserContext);
   const { name } = userState.user;
   const [taskState, taskdispatch] = useContext(TaskContext);
   const numTask = taskState.tasks.filter((task) => task.completed === true);
@@ -66,7 +66,7 @@ const TopNavBarTask = () => {
         {/* <div style={{ display: "flex" }}>
           <input className="searchbar" placeholder={"Search"}></input>
         </div> */}
-        <div>
+        {/* <div>
           <GrAddCircle onClick={handleNewClick} className="top-nav-bar--icon" />
           <Menu
             style={{ marginTop: "40px" }}
@@ -87,14 +87,26 @@ const TopNavBarTask = () => {
               clickClose={clickCloseProject}
               open={openProject}
             />
-            {/* <Modal open={openProject} onClose={clickCloseProject}>
-              {projectBody}
-            </Modal> */}
+            
           </Menu>
-        </div>
+        </div> */}
 
-        <div onClick={handleProfClick}>
-          <UserAvatar id={localStorage.getItem("userId")} />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ padding: "0" }}>
+            <UserAvatar id={localStorage.getItem("userId")} />
+          </div>
+          <div>{userState.user.name}</div>
+          <div
+            onClick={handleProfClick}
+            style={{ padding: "0", cursor: "pointer" }}
+          >
+            <i className="arrow"></i>
+          </div>
         </div>
 
         <Menu

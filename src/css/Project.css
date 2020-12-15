@@ -217,12 +217,13 @@
   border-radius: 10px;
   cursor: pointer;
   align-items: center;
+  -webkit-user-select: none;
 }
 .project-home-item:hover {
   background-color: rgba(133, 140, 155, 0.08);
 }
 
-.project-home-item-name-containerP {
+.project-home-item-name-container {
   display: flex;
   flex-direction: column;
   width: 150px;

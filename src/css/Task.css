@@ -59,6 +59,7 @@
   border-radius: 10px;
   cursor: pointer;
   align-items: center;
+  -webkit-user-select: none;
 }
 .task-home-item:hover {
   background-color: rgba(133, 140, 155, 0.08);
