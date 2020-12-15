@@ -4,6 +4,9 @@ import "../../css/Navbar.css";
 import { GrAddCircle } from "react-icons/gr";
 import UserAvatar from "./UserAvatar";
 import { Menu, MenuItem } from "@material-ui/core";
+import Search from "../../assets/search";
+import messageIcon from "../../assets/message.png";
+import Alert from "../../assets/alert";
 import ProjectForm from "../Forms/ProjectForm";
 import TaskForm from "../Forms/AddTaskForm";
 import apiServer from "../../config/apiServer";
@@ -18,6 +21,7 @@ const TopNavBarHome = () => {
   const [openProject, setOpenProject] = useState(false);
   const [openTask, setOpenTask] = useState(false);
   const userId = localStorage.getItem("userId");
+
   // useEffect(()=>{
   //   (async()=>{
   //     const user = await apiServer.get("/user")
@@ -88,6 +92,21 @@ const TopNavBarHome = () => {
             />
           </Menu>
         </div> */}
+        <div
+          className="top-nav-icons"
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          <div>
+            <Alert />
+          </div>
+          <div>
+            <Search />
+          </div>
+
+          <div>
+            <img className="logo" style={{}} src={messageIcon} alt="logo" />
+          </div>
+        </div>
 
         <div
           style={{
@@ -98,7 +117,9 @@ const TopNavBarHome = () => {
           <div style={{ padding: "0" }}>
             <UserAvatar id={localStorage.getItem("userId")} />
           </div>
-          <div>{userState.user.name}</div>
+          <div>
+            <p style={{ fontWeight: 500 }}>{userState.user.name}</p>
+          </div>
           <div
             onClick={handleProfClick}
             style={{ padding: "0", cursor: "pointer" }}

@@ -6,6 +6,9 @@ import UserAvatar from "./UserAvatar";
 import { Menu, MenuItem } from "@material-ui/core";
 import ProjectForm from "../Forms/ProjectForm";
 import TaskForm from "../Forms/AddTaskForm";
+import Search from "../../assets/search";
+import messageIcon from "../../assets/message.png";
+import Alert from "../../assets/alert";
 import { Context as UserContext } from "../../context/store/UserStore";
 
 const TopNavBar = ({ name, setTeamProjects, setTasklists }) => {
@@ -83,6 +86,21 @@ const TopNavBar = ({ name, setTeamProjects, setTasklists }) => {
             />
           </Menu>
         </div> */}
+        <div
+          className="top-nav-icons"
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          <div>
+            <Alert />
+          </div>
+          <div>
+            <Search />
+          </div>
+
+          <div>
+            <img className="logo" style={{}} src={messageIcon} alt="logo" />
+          </div>
+        </div>
 
         <div
           style={{
