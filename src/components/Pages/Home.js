@@ -8,6 +8,7 @@ import TopNavBarHome from "../NavigationBar/TopNavBarHome";
 import ProjectTile from "../projects/ProjectTile";
 import NewProjectTile from "../projects/NewProjectTile";
 import homeImage from "../../assets/codeVersion.png";
+import Add from "../../assets/Add";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import ProjectItemHome from "../projects/ProjectItemHome";
@@ -79,7 +80,7 @@ const HomePage = () => {
               {taskList}
               <div className="new-home-item-container">
                 <div className="new-home-icon-container">
-                  <AiOutlinePlusCircle className="new-home-item-icon" />
+                  <Add className="new-home-item-icon" />
                 </div>
                 <div className="new-home-item-name">Create Task</div>
               </div>
@@ -112,7 +113,7 @@ const HomePage = () => {
               {projectTiles}
               <div className="new-home-item-container">
                 <div className="new-home-icon-container">
-                  <AiOutlinePlusCircle className="new-home-item-icon" />
+                  <Add className="new-home-item-icon" />
                 </div>
                 <div className="new-home-item-name">Create Project</div>
               </div>
