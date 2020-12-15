@@ -7,6 +7,7 @@ import {
   RiCheckboxBlankCircleLine,
   RiCheckboxCircleLine,
 } from "react-icons/ri";
+import { AiOutlineEllipsis } from "react-icons/ai";
 //Task item list for home and task page
 
 const TaskItemHome = ({ task }) => {
@@ -22,6 +23,10 @@ const TaskItemHome = ({ task }) => {
   const closeModal = () => {
     setOpen(false);
   };
+
+  const openMenu = () => {
+    console.log("Open");
+  };
   //import component as body such as forms, details, etc
   const body = (
     <div className="modal-container">
@@ -33,25 +38,49 @@ const TaskItemHome = ({ task }) => {
     </div>
   );
   return (
-    <div>
+    <>
       <div className="task-home-item" onClick={openModal}>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          {task.completed ? (
-            <RiCheckboxCircleLine
-              style={{ color: "green", fontSize: "16px" }}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-around",
+          }}
+        >
+          <div>
+            {task.completed ? (
+              <RiCheckboxCircleLine
+                style={{ color: "green", fontSize: "16px" }}
+              />
+            ) : (
+              <RiCheckboxBlankCircleLine style={{ fontSize: "16px" }} />
+            )}
+          </div>
+          <div className="task-home-item-name-container">
+            <p
+              style={{
+                fontSize: "15px",
+                fontWeight: "500",
+                margin: "15px 0px 0px",
+              }}
+            >
+              {task.name}
+            </p>
+            <p style={{ color: "grey", margin: "0" }}>{date.format("MMM D")}</p>
+          </div>
+          <div>
+            <AiOutlineEllipsis
+              onClick={openMenu}
+              style={{ fontSize: "24px" }}
             />
-          ) : (
-            <RiCheckboxBlankCircleLine style={{ fontSize: "16px" }} />
-          )}
-          <p style={{ paddingLeft: "5px" }}>{task.name}</p>
+          </div>
         </div>
-        {date.format("MMM D YYYY")}
       </div>
       <Modal open={open} onClose={closeModal}>
         {body}
       </Modal>
       {/* <TaskDetailsForm task={task} closeModal={closeModal} open={open} /> */}
-    </div>
+    </>
   );
 };
 
