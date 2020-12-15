@@ -25,7 +25,6 @@ const ProjectItemHome = ({project}) => {
     
       <div className="project-home-item" onClick={openModal}>
         <div style={{ display: "flex", alignItems: "center" }}>
-          
           <p style={{ paddingLeft: "5px" }}>{project.name}</p>
         </div>
         

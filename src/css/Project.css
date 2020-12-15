@@ -177,6 +177,7 @@
   justify-content: center;
 }
 
+
 .project-tile-container:hover .new-project-tile-icon-container {
   border: dashed #91979c;
 }
@@ -185,6 +186,7 @@
   font-size: 40px;
   color: #cbd4db;
 }
+
 
 .project-tile-container:hover .new-project-tile-icon {
   color: #91979c;
@@ -203,7 +205,7 @@
   width: 100%;
 }
 
-.project-home-item{
+.project-home-item {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #e8ecee;
@@ -221,3 +223,4 @@
 .project-home-item:hover {
   background-color: rgba(133, 140, 155, 0.08);
 }
+
