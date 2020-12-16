@@ -40,7 +40,7 @@ const LeftNavBar = ({ showSidebar, sidebar }) => {
         key={i}
       >
         <div>
-          <p style={{ margin: "0px" }}>{team.name}</p>
+          <p style={{ margin: "0px", paddingLeft: "30px" }}>{team.name}</p>
         </div>
       </NavLink>
     );
