@@ -5,25 +5,25 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
 
   return (
     <>
-      <div className="task-detail-menu-container">
-        <div
-          className={
-            sideMenu ? "task-detail-menu active" : "task-detail-menu collapsed"
-          }
-        >
-          PopOutTask
-          <div className="collapse-menu-icon-container">
-            <RiMenuFoldLine
-              style={{
-                color: "black",
-                fontSize: "24px",
-                cursor: "pointer",
-              }}
-              onClick={showSideMenu}
-            />
-          </div>
+      {/* <div className="task-detail-menu-container"> */}
+      <div
+        className={
+          sideMenu ? "task-detail-menu active" : "task-detail-menu collapsed"
+        }
+      >
+        PopOutTask
+        <div className="collapse-menu-icon-container">
+          <RiMenuFoldLine
+            style={{
+              color: "black",
+              fontSize: "24px",
+              cursor: "pointer",
+            }}
+            onClick={showSideMenu}
+          />
         </div>
       </div>
+      {/* </div> */}
       {sideMenu ? null : (
         <div
           className="menu-icon"
