@@ -35,7 +35,7 @@ const Logo = () => {
               id="logp"
               transform="translate(34.000000, 1.500000)"
               fill="#FFFFFF"
-              font-family="Roboto-Bold, Roboto"
+              font-family="Arial"
               font-size="20"
               font-weight="bold"
             >

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import HomePage from "./Pages/Home";
 import TasksPage from "./Pages/Tasks";
 import ProjectPage from "./Pages/Project";
+import ProjectsPage from "./Pages/Projects";
 import TeamPage from "./Pages/Team";
 import "../css/Navbar.css";
 import LeftNavBar from "./NavigationBar/LeftNavBar";
@@ -66,6 +67,7 @@ const AuthRoutes = () => {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/tasks" component={TasksPage} />
+            <Route exact path="/projects" component={ProjectsPage} />
             <Route
               path="/team/:teamId/project/:projectId/:projectName"
               component={ProjectPage}
