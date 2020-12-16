@@ -5,6 +5,7 @@ import TasksPage from "./Pages/Tasks";
 import ProjectPage from "./Pages/Project";
 import ProjectsPage from "./Pages/Projects";
 import TeamPage from "./Pages/Team";
+import NewTasksPage from "./Pages/NewTasks";
 import "../css/Navbar.css";
 import LeftNavBar from "./NavigationBar/LeftNavBar";
 
@@ -66,7 +67,7 @@ const AuthRoutes = () => {
         <div className="overlay-right-container">
           <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route exact path="/tasks" component={TasksPage} />
+            <Route exact path="/tasks" component={NewTasksPage} />
             <Route exact path="/projects" component={ProjectsPage} />
             <Route
               path="/team/:teamId/project/:projectId/:projectName"
