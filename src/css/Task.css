@@ -1,7 +1,7 @@
 .tasks-container {
   /* background-color: #f6f8f9; */
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   padding: 15px;
   justify-content: center;
   align-items: center;
@@ -11,8 +11,8 @@
 
 .tasks-inner-container {
   background-color: white;
-  min-width: 405px;
-  max-width: 1000px;
+  /* min-width: 405px; */
+  /* max-width: 1000px; */
   overflow: hidden;
   overflow-y: scroll;
   display: flex;
@@ -27,6 +27,10 @@
 
 .tasks-inner-container::-webkit-scrollbar {
   display: none;
+}
+
+.tasks-main-content {
+  display: contents;
 }
 .tasks-container-header {
   display: flex;
@@ -227,6 +231,38 @@
   text-overflow: ellipsis;
 }
 
+.task-detail-menu.active {
+  background-color: white;
+  width: 240px;
+  height: 100%;
+  display: flex;
+  /* flex-direction: column; */
+  /* justify-content: center; */
+
+  right: 0;
+  /* transition: left 2s ease-out position 2s ease-out; */
+}
+.task-detail-menu.collapsed {
+  /* background-color: #151b26; */
+  width: 240px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  /* top: 0; */
+  right: -100%;
+  /* transition: 850ms; */
+}
+
+.task-detail-menu-container {
+  display: flex;
+  flex-direction: column;
+  /* width: 240px; */
+  /* padding: 10px;
+  margin: 10px; */
+  height: 100%;
+}
+
 .dot-task-1 {
   height: 15px;
   border-radius: 50%;
@@ -318,7 +354,7 @@
   width: 15px;
   background-color: red;
 }
-.dt-task-14 {
+.dot-task-14 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
