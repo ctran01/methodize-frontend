@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { RiMenuFill, RiMenuFoldLine } from "react-icons/ri";
+import { Context as TaskContext } from "../../context/store/TaskStore";
 const PopOutTask = ({ showSideMenu, sideMenu }) => {
   const [open, setOpen] = useState(true);
+
+  const [taskState, taskdispatch] = useContext(TaskContext);
 
   return (
     <>
@@ -11,7 +14,7 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
           sideMenu ? "task-detail-menu active" : "task-detail-menu collapsed"
         }
       >
-        PopOutTask
+        {taskState.selectedTask.name}
         <div className="collapse-menu-icon-container">
           <RiMenuFoldLine
             style={{
@@ -24,25 +27,6 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
         </div>
       </div>
       {/* </div> */}
-      {/* {sideMenu ? null : (
-        <div
-          className="menu-icon"
-          style={{
-            paddingTop: "25px",
-            paddingLeft: "20px",
-            paddingBottom: "22px",
-            backgroundColor: "white",
-          }}
-        >
-          <RiMenuFill
-            style={{
-              fontSize: "24px",
-              cursor: "pointer",
-            }}
-            onClick={showSideMenu}
-          />
-        </div>
-      )} */}
     </>
   );
 };
