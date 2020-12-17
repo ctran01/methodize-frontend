@@ -168,6 +168,14 @@
   background-color: rgba(133, 140, 155, 0.08);
 }
 
+.task-project-name-container {
+  border-radius: 20px;
+  width: 140px;
+  margin-right: 30px;
+  display: flex;
+  justify-content: center;
+}
+
 /* Task Details Form */
 .task-details-form {
   display: flex;
@@ -557,4 +565,166 @@
   display: inline-block;
   width: 15px;
   background-color: lawngreen;
+}
+
+.task-project-1 {
+  opacity: 0.8;
+  background: lightblue;
+}
+
+.task-project-2 {
+  opacity: 0.8;
+  background: yellowgreen;
+}
+.task-project-3 {
+  opacity: 0.8;
+  background: red;
+}
+.task-project-4 {
+  opacity: 0.8;
+  background: salmon;
+}
+.task-project-5 {
+  opacity: 0.8;
+  background: seagreen;
+}
+.task-project-6 {
+  opacity: 0.8;
+  background: darkcyan;
+}
+.task-project-7 {
+  opacity: 0.8;
+  background: slateblue;
+}
+.task-project-8 {
+  opacity: 0.8;
+  background: skyblue;
+}
+.task-project-9 {
+  opacity: 0.8;
+  background: lightgoldenrodyellow;
+}
+.task-project-10 {
+  opacity: 0.8;
+  background: lawngreen;
+}
+.task-project-11 {
+  opacity: 0.8;
+  background: lightblue;
+}
+.task-project-12 {
+  opacity: 0.8;
+  background: yellowgreen;
+}
+.task-project-13 {
+  opacity: 0.8;
+  background: red;
+}
+.task-project-14 {
+  opacity: 0.8;
+  background: salmon;
+}
+.task-project-15 {
+  opacity: 0.8;
+  background: seagreen;
+}
+.task-project-16 {
+  opacity: 0.8;
+  background: darkcyan;
+}
+.task-project-17 {
+  opacity: 0.8;
+  background: slateblue;
+}
+.task-project-18 {
+  opacity: 0.8;
+  background: skyblue;
+}
+.task-project-19 {
+  opacity: 0.8;
+  background: lightgoldenrodyellow;
+}
+.task-project-20 {
+  opacity: 0.8;
+  background: lawngreen;
+}
+.task-project-21 {
+  opacity: 0.8;
+  background: lightblue;
+}
+.task-project-22 {
+  opacity: 0.8;
+  background: yellowgreen;
+}
+.task-project-23 {
+  opacity: 0.8;
+  background: red;
+}
+.task-project-24 {
+  opacity: 0.8;
+  background: salmon;
+}
+.task-project-25 {
+  opacity: 0.8;
+  background: seagreen;
+}
+.task-project-26 {
+  opacity: 0.8;
+  background: darkcyan;
+}
+.task-project-27 {
+  opacity: 0.8;
+  background: slateblue;
+}
+.task-project-28 {
+  opacity: 0.8;
+  background: skyblue;
+}
+.task-project-29 {
+  opacity: 0.8;
+  background: lightgoldenrodyellow;
+}
+.task-project-30 {
+  opacity: 0.8;
+  background: lawngreen;
+}
+.task-project-31 {
+  opacity: 0.8;
+  background: lightblue;
+}
+.task-project-32 {
+  opacity: 0.8;
+  background: yellowgreen;
+}
+.task-project-33 {
+  opacity: 0.8;
+  background: red;
+}
+.task-project-34 {
+  opacity: 0.8;
+  background: salmon;
+}
+.task-project-35 {
+  opacity: 0.8;
+  background: seagreen;
+}
+.task-project-36 {
+  opacity: 0.8;
+  background: darkcyan;
+}
+.task-project-37 {
+  opacity: 0.8;
+  background: slateblue;
+}
+.task-project-38 {
+  opacity: 0.8;
+  background: skyblue;
+}
+.task-project-39 {
+  opacity: 0.8;
+  background: lightgoldenrodyellow;
+}
+.task-project-40 {
+  opacity: 0.8;
+  background: lawngreen;
 }
