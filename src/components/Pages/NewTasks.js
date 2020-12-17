@@ -27,7 +27,14 @@ const NewTasks = () => {
   });
 
   const renderedTasks = sortedTasks.map((task, i) => {
-    return <TaskItemTask task={task} key={i} />;
+    return (
+      <TaskItemTask
+        task={task}
+        key={i}
+        showSideMenu={showSideMenu}
+        sideMenu={sideMenu}
+      />
+    );
   });
   const openModal = () => {
     setOpen(true);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import moment from "moment";
 import { Modal } from "@material-ui/core";
 import "../../css/Modal.css";
@@ -7,9 +7,14 @@ import {
   RiCheckboxBlankCircleLine,
   RiCheckboxCircleLine,
 } from "react-icons/ri";
+import { Context as TaskContext } from "../../context/store/TaskStore";
+import apiServer from "../../config/apiServer";
+
 //Task item list for home and task page
 
-const TaskItemTask = ({ task }) => {
+const TaskItemTask = ({ task, showSideMenu, sideMenu }) => {
+  const [taskState, taskDispatch] = useContext(TaskContext);
+
   const date = moment(
     task.due_date.substring(0, 10).replace("-", ""),
     "YYYYMMDD"
@@ -22,6 +27,15 @@ const TaskItemTask = ({ task }) => {
   const closeModal = () => {
     setOpen(false);
   };
+
+  const setTaskPopOut = async () => {
+    if (sideMenu === false) {
+      showSideMenu();
+    }
+    const res = await apiServer.get(`/task/${task.id}`);
+    await taskDispatch({ type: "get_selected_task", payload: res.data });
+  };
+
   //import component as body such as forms, details, etc
   const body = (
     <div className="modal-container">
@@ -34,7 +48,7 @@ const TaskItemTask = ({ task }) => {
   );
   return (
     <>
-      <li className="task-task-item" onClick={openModal}>
+      <li className="task-task-item" onClick={setTaskPopOut}>
         <div style={{ display: "flex", alignItems: "center" }}>
           {task.completed ? (
             <RiCheckboxCircleLine
@@ -66,7 +80,6 @@ const TaskItemTask = ({ task }) => {
       <Modal open={open} onClose={closeModal}>
         {body}
       </Modal>
-      {/* <TaskDetailsForm task={task} closeModal={closeModal} open={open} /> */}
     </>
   );
 };
