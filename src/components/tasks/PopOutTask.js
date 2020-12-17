@@ -24,7 +24,7 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
         </div>
       </div>
       {/* </div> */}
-      {sideMenu ? null : (
+      {/* {sideMenu ? null : (
         <div
           className="menu-icon"
           style={{
@@ -42,7 +42,7 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
             onClick={showSideMenu}
           />
         </div>
-      )}
+      )} */}
     </>
   );
 };
