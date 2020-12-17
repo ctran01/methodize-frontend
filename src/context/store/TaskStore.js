@@ -3,7 +3,6 @@ import Reducer from "../reducer/TaskReducer";
 
 const initialState = {
   tasks: [],
-  selectedTask: [],
 };
 
 const TaskStore = ({ children }) => {
