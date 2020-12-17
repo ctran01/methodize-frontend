@@ -57,7 +57,7 @@ const TaskItemTask = ({ task, showSideMenu, sideMenu }) => {
           ) : (
             <RiCheckboxBlankCircleLine style={{ fontSize: "16px" }} />
           )}
-          <p style={{ paddingLeft: "5px" }}>{task.name}</p>
+          <p style={{ paddingLeft: "5px", color: "gray" }}>{task.name}</p>
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
           <div
@@ -74,7 +74,9 @@ const TaskItemTask = ({ task, showSideMenu, sideMenu }) => {
               {task.Project.name}
             </p>
           </div>
-          <div>{date.format("MMM D YYYY")}</div>
+          <div>
+            <p style={{ color: "gray" }}>{date.format("MMM D YYYY")}</p>
+          </div>
         </div>
       </li>
       <Modal open={open} onClose={closeModal}>

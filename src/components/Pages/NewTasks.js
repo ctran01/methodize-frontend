@@ -11,7 +11,7 @@ const NewTasks = () => {
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
 
-  const [sideMenu, setSideMenu] = useState(true);
+  const [sideMenu, setSideMenu] = useState(false);
   const showSideMenu = () => setSideMenu(!sideMenu);
 
   const getUserTasks = async () => {
@@ -69,7 +69,9 @@ const NewTasks = () => {
             {renderedTasks}
             {/* <TaskSection title={"Tasks"} tasks={sortedTasks} /> */}
           </div>
-          <PopOutTask showSideMenu={showSideMenu} sideMenu={sideMenu} />
+          {sideMenu && taskState.selectedTask ? (
+            <PopOutTask showSideMenu={showSideMenu} sideMenu={sideMenu} />
+          ) : null}
         </div>
       </div>
     </>
