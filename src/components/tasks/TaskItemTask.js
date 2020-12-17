@@ -33,7 +33,7 @@ const TaskItemTask = ({ task }) => {
     </div>
   );
   return (
-    <div>
+    <>
       <li className="task-task-item" onClick={openModal}>
         <div style={{ display: "flex", alignItems: "center" }}>
           {task.completed ? (
@@ -45,13 +45,29 @@ const TaskItemTask = ({ task }) => {
           )}
           <p style={{ paddingLeft: "5px" }}>{task.name}</p>
         </div>
-        {date.format("MMM D YYYY")}
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <div
+            className={`task-project-name-container task-project-${task.Project.id}`}
+          >
+            <p
+              style={{
+                margin: "0px",
+                padding: "5px",
+                fontSize: "12px",
+                fontWeight: "500",
+              }}
+            >
+              {task.Project.name}
+            </p>
+          </div>
+          <div>{date.format("MMM D YYYY")}</div>
+        </div>
       </li>
       <Modal open={open} onClose={closeModal}>
         {body}
       </Modal>
       {/* <TaskDetailsForm task={task} closeModal={closeModal} open={open} /> */}
-    </div>
+    </>
   );
 };
 
