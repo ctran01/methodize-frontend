@@ -296,6 +296,7 @@
 }
 .task-details-container p {
   font-size: 13px;
+  margin-bottom: 25px;
 }
 .task-details-subtitles > p {
   color: gray;
@@ -305,6 +306,11 @@
 }
 .task-details-data > p {
   font-weight: 500;
+}
+.task-detail-comment-container {
+  align-items: flex-end;
+  background-color: rgba(21, 27, 38, 0.3);
+  height: 300px;
 }
 
 .dot-task-1 {
