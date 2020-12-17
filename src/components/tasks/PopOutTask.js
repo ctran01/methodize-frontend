@@ -2,13 +2,17 @@ import React, { useState, useContext } from "react";
 import { RiCloseLine, RiMenuFoldLine } from "react-icons/ri";
 import { Context as TaskContext } from "../../context/store/TaskStore";
 import moment from "moment";
-import Loader from "../Loader";
+import UserAvatar from "../NavigationBar/UserAvatar";
 
 const PopOutTask = ({ showSideMenu, sideMenu }) => {
   const [open, setOpen] = useState(true);
   const [loading, setLoading] = useState(true);
   const [taskState, taskdispatch] = useContext(TaskContext);
   const { selectedTask: task } = taskState;
+  const date = moment(
+    task.due_date.substring(0, 10).replace("-", ""),
+    "YYYYMMDD"
+  );
 
   return (
     <>
@@ -40,21 +44,42 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
                 <p>Project</p>
                 <p>Description</p>
               </div>
-              <div className="task-details-data" style={{ marginLeft: "25px" }}>
-                {/* <p> {taskState.selectedTask.User.name}</p> */}
-                {/* <p> {date.format("MMM D")}</p> */}
-                {/* <div
-                  className={`task-project-name-container task-project-${task.Project.id}`}
-                > */}
-                {/* <p> {task.Project.name}</p> */}
-              </div>
+              <div className="task-details-data">
+                <div style={{ display: "flex" }}>
+                  <UserAvatar id={taskState.selectedTask.User.id} />
+                  <p> {taskState.selectedTask.User.name}</p>
+                </div>
+                <p> {date.format("MMM D")}</p>
+                <div
+                  className={` task-project-${task.Project.id}`}
+                  style={{
+                    height: "25px",
+                    borderRadius: "20px",
+                    display: "flex",
+                    width: "130px",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <p style={{ margin: 0 }}> {task.Project.name}</p>
+                </div>
 
-              {/* <p> {task.description}</p> */}
+                <p style={{ marginTop: "17px" }}> {task.description}</p>
+              </div>
+            </div>
+          </div>
+          <div className="task-detail-comment-container">
+            <div
+              style={{ display: "flex", marginLeft: "40px", marginTop: "40px" }}
+            >
+              <div className="task-detail-comment-avatar">
+                <UserAvatar id={localStorage.getItem("userId")} />
+              </div>
+              <div className="task-detail-comment-box">Comment</div>
             </div>
           </div>
         </div>
       </div>
-      {/* </div> */}
       {/* </div> */}
     </>
   );
