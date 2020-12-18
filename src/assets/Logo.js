@@ -18,16 +18,16 @@ const Logo = () => {
           y2="100%"
           id="linearGradient-1"
         >
-          <stop stop-color="#186BFE" offset="0%"></stop>
-          <stop stop-color="#0B3B96" offset="100%"></stop>
+          <stop stopColor="#186BFE" offset="0%"></stop>
+          <stop stopColor="#0B3B96" offset="100%"></stop>
         </linearGradient>
       </defs>
       <g
         id="Kanban-Dashboard-UI"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="Tasks" transform="translate(-18.000000, -35.000000)">
           <g id="Group-9" transform="translate(18.000000, 35.500000)">
@@ -35,9 +35,9 @@ const Logo = () => {
               id="logp"
               transform="translate(34.000000, 1.500000)"
               fill="#FFFFFF"
-              font-family="Arial"
-              font-size="20"
-              font-weight="bold"
+              fontFamily="Arial"
+              fontSize="20"
+              fontWeight="bold"
             >
               <text id="Methodize.">
                 <tspan x="0" y="21">

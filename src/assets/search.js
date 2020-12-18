@@ -13,10 +13,10 @@ const search = () => {
       <g
         id="Kanban-Dashboard-UI"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
-        stroke-linecap="round"
+        fillRule="evenodd"
+        strokeLinecap="round"
       >
         <g
           id="Tasks"

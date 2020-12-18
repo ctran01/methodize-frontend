@@ -13,15 +13,15 @@ const tasks = () => {
       <g
         id="Kanban-Dashboard-UI"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g
           id="Home"
           transform="translate(-22.000000, -173.000000)"
           fill="#6C6C6C"
-          fill-rule="nonzero"
+          fillRule="nonzero"
         >
           <g id="menu2" transform="translate(0.000000, 107.000000)">
             <g id="MenuProfile" transform="translate(22.000000, 65.000000)">

@@ -13,9 +13,9 @@ const alert = () => {
       <g
         id="Kanban-Dashboard-UI"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="Tasks" transform="translate(-1018.000000, -30.000000)">
           <g id="Menu1" transform="translate(200.000000, 0.000000)">
@@ -37,7 +37,7 @@ const alert = () => {
               <circle
                 id="Oval"
                 stroke="#FFFFFF"
-                stroke-width="2"
+                strokeWidth="2"
                 fill="#FE0000"
                 cx="6.5"
                 cy="4.5"
