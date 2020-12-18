@@ -309,8 +309,38 @@
 }
 .task-detail-comment-container {
   align-items: flex-end;
-  background-color: rgba(21, 27, 38, 0.3);
+  margin: -10px;
   height: 300px;
+  background-color: rgba(21, 27, 38, 0.08);
+}
+.task-detail-comment-avatar {
+}
+.task-detail-comment-box {
+  width: 75%;
+}
+.task-detail-description-form {
+  padding: 4px;
+  margin-left: 15px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  border-width: 1px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid gray;
+  background: white;
+}
+.comment-text {
+  border-color: transparent;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+  min-height: 100px;
+  resize: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #838485;
 }
 
 .dot-task-1 {
@@ -318,440 +348,443 @@
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: lightblue;
+  /* background: lightblue; */
+  background-color: rgba(176, 216, 230, 0.8);
 }
 .dot-task-2 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: yellowgreen;
+  background-color: rgba(154, 205, 50, 0.8);
 }
 .dot-task-3 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.8);
 }
 .dot-task-4 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: salmon;
+  background-color: rgba(250, 128, 114, 0.8);
 }
 .dot-task-5 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: seagreen;
+  background-color: rgba(46, 139, 87, 0.8);
 }
 .dot-task-6 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: darkcyan;
+  background-color: rgba(0, 139, 139, 0.8);
 }
 .dot-task-7 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: slateblue;
+  background-color: rgba(106, 90, 205, 0.8);
 }
 .dot-task-8 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: skyblue;
+  background-color: rgba(135, 206, 235, 0.8);
 }
 .dot-task-9 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: blue;
+  background-color: rgba(250, 250, 210, 0.8);
 }
 .dot-task-10 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: lawngreen;
+  background-color: rgba(124, 252, 0, 0.8);
 }
 .dot-task-11 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: lightblue;
+  /* background: lightblue; */
+  background-color: rgba(176, 216, 230, 0.8);
 }
 .dot-task-12 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: yellowgreen;
+  background-color: rgba(154, 205, 50, 0.8);
 }
 .dot-task-13 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.8);
 }
 .dot-task-14 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: salmon;
+  background-color: rgba(250, 128, 114, 0.8);
 }
 .dot-task-15 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: seagreen;
+  background-color: rgba(46, 139, 87, 0.8);
 }
 .dot-task-16 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: darkcyan;
+  background-color: rgba(0, 139, 139, 0.8);
 }
 .dot-task-17 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: slateblue;
+  background-color: rgba(106, 90, 205, 0.8);
 }
 .dot-task-18 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: skyblue;
+  background-color: rgba(135, 206, 235, 0.8);
 }
 .dot-task-19 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: blue;
+  background-color: rgba(250, 250, 210, 0.8);
 }
 .dot-task-20 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: lawngreen;
+  background-color: rgba(124, 252, 0, 0.8);
 }
 .dot-task-21 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: lightblue;
+  /* background: lightblue; */
+  background-color: rgba(176, 216, 230, 0.8);
 }
 .dot-task-22 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: yellowgreen;
+  background-color: rgba(154, 205, 50, 0.8);
 }
 .dot-task-23 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.8);
 }
-.dt-task-24 {
+.dot-task-24 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: salmon;
+  background-color: rgba(250, 128, 114, 0.8);
 }
 .dot-task-25 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: seagreen;
+  background-color: rgba(46, 139, 87, 0.8);
 }
 .dot-task-26 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: darkcyan;
+  background-color: rgba(0, 139, 139, 0.8);
 }
 .dot-task-27 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: slateblue;
+  background-color: rgba(106, 90, 205, 0.8);
 }
 .dot-task-28 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: skyblue;
+  background-color: rgba(135, 206, 235, 0.8);
 }
 .dot-task-29 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: blue;
+  background-color: rgba(250, 250, 210, 0.8);
 }
 .dot-task-30 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: lawngreen;
+  background-color: rgba(124, 252, 0, 0.8);
 }
 .dot-task-31 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: lightblue;
+  /* background: lightblue; */
+  background-color: rgba(176, 216, 230, 0.8);
 }
 .dot-task-32 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: yellowgreen;
+  background-color: rgba(154, 205, 50, 0.8);
 }
 .dot-task-33 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.8);
 }
-.dt-task-34 {
+.dot-task-34 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: salmon;
+  background-color: rgba(250, 128, 114, 0.8);
 }
 .dot-task-35 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: seagreen;
+  background-color: rgba(46, 139, 87, 0.8);
 }
 .dot-task-36 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: darkcyan;
+  background-color: rgba(0, 139, 139, 0.8);
 }
 .dot-task-37 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: slateblue;
+  background-color: rgba(106, 90, 205, 0.8);
 }
 .dot-task-38 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: skyblue;
+  background-color: rgba(135, 206, 235, 0.8);
 }
 .dot-task-39 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: blue;
+  background-color: rgba(250, 250, 210, 0.8);
 }
 .dot-task-40 {
   height: 15px;
   border-radius: 50%;
   display: inline-block;
   width: 15px;
-  background-color: lawngreen;
+  background-color: rgba(124, 252, 0, 0.8);
 }
 
 .task-project-1 {
-  opacity: 0.8;
-  background: lightblue;
+  /* background: lightblue; */
+  background-color: rgba(176, 216, 230, 0.8);
 }
 
 .task-project-2 {
-  opacity: 0.8;
-  background: yellowgreen;
+  background-color: rgba(154, 205, 50, 0.8);
 }
 .task-project-3 {
-  opacity: 0.8;
-  background: red;
+  /* background: red; */
+  background-color: rgba(255, 0, 0, 0.8);
 }
 .task-project-4 {
-  opacity: 0.8;
-  background: salmon;
+  /* background: salmon; */
+  background-color: rgba(250, 128, 114, 0.8);
 }
 .task-project-5 {
-  opacity: 0.8;
-  background: seagreen;
+  /* background: seagreen; */
+  background-color: rgba(46, 139, 87, 0.8);
 }
 .task-project-6 {
-  opacity: 0.8;
-  background: darkcyan;
+  /* background: darkcyan; */
+  background-color: rgba(0, 139, 139, 0.8);
 }
 .task-project-7 {
-  opacity: 0.8;
-  background: slateblue;
+  /* background: slateblue;  */
+  background-color: rgba(106, 90, 205, 0.8);
 }
 .task-project-8 {
-  opacity: 0.8;
-  background: skyblue;
+  /* background: skyblue; */
+  background-color: rgba(135, 206, 235, 0.8);
 }
 .task-project-9 {
-  opacity: 0.8;
-  background: lightgoldenrodyellow;
+  /* background: lightgoldenrodyellow; */
+  background-color: rgba(250, 250, 210, 0.8);
 }
 .task-project-10 {
-  opacity: 0.8;
-  background: lawngreen;
+  /* background: lawngreen; */
+  background-color: rgba(124, 252, 0, 0.8);
 }
 .task-project-11 {
-  opacity: 0.8;
-  background: lightblue;
+  /* background: lightblue; */
+  background-color: rgba(176, 216, 230, 0.8);
 }
+
 .task-project-12 {
-  opacity: 0.8;
-  background: yellowgreen;
+  background-color: rgba(154, 205, 50, 0.8);
 }
 .task-project-13 {
-  opacity: 0.8;
-  background: red;
+  /* background: red; */
+  background-color: rgba(255, 0, 0, 0.8);
 }
 .task-project-14 {
-  opacity: 0.8;
-  background: salmon;
+  /* background: salmon; */
+  background-color: rgba(250, 128, 114, 0.8);
 }
 .task-project-15 {
-  opacity: 0.8;
-  background: seagreen;
+  /* background: seagreen; */
+  background-color: rgba(46, 139, 87, 0.8);
 }
 .task-project-16 {
-  opacity: 0.8;
-  background: darkcyan;
+  /* background: darkcyan; */
+  background-color: rgba(0, 139, 139, 0.8);
 }
 .task-project-17 {
-  opacity: 0.8;
-  background: slateblue;
+  /* background: slateblue;  */
+  background-color: rgba(106, 90, 205, 0.8);
 }
 .task-project-18 {
-  opacity: 0.8;
-  background: skyblue;
+  /* background: skyblue; */
+  background-color: rgba(135, 206, 235, 0.8);
 }
 .task-project-19 {
-  opacity: 0.8;
-  background: lightgoldenrodyellow;
+  /* background: lightgoldenrodyellow; */
+  background-color: rgba(250, 250, 210, 0.8);
 }
 .task-project-20 {
-  opacity: 0.8;
-  background: lawngreen;
+  /* background: lawngreen; */
+  background-color: rgba(124, 252, 0, 0.8);
 }
 .task-project-21 {
-  opacity: 0.8;
-  background: lightblue;
+  /* background: lightblue; */
+  background-color: rgba(176, 216, 230, 0.8);
 }
+
 .task-project-22 {
-  opacity: 0.8;
-  background: yellowgreen;
+  background-color: rgba(154, 205, 50, 0.8);
 }
 .task-project-23 {
-  opacity: 0.8;
-  background: red;
+  /* background: red; */
+  background-color: rgba(255, 0, 0, 0.8);
 }
 .task-project-24 {
-  opacity: 0.8;
-  background: salmon;
+  /* background: salmon; */
+  background-color: rgba(250, 128, 114, 0.8);
 }
 .task-project-25 {
-  opacity: 0.8;
-  background: seagreen;
+  /* background: seagreen; */
+  background-color: rgba(46, 139, 87, 0.8);
 }
 .task-project-26 {
-  opacity: 0.8;
-  background: darkcyan;
+  /* background: darkcyan; */
+  background-color: rgba(0, 139, 139, 0.8);
 }
 .task-project-27 {
-  opacity: 0.8;
-  background: slateblue;
+  /* background: slateblue;  */
+  background-color: rgba(106, 90, 205, 0.8);
 }
 .task-project-28 {
-  opacity: 0.8;
-  background: skyblue;
+  /* background: skyblue; */
+  background-color: rgba(135, 206, 235, 0.8);
 }
 .task-project-29 {
-  opacity: 0.8;
-  background: lightgoldenrodyellow;
+  /* background: lightgoldenrodyellow; */
+  background-color: rgba(250, 250, 210, 0.8);
 }
 .task-project-30 {
-  opacity: 0.8;
-  background: lawngreen;
+  /* background: lawngreen; */
+  background-color: rgba(124, 252, 0, 0.8);
 }
 .task-project-31 {
-  opacity: 0.8;
-  background: lightblue;
+  /* background: lightblue; */
+  background-color: rgba(176, 216, 230, 0.8);
 }
+
 .task-project-32 {
-  opacity: 0.8;
-  background: yellowgreen;
+  background-color: rgba(154, 205, 50, 0.8);
 }
 .task-project-33 {
-  opacity: 0.8;
-  background: red;
+  /* background: red; */
+  background-color: rgba(255, 0, 0, 0.8);
 }
 .task-project-34 {
-  opacity: 0.8;
-  background: salmon;
+  /* background: salmon; */
+  background-color: rgba(250, 128, 114, 0.8);
 }
 .task-project-35 {
-  opacity: 0.8;
-  background: seagreen;
+  /* background: seagreen; */
+  background-color: rgba(46, 139, 87, 0.8);
 }
 .task-project-36 {
-  opacity: 0.8;
-  background: darkcyan;
+  /* background: darkcyan; */
+  background-color: rgba(0, 139, 139, 0.8);
 }
 .task-project-37 {
-  opacity: 0.8;
-  background: slateblue;
+  /* background: slateblue;  */
+  background-color: rgba(106, 90, 205, 0.8);
 }
 .task-project-38 {
-  opacity: 0.8;
-  background: skyblue;
+  /* background: skyblue; */
+  background-color: rgba(135, 206, 235, 0.8);
 }
 .task-project-39 {
-  opacity: 0.8;
-  background: lightgoldenrodyellow;
+  /* background: lightgoldenrodyellow; */
+  background-color: rgba(250, 250, 210, 0.8);
 }
 .task-project-40 {
-  opacity: 0.8;
-  background: lawngreen;
+  /* background: lawngreen; */
+  background-color: rgba(124, 252, 0, 0.8);
 }

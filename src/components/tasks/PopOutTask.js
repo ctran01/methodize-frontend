@@ -47,9 +47,13 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
               <div className="task-details-data">
                 <div style={{ display: "flex" }}>
                   <UserAvatar id={taskState.selectedTask.User.id} />
-                  <p> {taskState.selectedTask.User.name}</p>
+                  <p
+                    style={{ margin: "0px 0px 0px 10px", alignSelf: "center" }}
+                  >
+                    {taskState.selectedTask.User.name}
+                  </p>
                 </div>
-                <p> {date.format("MMM D")}</p>
+                <p style={{ marginTop: "20px" }}> {date.format("MMM D")}</p>
                 <div
                   className={` task-project-${task.Project.id}`}
                   style={{
@@ -70,12 +74,19 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
           </div>
           <div className="task-detail-comment-container">
             <div
-              style={{ display: "flex", marginLeft: "40px", marginTop: "40px" }}
+              style={{ display: "flex", marginLeft: "40px", marginTop: "50px" }}
             >
               <div className="task-detail-comment-avatar">
                 <UserAvatar id={localStorage.getItem("userId")} />
               </div>
-              <div className="task-detail-comment-box">Comment</div>
+              <div className="task-detail-comment-box">
+                <form className="task-detail-description-form">
+                  <textarea
+                    className="comment-text"
+                    placeholder="Ask a question or post an update..."
+                  ></textarea>
+                </form>
+              </div>
             </div>
           </div>
         </div>
