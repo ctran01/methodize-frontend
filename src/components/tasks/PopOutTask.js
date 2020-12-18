@@ -16,7 +16,6 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
 
   return (
     <>
-      {/* <div className="task-detail-menu-container"> */}
       <div
         className={
           sideMenu ? "task-detail-menu active" : "task-detail-menu collapsed"
@@ -91,7 +90,6 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
           </div>
         </div>
       </div>
-      {/* </div> */}
     </>
   );
 };

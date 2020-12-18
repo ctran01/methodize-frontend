@@ -6,6 +6,7 @@ import TaskSection from "../tasks/TaskSection";
 import PopOutTask from "../tasks/PopOutTask";
 import TaskItemTask from "../tasks/TaskItemTask";
 import Add from "../../assets/Add";
+
 const NewTasks = () => {
   const [taskState, taskdispatch] = useContext(TaskContext);
   const [loading, setLoading] = useState(true);

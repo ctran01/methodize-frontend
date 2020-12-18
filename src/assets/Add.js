@@ -13,9 +13,9 @@ const Add = () => {
       <g
         id="Kanban-Dashboard-UI"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g id="Tasks" transform="translate(-277.000000, -153.000000)">
           <g id="Buton-add" transform="translate(277.000000, 153.000000)">
