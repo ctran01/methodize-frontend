@@ -42,6 +42,7 @@
   box-sizing: border-box;
   border-radius: 6px;
 }
+
 .edit-description {
   border-color: transparent;
   overflow-wrap: break-word;
@@ -52,7 +53,7 @@
   min-height: 83px;
   resize: none;
   font-family: Arial, Helvetica, sans-serif;
-  color: #838485
+  color: #838485;
 }
 .description:focus {
   border-color: #cbd4db;
