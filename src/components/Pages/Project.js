@@ -279,6 +279,7 @@ const ProjectPage = () => {
                     ref={provided.innerRef}
                     {...provided.droppableProps}
                   >
+                    {/* //----------------------------------TaskItemProject */}
                     {tasklist.Tasks.map((task, index) => {
                       return (
                         <div key={task.id}>
@@ -356,7 +357,7 @@ const ProjectPage = () => {
       </div>
     );
   });
-
+  //----------------------------------------------Project
   return (
     <div>
       <div>
