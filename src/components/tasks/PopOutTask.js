@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { RiCloseLine } from "react-icons/ri";
 import { Context as TaskContext } from "../../context/store/TaskStore";
@@ -13,7 +13,9 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
   const [taskState, taskdispatch] = useContext(TaskContext);
   const [projectState, projectdispatch] = useContext(ProjectContext);
   const [projectUsers, setProjectUsers] = useState([]);
+
   const { selectedTask: task } = taskState;
+  const [assigneeUser, setAssigneeUser] = useState(task.User.id);
   const date = moment(
     task.due_date.substring(0, 10).replace("-", ""),
     "YYYYMMDD"
@@ -21,13 +23,17 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
 
   const { register, handleSubmit, clearErrors } = useForm();
 
-  const renderedProjects = projectState.projects.map((project, i) => {
-    return (
-      <option key={i} id={project.id} value={project.id}>
-        {project.name}
-      </option>
-    );
-  });
+  const renderedProjects = projectState.projects
+    .filter((project) => {
+      return project.id !== task.Project.id;
+    })
+    .map((project, i) => {
+      return (
+        <option key={i} id={project.id} value={project.id}>
+          {project.name}
+        </option>
+      );
+    });
 
   const renderedUsers = projectUsers.map((user, i) => {
     return (
@@ -43,18 +49,42 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
     clearErrors(projectSelect.name);
     // clearErrors(assigneeSelect.name);
     const res = await apiServer.get(`/project/${projectSelect.value}/team`);
-    setProjectUsers(res.data.Users);
+    const userList = res.data.Users.filter((user) => {
+      return user.id !== task.User.id;
+    });
+    setProjectUsers(userList);
     updateProject();
   };
 
   const updateProject = async (e) => {
     var projectId = document.getElementById("project-select").value;
-    const id = localStorage.getItem("userId");
+    const userId = localStorage.getItem("userId");
     console.log(projectId);
     await apiServer.put(`/task/${task.id}/project/${projectId}`);
-    const res = await apiServer.get(`/task/user/${id}`);
+    const res = await apiServer.get(`/task/user/${userId}`);
     await taskdispatch({ type: "get_user_tasks", payload: res.data });
   };
+
+  const updateAssignee = async (e) => {
+    var assigneeId = document.getElementById("assignee-select").value;
+    const userId = localStorage.getItem("userId");
+    console.log(assigneeId);
+    setAssigneeUser(assigneeId);
+    await apiServer.put(`/task/${task.id}/assignee/${assigneeId}`);
+    const res = await apiServer.get(`/task/user/${userId}`);
+    await taskdispatch({ type: "get_user_tasks", payload: res.data });
+  };
+
+  useEffect(() => {
+    (async () => {
+      const res = await apiServer.get(`/project/${task.Project.id}/team`);
+      const userList = res.data.Users.filter((user) => {
+        return user.id !== task.User.id;
+      });
+      // console.log(userList);
+      setProjectUsers(userList);
+    })();
+  }, []);
 
   return (
     <>
@@ -87,13 +117,17 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
               </div>
               <div className="task-details-data">
                 <div style={{ display: "flex" }}>
-                  <UserAvatar id={taskState.selectedTask.User.id} />
+                  <UserAvatar id={assigneeUser} />
                   <select
                     id="assignee-select"
                     name="assigneeId"
                     className="form-input"
                     ref={register({ required: true })}
+                    onChange={updateAssignee}
                   >
+                    <option value={task.User.id} id={task.User.id} selected>
+                      {task.User.name}
+                    </option>
                     {renderedUsers}
                   </select>
                   {/* <p
