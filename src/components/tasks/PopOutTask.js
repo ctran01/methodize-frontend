@@ -12,15 +12,16 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
   const [loading, setLoading] = useState(true);
   const [taskState, taskdispatch] = useContext(TaskContext);
   const [projectState, projectdispatch] = useContext(ProjectContext);
+  const [teamDescription, setTeamDescription] = useState(
+    taskState.selectedTask.description
+  );
   const [projectUsers, setProjectUsers] = useState(
     taskState.selectedTask.Project.Users
   );
 
   const { selectedTask: task } = taskState;
-
+  const [assigneeUser, setAssigneeUser] = useState(task.User);
   console.log(taskState.selectedTask);
-
-  const [assigneeUserId, setAssigneeUserId] = useState(task.User.id);
 
   const date = moment(
     task.due_date.substring(0, 10).replace("-", ""),
@@ -55,18 +56,26 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
 
   const updateAssignee = async (e) => {
     var assigneeId = document.getElementById("assignee-select").value;
-    console.log(assigneeId, "selected");
-    console.log(assigneeUserId, "before");
 
-    console.log(assigneeUserId, "after");
     await apiServer.put(`/task/${task.id}/assignee/${assigneeId}`);
-
+    const assignee = await apiServer.get(`/task/${task.id}`);
+    setAssigneeUser(assignee.data.User);
     //updates tasks
     const userId = localStorage.getItem("userId");
     const res = await apiServer.get(`/task/user/${userId}`);
     await taskdispatch({ type: "get_user_tasks", payload: res.data });
   };
 
+  const updateDescription = async (e) => {
+    const description = e.target.value;
+    await apiServer.put(`/task/${task.id}/description`, { description });
+
+    console.log(e.target.value);
+  };
+
+  const handleDescriptionUpdate = (e) => {
+    setTeamDescription(e.target.value);
+  };
   useEffect(() => {}, []);
 
   const renderedProjects = projectState.projects
@@ -123,14 +132,6 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
               </div>
               <div className="task-details-data">
                 <div style={{ display: "flex" }}>
-                  {/* <UserAvatar
-                    id={assigneeUserId}
-                    style={{
-                      width: "25px",
-                      height: "25px",
-                      marginRight: "10px",
-                    }}
-                  /> */}
                   <div
                     className="user-avatar"
                     style={{
@@ -139,7 +140,9 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
                       marginRight: "10px",
                     }}
                   >
-                    {(task.User.name[0] + task.User.name[1]).toUpperCase()}
+                    {(
+                      assigneeUser.name[0] + assigneeUser.name[1]
+                    ).toUpperCase()}
                   </div>
                   <select
                     id="assignee-select"
@@ -147,21 +150,16 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
                     className="form-input"
                     ref={register({ required: true })}
                     onChange={updateAssignee}
+                    style={{ width: "150px" }}
                   >
                     <option value={task.User.id} id={task.User.id} selected>
                       {task.User.name}
                     </option>
                     {renderedUsers}
                   </select>
-                  {/* <p
-                    style={{ margin: "0px 0px 0px 10px", alignSelf: "center" }}
-                  >
-                    {taskState.selectedTask.User.name}
-                  </p> */}
                 </div>
                 <p style={{ marginTop: "20px" }}> {date.format("MMM D")}</p>
                 <div
-                  // className={` task-project-${task.Project.id}`}
                   style={{
                     height: "25px",
                     borderRadius: "20px",
@@ -200,7 +198,16 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
                   {/* <p style={{ margin: 0 }}> {task.Project.name}</p> */}
                 </div>
 
-                <p style={{ marginTop: "17px" }}> {task.description}</p>
+                {/* <p style={{ marginTop: "17px" }}> {task.description}</p> */}
+                <div className="team-content-left-description-form">
+                  <textarea
+                    className="edit-description"
+                    placeholder="Click to add team description..."
+                    value={teamDescription}
+                    onChange={handleDescriptionUpdate}
+                    onBlur={updateDescription}
+                  ></textarea>
+                </div>
               </div>
             </div>
           </form>

@@ -18,10 +18,15 @@
 .form-input {
   /* padding: 10px 5px; */
   /* width: 100%; */
-  border: 1px solid lightgray;
+  border: none;
   outline: none;
   /* margin: 10px 0; */
   text-overflow: ellipsis;
+}
+
+.form-input:hover,
+.form-input:focus {
+  border: 1px solid lightgray;
 }
 .name-textarea {
   line-height: 32px;
