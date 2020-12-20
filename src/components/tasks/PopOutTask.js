@@ -17,10 +17,8 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
   );
 
   const { selectedTask: task } = taskState;
-
+  const [assigneeUser, setAssigneeUser] = useState(task.User);
   console.log(taskState.selectedTask);
-
-  const [assigneeUserId, setAssigneeUserId] = useState(task.User.id);
 
   const date = moment(
     task.due_date.substring(0, 10).replace("-", ""),
@@ -55,12 +53,10 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
 
   const updateAssignee = async (e) => {
     var assigneeId = document.getElementById("assignee-select").value;
-    console.log(assigneeId, "selected");
-    console.log(assigneeUserId, "before");
 
-    console.log(assigneeUserId, "after");
     await apiServer.put(`/task/${task.id}/assignee/${assigneeId}`);
-
+    const assignee = await apiServer.get(`/task/${task.id}`);
+    setAssigneeUser(assignee.data.User);
     //updates tasks
     const userId = localStorage.getItem("userId");
     const res = await apiServer.get(`/task/user/${userId}`);
@@ -139,7 +135,9 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
                       marginRight: "10px",
                     }}
                   >
-                    {(task.User.name[0] + task.User.name[1]).toUpperCase()}
+                    {(
+                      assigneeUser.name[0] + assigneeUser.name[1]
+                    ).toUpperCase()}
                   </div>
                   <select
                     id="assignee-select"

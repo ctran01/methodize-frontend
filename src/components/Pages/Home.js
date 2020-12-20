@@ -18,17 +18,19 @@ const HomePage = () => {
   const [taskState] = useContext(TaskContext);
   const [projectState] = useContext(ProjectContext);
 
-  const uncompletedTasklist = taskState.tasks.filter((task) => {
-    return !task.completed;
-  });
+  const uncompletedTasklist = taskState.tasks.filter(
+    (task) => task.completed === false
+  );
+
   const sortedTaskList = uncompletedTasklist.sort(function (a, b) {
     return new Date(b.due_date) - new Date(a.due_date);
   });
 
-  const upcomingTasklist = sortedTaskList
-    .slice(sortedTaskList.length - 4)
-    .reverse();
-  const taskList = upcomingTasklist.map((task, i) => {
+  // const upcomingTasklist = sortedTaskList
+  //   .slice(sortedTaskList.length - 4)
+  //   .reverse();
+
+  const taskList = sortedTaskList.map((task, i) => {
     return !task.completed && <TaskItemHome task={task} key={i} />;
   });
 
