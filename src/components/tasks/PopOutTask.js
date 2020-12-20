@@ -12,10 +12,16 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
   const [loading, setLoading] = useState(true);
   const [taskState, taskdispatch] = useContext(TaskContext);
   const [projectState, projectdispatch] = useContext(ProjectContext);
-  const [projectUsers, setProjectUsers] = useState([]);
+  const [projectUsers, setProjectUsers] = useState(
+    taskState.selectedTask.Project.Users
+  );
 
   const { selectedTask: task } = taskState;
-  const [assigneeUser, setAssigneeUser] = useState(task.User.id);
+
+  console.log(taskState.selectedTask);
+
+  const [assigneeUserId, setAssigneeUserId] = useState(task.User.id);
+
   const date = moment(
     task.due_date.substring(0, 10).replace("-", ""),
     "YYYYMMDD"
@@ -23,26 +29,7 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
 
   const { register, handleSubmit, clearErrors } = useForm();
 
-  const renderedProjects = projectState.projects
-    .filter((project) => {
-      return project.id !== task.Project.id;
-    })
-    .map((project, i) => {
-      return (
-        <option key={i} id={project.id} value={project.id}>
-          {project.name}
-        </option>
-      );
-    });
-
-  const renderedUsers = projectUsers.map((user, i) => {
-    return (
-      <option key={i} value={user.id}>
-        {user.name}
-      </option>
-    );
-  });
-
+  //This doesn't do anything for initial
   const getProjectUsers = async (event) => {
     var projectSelect = document.getElementById("project-select");
     // var assigneeSelect = document.getElementById("assignee-select");
@@ -52,6 +39,7 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
     const userList = res.data.Users.filter((user) => {
       return user.id !== task.User.id;
     });
+    console.log(userList, "userList");
     setProjectUsers(userList);
     updateProject();
   };
@@ -67,25 +55,43 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
 
   const updateAssignee = async (e) => {
     var assigneeId = document.getElementById("assignee-select").value;
-    const userId = localStorage.getItem("userId");
-    console.log(assigneeId);
-    setAssigneeUser(assigneeId);
+    console.log(assigneeId, "selected");
+    console.log(assigneeUserId, "before");
+
+    console.log(assigneeUserId, "after");
     await apiServer.put(`/task/${task.id}/assignee/${assigneeId}`);
+
+    //updates tasks
+    const userId = localStorage.getItem("userId");
     const res = await apiServer.get(`/task/user/${userId}`);
     await taskdispatch({ type: "get_user_tasks", payload: res.data });
   };
 
-  useEffect(() => {
-    (async () => {
-      const res = await apiServer.get(`/project/${task.Project.id}/team`);
-      const userList = res.data.Users.filter((user) => {
-        return user.id !== task.User.id;
-      });
-      // console.log(userList);
-      setProjectUsers(userList);
-    })();
-  }, []);
+  useEffect(() => {}, []);
 
+  const renderedProjects = projectState.projects
+    .filter((project) => {
+      return project.id !== task.Project.id;
+    })
+    .map((project, i) => {
+      return (
+        <option key={i} id={project.id} value={project.id}>
+          {project.name}
+        </option>
+      );
+    });
+
+  const renderedUsers = projectUsers
+    .filter((user) => {
+      return user.id !== task.User.id;
+    })
+    .map((user, i) => {
+      return (
+        <option key={i} value={user.id}>
+          {user.name}
+        </option>
+      );
+    });
   return (
     <>
       <div
@@ -117,7 +123,24 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
               </div>
               <div className="task-details-data">
                 <div style={{ display: "flex" }}>
-                  <UserAvatar id={assigneeUser} />
+                  {/* <UserAvatar
+                    id={assigneeUserId}
+                    style={{
+                      width: "25px",
+                      height: "25px",
+                      marginRight: "10px",
+                    }}
+                  /> */}
+                  <div
+                    className="user-avatar"
+                    style={{
+                      width: "25px",
+                      height: "25px",
+                      marginRight: "10px",
+                    }}
+                  >
+                    {(task.User.name[0] + task.User.name[1]).toUpperCase()}
+                  </div>
                   <select
                     id="assignee-select"
                     name="assigneeId"

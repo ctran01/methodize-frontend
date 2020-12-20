@@ -6,10 +6,12 @@ import TaskSection from "../tasks/TaskSection";
 import PopOutTask from "../tasks/PopOutTask";
 import TaskItemTask from "../tasks/TaskItemTask";
 import Add from "../../assets/Add";
+import { RiNurseFill } from "react-icons/ri";
 
 const NewTasks = () => {
   const [taskState, taskdispatch] = useContext(TaskContext);
   const [loading, setLoading] = useState(true);
+  const [initialLoad, setInitialLoad] = useState(true);
   const [open, setOpen] = useState(false);
 
   const [sideMenu, setSideMenu] = useState(false);
@@ -34,6 +36,7 @@ const NewTasks = () => {
         key={i}
         showSideMenu={showSideMenu}
         sideMenu={sideMenu}
+        setInitialLoad={setInitialLoad}
       />
     );
   });
@@ -56,7 +59,13 @@ const NewTasks = () => {
       <div className="tasks-container">
         {/* <div className="tasks-container-header"></div> */}
         <div className="tasks-main-content">
-          <div className="tasks-inner-container">
+          <div
+            className={
+              taskState.selectedTask || initialLoad
+                ? "tasks-inner-container"
+                : "tasks-inner-container hidden"
+            }
+          >
             <div className="tasks-add-task-container" onClick={openModal}>
               <div className="tasks-add-task-icon">
                 <Add />

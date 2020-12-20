@@ -12,7 +12,7 @@ import apiServer from "../../config/apiServer";
 
 //Task item list for home and task page
 
-const TaskItemTask = ({ task, showSideMenu, sideMenu }) => {
+const TaskItemTask = ({ task, showSideMenu, sideMenu, setInitialLoad }) => {
   const [taskState, taskDispatch] = useContext(TaskContext);
 
   const date = moment(
@@ -31,9 +31,12 @@ const TaskItemTask = ({ task, showSideMenu, sideMenu }) => {
   const setTaskPopOut = async () => {
     if (sideMenu === false) {
       showSideMenu();
+    } else {
+      taskDispatch({ type: "get_selected_task", payload: null });
+      const res = await apiServer.get(`/task/${task.id}`);
+      await taskDispatch({ type: "get_selected_task", payload: res.data });
+      setInitialLoad(false);
     }
-    const res = await apiServer.get(`/task/${task.id}`);
-    await taskDispatch({ type: "get_selected_task", payload: res.data });
   };
 
   //import component as body such as forms, details, etc
