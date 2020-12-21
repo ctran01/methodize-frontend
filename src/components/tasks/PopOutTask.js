@@ -26,9 +26,9 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
     "YYYYMMDD"
   );
 
-  console.log(task.due_date, "task.due_date DB");
-  console.log(date, "moment date convert from db");
-  console.log(dueDate, "dueDate state new Date convert ");
+  // console.log(task.due_date, "task.due_date DB");
+  // console.log(date, "moment date convert from db");
+  // console.log(dueDate, "dueDate state new Date convert ");
 
   const { register, handleSubmit, clearErrors } = useForm();
 
@@ -68,6 +68,11 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
     await taskdispatch({ type: "get_user_tasks", payload: res.data });
   };
 
+  const updateDueDate = async (date) => {
+    setDueDate(date);
+    await apiServer.put(`/task/${task.id}/dueDate`, { date });
+    console.log(date);
+  };
   const updateDescription = async (e) => {
     const description = e.target.value;
     await apiServer.put(`/task/${task.id}/description`, { description });
@@ -104,15 +109,13 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
       );
     });
 
-  const DateButton = ({ value, onClick }) => {
-    const date = moment(value).format("MMM D");
-    console.log(date);
-    return (
-      <button style={{ color: "blue" }} onClick={onClick}>
-        {value}
-      </button>
-    );
-  };
+  const DateButton = ({ value, onClick }) => (
+    // const date = moment(value).format("MMM D");
+    // console.log(date);
+    <button style={{ color: "blue" }} onClick={onClick}>
+      {value}
+    </button>
+  );
   return (
     <>
       <div
@@ -180,8 +183,8 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
                   >
                     <DatePicker
                       selected={dueDate}
-                      onChange={(date) => setDueDate(date)}
-                      customInput={<DateButton />}
+                      onChange={(date) => updateDueDate(date)}
+                      // customInput={<DateButton />}
                     />
                     {/* <p style={{ marginTop: "20px" }}> {date.format("MMM D")}</p> */}
                   </div>
