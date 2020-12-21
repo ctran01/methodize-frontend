@@ -6,27 +6,29 @@ import { Context as ProjectContext } from "../../context/store/ProjectStore";
 import moment from "moment";
 import UserAvatar from "../NavigationBar/UserAvatar";
 import apiServer from "../../config/apiServer";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const PopOutTask = ({ showSideMenu, sideMenu }) => {
   const [open, setOpen] = useState(true);
   const [loading, setLoading] = useState(true);
   const [taskState, taskdispatch] = useContext(TaskContext);
-  const [projectState, projectdispatch] = useContext(ProjectContext);
-  const [teamDescription, setTeamDescription] = useState(
-    taskState.selectedTask.description
-  );
-  const [projectUsers, setProjectUsers] = useState(
-    taskState.selectedTask.Project.Users
-  );
-
   const { selectedTask: task } = taskState;
+  const [projectState, projectdispatch] = useContext(ProjectContext);
+  const [teamDescription, setTeamDescription] = useState(task.description);
+  const [projectUsers, setProjectUsers] = useState(task.Project.Users);
   const [assigneeUser, setAssigneeUser] = useState(task.User);
-  console.log(taskState.selectedTask);
+
+  const [dueDate, setDueDate] = useState(new Date(task.due_date));
 
   const date = moment(
     task.due_date.substring(0, 10).replace("-", ""),
     "YYYYMMDD"
   );
+
+  console.log(task.due_date, "task.due_date DB");
+  console.log(date, "moment date convert from db");
+  console.log(dueDate, "dueDate state new Date convert ");
 
   const { register, handleSubmit, clearErrors } = useForm();
 
@@ -101,6 +103,16 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
         </option>
       );
     });
+
+  const DateButton = ({ value, onClick }) => {
+    const date = moment(value).format("MMM D");
+    console.log(date);
+    return (
+      <button style={{ color: "blue" }} onClick={onClick}>
+        {value}
+      </button>
+    );
+  };
   return (
     <>
       <div
@@ -119,101 +131,122 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
               onClick={showSideMenu}
             />
           </div>
-          <form className="task-detail-menu-main-content">
-            <div className="task-detail-title">
-              <h2>{taskState.selectedTask.name}</h2>
-            </div>
-            <div className="task-details-container">
-              <div className="task-details-subtitles">
-                <p>Assignee</p>
-                <p>Due Date</p>
-                <p>Project</p>
-                <p>Description</p>
+          <div style={{ height: "90%" }}>
+            <form className="task-detail-menu-main-content">
+              <div className="task-detail-title">
+                <h2>{task.name}</h2>
               </div>
-              <div className="task-details-data">
-                <div style={{ display: "flex" }}>
-                  <div
-                    className="user-avatar"
-                    style={{
-                      width: "25px",
-                      height: "25px",
-                      marginRight: "10px",
-                    }}
-                  >
-                    {(
-                      assigneeUser.name[0] + assigneeUser.name[1]
-                    ).toUpperCase()}
-                  </div>
-                  <select
-                    id="assignee-select"
-                    name="assigneeId"
-                    className="form-input"
-                    ref={register({ required: true })}
-                    onChange={updateAssignee}
-                    style={{ width: "150px" }}
-                  >
-                    <option value={task.User.id} id={task.User.id} selected>
-                      {task.User.name}
-                    </option>
-                    {renderedUsers}
-                  </select>
+              <div className="task-details-container">
+                <div className="task-details-subtitles">
+                  <p>Assignee</p>
+                  <p>Due Date</p>
+                  <p>Project</p>
+                  <p>Description</p>
                 </div>
-                <p style={{ marginTop: "20px" }}> {date.format("MMM D")}</p>
-                <div
-                  style={{
-                    height: "25px",
-                    borderRadius: "20px",
-                    // display: "flex",
-                    // width: "130px",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <select
-                    id="project-select"
-                    name="projectId"
-                    className={`form-input `}
-                    onChange={getProjectUsers}
-                    defaultValue={task.Project.name}
-                    ref={register({ required: true })}
-                    onBlur={updateProject}
+                <div className="task-details-data">
+                  <div
+                    className="assignee-select-container"
+                    style={{ display: "flex" }}
+                  >
+                    <div
+                      className="user-avatar"
+                      style={{
+                        width: "25px",
+                        height: "25px",
+                        marginRight: "10px",
+                      }}
+                    >
+                      {(
+                        assigneeUser.name[0] + assigneeUser.name[1]
+                      ).toUpperCase()}
+                    </div>
+                    <select
+                      id="assignee-select"
+                      name="assigneeId"
+                      className="form-input"
+                      ref={register({ required: true })}
+                      onChange={updateAssignee}
+                      style={{ width: "150px" }}
+                    >
+                      <option value={task.User.id} id={task.User.id} selected>
+                        {task.User.name}
+                      </option>
+                      {renderedUsers}
+                    </select>
+                  </div>
+                  <div
+                    className="dueDate-container"
+                    style={{ marginTop: "20px" }}
+                  >
+                    <DatePicker
+                      selected={dueDate}
+                      onChange={(date) => setDueDate(date)}
+                      customInput={<DateButton />}
+                    />
+                    {/* <p style={{ marginTop: "20px" }}> {date.format("MMM D")}</p> */}
+                  </div>
+
+                  <div
+                    className="project-select-container"
                     style={{
                       height: "25px",
                       borderRadius: "20px",
-                      display: "flex",
+
                       alignItems: "center",
-                      background: "transparent",
                       justifyContent: "center",
+                      marginTop: "15px",
                     }}
                   >
-                    <option
-                      value={task.Project.id}
-                      id={task.Project.id}
-                      selected
+                    <select
+                      id="project-select"
+                      name="projectId"
+                      className={`form-input `}
+                      onChange={getProjectUsers}
+                      defaultValue={task.Project.name}
+                      ref={register({ required: true })}
+                      onBlur={updateProject}
+                      style={{
+                        height: "25px",
+                        borderRadius: "20px",
+                        display: "flex",
+                        alignItems: "center",
+                        background: "transparent",
+                        justifyContent: "center",
+                      }}
                     >
-                      {task.Project.name}
-                    </option>
-                    {renderedProjects}
-                  </select>
-                  {/* <p style={{ margin: 0 }}> {task.Project.name}</p> */}
-                </div>
+                      <option
+                        value={task.Project.id}
+                        id={task.Project.id}
+                        selected
+                      >
+                        {task.Project.name}
+                      </option>
+                      {renderedProjects}
+                    </select>
+                    {/* <p style={{ margin: 0 }}> {task.Project.name}</p> */}
+                  </div>
 
-                {/* <p style={{ marginTop: "17px" }}> {task.description}</p> */}
-                <div className="team-content-left-description-form">
-                  <textarea
-                    className="edit-description"
-                    placeholder="Click to add team description..."
-                    value={teamDescription}
-                    onChange={handleDescriptionUpdate}
-                    onBlur={updateDescription}
-                  ></textarea>
+                  {/* <p style={{ marginTop: "17px" }}> {task.description}</p> */}
+                  <div className="task-detail-description-container">
+                    <textarea
+                      className="task-detail-edit-description"
+                      placeholder="Click to add team description..."
+                      value={teamDescription}
+                      onChange={handleDescriptionUpdate}
+                      onBlur={updateDescription}
+                    ></textarea>
+                  </div>
                 </div>
               </div>
+            </form>
+            <div className="task-detail-user-comments-container">
+              <div>comment</div>
             </div>
-          </form>
+          </div>
           <div className="task-detail-comment-container">
             <div
-              style={{ display: "flex", marginLeft: "40px", marginTop: "50px" }}
+              className="task-detail-user-comment"
+              style={{ display: "flex", marginLeft: "40px", marginTop: "20px" }}
             >
               <div
                 className="task-detail-comment-avatar"
@@ -222,7 +255,7 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
                 <UserAvatar id={localStorage.getItem("userId")} />
               </div>
               <div className="task-detail-comment-box">
-                <form className="task-detail-description-form">
+                <form className="task-detail-comment-form">
                   <textarea
                     className="comment-text"
                     placeholder="Ask a question or post an update..."
