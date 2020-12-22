@@ -432,6 +432,14 @@
 .comment-textarea::-webkit-scrollbar {
   display: none;
 }
+.comment-button {
+  height: 30px;
+  width: 80px;
+  color: white;
+  background-color: #0093ff;
+  border-radius: 6px;
+  border: none;
+}
 
 /* User Comments */
 .comment-container {

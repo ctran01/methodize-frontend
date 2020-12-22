@@ -18,6 +18,7 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
   const [teamDescription, setTeamDescription] = useState(task.description);
   const [projectUsers, setProjectUsers] = useState(task.Project.Users);
   const [assigneeUser, setAssigneeUser] = useState(task.User);
+  const [taskComments, setTaskComments] = useState(task.Comments);
   const [dueDate, setDueDate] = useState(new Date(task.due_date));
   const [commentBox, setCommentBox] = useState(false);
 
@@ -85,7 +86,14 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
   };
 
   const handleCommentSubmit = async ({ text }) => {
-    await apiServer.post();
+    const user_id = localStorage.getItem("userId");
+    await apiServer.post(`/task/${task.id}/comment`, {
+      text,
+      user_id,
+    });
+
+    const comments = await apiServer.get(`/task/${task.id}/comment`);
+    setTaskComments(comments.data);
   };
 
   const expandCommentBox = () => {
@@ -116,7 +124,7 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
       );
     });
 
-  const renderedComments = task.Comments.map((comment, i) => {
+  const renderedComments = taskComments.map((comment, i) => {
     const commentDate = moment(
       comment.createdAt.substring(0, 10).replace("-", ""),
       "YYYYMMDD"
@@ -318,6 +326,7 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
                 >
                   <div style={{ width: "100%", height: "100%" }}>
                     <textarea
+                      name="text"
                       className="comment-textarea"
                       placeholder="Ask a question or post an update..."
                       ref={register({ required: true })}
@@ -326,11 +335,17 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
                     ></textarea>
                   </div>
 
-                  {commentBox ? (
-                    <div style={{ alignSelf: "flex-end", marginTop: "10px" }}>
-                      <button type="submit">Comment</button>
-                    </div>
-                  ) : null}
+                  {/* {commentBox ? ( */}
+                  <div style={{ alignSelf: "flex-end", marginTop: "10px" }}>
+                    <button
+                      className="comment-button"
+                      style={{ height: "30px", width: "80px" }}
+                      type="submit"
+                    >
+                      Comment
+                    </button>
+                  </div>
+                  {/* ) : null} */}
                 </form>
               </div>
             </div>
