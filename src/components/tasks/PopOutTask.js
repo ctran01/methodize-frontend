@@ -18,8 +18,8 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
   const [teamDescription, setTeamDescription] = useState(task.description);
   const [projectUsers, setProjectUsers] = useState(task.Project.Users);
   const [assigneeUser, setAssigneeUser] = useState(task.User);
-
   const [dueDate, setDueDate] = useState(new Date(task.due_date));
+  const [commentBox, setCommentBox] = useState(false);
 
   const date = moment(
     task.due_date.substring(0, 10).replace("-", ""),
@@ -83,7 +83,14 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
   const handleDescriptionUpdate = (e) => {
     setTeamDescription(e.target.value);
   };
-  useEffect(() => {}, []);
+
+  const handleCommentSubmit = async ({ text }) => {
+    await apiServer.post();
+  };
+
+  const expandCommentBox = () => {
+    setCommentBox(!commentBox);
+  };
 
   const renderedProjects = projectState.projects
     .filter((project) => {
@@ -141,9 +148,7 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
           </div>
         </div>
         <div className="comment-text">
-          <div>
-            <p style={{ fontSize: "15px", margin: "0px" }}>{comment.text}</p>
-          </div>
+          <p style={{ fontSize: "15px", margin: "0px" }}>{comment.text}</p>
         </div>
       </div>
     );
@@ -286,10 +291,19 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
               {renderedComments}
             </div>
           </div>
-          <div className="task-detail-comment-container">
+          <div
+            className={
+              commentBox
+                ? "task-detail-comment-container active"
+                : "task-detail-comment-container"
+            }
+          >
             <div
-              className="task-detail-user-comment"
-              style={{ display: "flex", marginLeft: "40px", marginTop: "20px" }}
+              className={
+                commentBox
+                  ? "task-detail-user-comment active"
+                  : "task-detail-user-comment"
+              }
             >
               <div
                 className="task-detail-comment-avatar"
@@ -298,11 +312,25 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
                 <UserAvatar id={localStorage.getItem("userId")} />
               </div>
               <div className="task-detail-comment-box">
-                <form className="task-detail-comment-form">
-                  <textarea
-                    className="comment-textarea"
-                    placeholder="Ask a question or post an update..."
-                  ></textarea>
+                <form
+                  className="task-detail-comment-form"
+                  onSubmit={handleSubmit(handleCommentSubmit)}
+                >
+                  <div style={{ width: "100%", height: "100%" }}>
+                    <textarea
+                      className="comment-textarea"
+                      placeholder="Ask a question or post an update..."
+                      ref={register({ required: true })}
+                      onFocus={expandCommentBox}
+                      onBlur={expandCommentBox}
+                    ></textarea>
+                  </div>
+
+                  {commentBox ? (
+                    <div style={{ alignSelf: "flex-end", marginTop: "10px" }}>
+                      <button type="submit">Comment</button>
+                    </div>
+                  ) : null}
                 </form>
               </div>
             </div>
