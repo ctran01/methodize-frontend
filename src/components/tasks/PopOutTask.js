@@ -109,6 +109,46 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
       );
     });
 
+  const renderedComments = task.Comments.map((comment, i) => {
+    const commentDate = moment(
+      comment.createdAt.substring(0, 10).replace("-", ""),
+      "YYYYMMDD"
+    ).format("MMM D");
+
+    return (
+      <div className="comment-container">
+        <div className="comment-header">
+          <div
+            className="user-avatar"
+            style={{
+              width: "25px",
+              height: "25px",
+              marginRight: "10px",
+            }}
+          >
+            {(comment.User.name[0] + comment.User.name[1]).toUpperCase()}
+          </div>
+
+          <div>
+            <p
+              style={{ fontWeight: 500, marginRight: "10px", fontSize: "15px" }}
+            >
+              {comment.User.name}
+            </p>
+          </div>
+          <div>
+            <p style={{ color: "gray", fontSize: "12px" }}>{commentDate}</p>
+          </div>
+        </div>
+        <div className="comment-text">
+          <div>
+            <p style={{ fontSize: "15px", margin: "0px" }}>{comment.text}</p>
+          </div>
+        </div>
+      </div>
+    );
+  });
+
   const DateButton = ({ value, onClick }) => (
     // const date = moment(value).format("MMM D");
     // console.log(date);
@@ -243,7 +283,7 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
               </div>
             </form>
             <div className="task-detail-user-comments-container">
-              <div>comment</div>
+              {renderedComments}
             </div>
           </div>
           <div className="task-detail-comment-container">
@@ -260,7 +300,7 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
               <div className="task-detail-comment-box">
                 <form className="task-detail-comment-form">
                   <textarea
-                    className="comment-text"
+                    className="comment-textarea"
                     placeholder="Ask a question or post an update..."
                   ></textarea>
                 </form>
