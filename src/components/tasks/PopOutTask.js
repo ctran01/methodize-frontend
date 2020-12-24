@@ -94,12 +94,17 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
 
     const comments = await apiServer.get(`/task/${task.id}/comment`);
     setTaskComments(comments.data);
+    updateScroll();
   };
 
   const expandCommentBox = () => {
     setCommentBox(!commentBox);
   };
 
+  function updateScroll() {
+    var element = document.getElementById("scrollable");
+    element.scrollTop = element.scrollHeight;
+  }
   const renderedProjects = projectState.projects
     .filter((project) => {
       return project.id !== task.Project.id;
@@ -170,191 +175,6 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
     </button>
   );
   return (
-    // <>
-    //   <div
-    //     className={
-    //       sideMenu ? "task-detail-menu active" : "task-detail-menu collapsed"
-    //     }
-    //   >
-    //     <div className="task-detail-menu-container">
-    //       <div className="task-detail-collapse-icon">
-    //         <RiCloseLine
-    //           style={{
-    //             color: "black",
-    //             fontSize: "24px",
-    //             cursor: "pointer",
-    //           }}
-    //           onClick={showSideMenu}
-    //         />
-    //       </div>
-    //       <div style={{ height: "80%" }}>
-    //         <form className="task-detail-menu-main-content">
-    //           <div className="task-detail-title">
-    //             <h2>{task.name}</h2>
-    //           </div>
-    //           <div className="task-details-container">
-    //             <div className="task-details-subtitles">
-    //               <p>Assignee</p>
-    //               <p>Due Date</p>
-    //               <p>Project</p>
-    //               <p>Description</p>
-    //             </div>
-    //             <div className="task-details-data">
-    //               <div
-    //                 className="assignee-select-container"
-    //                 style={{ display: "flex" }}
-    //               >
-    //                 <div
-    //                   className="user-avatar"
-    //                   style={{
-    //                     width: "25px",
-    //                     height: "25px",
-    //                     marginRight: "10px",
-    //                   }}
-    //                 >
-    //                   {(
-    //                     assigneeUser.name[0] + assigneeUser.name[1]
-    //                   ).toUpperCase()}
-    //                 </div>
-    //                 <select
-    //                   id="assignee-select"
-    //                   name="assigneeId"
-    //                   className="form-input"
-    //                   ref={register({ required: true })}
-    //                   onChange={updateAssignee}
-    //                   style={{ width: "150px" }}
-    //                 >
-    //                   <option value={task.User.id} id={task.User.id} selected>
-    //                     {task.User.name}
-    //                   </option>
-    //                   {renderedUsers}
-    //                 </select>
-    //               </div>
-    //               <div
-    //                 className="dueDate-container"
-    //                 style={{ marginTop: "20px" }}
-    //               >
-    //                 <DatePicker
-    //                   selected={dueDate}
-    //                   onChange={(date) => updateDueDate(date)}
-    //                   // customInput={<DateButton />}
-    //                 />
-    //                 {/* <p style={{ marginTop: "20px" }}> {date.format("MMM D")}</p> */}
-    //               </div>
-
-    //               <div
-    //                 className="project-select-container"
-    //                 style={{
-    //                   height: "25px",
-    //                   borderRadius: "20px",
-
-    //                   alignItems: "center",
-    //                   justifyContent: "center",
-    //                   marginTop: "15px",
-    //                 }}
-    //               >
-    //                 <select
-    //                   id="project-select"
-    //                   name="projectId"
-    //                   className={`form-input `}
-    //                   onChange={getProjectUsers}
-    //                   defaultValue={task.Project.name}
-    //                   ref={register({ required: true })}
-    //                   onBlur={updateProject}
-    //                   style={{
-    //                     height: "25px",
-    //                     borderRadius: "20px",
-    //                     display: "flex",
-    //                     alignItems: "center",
-    //                     background: "transparent",
-    //                     justifyContent: "center",
-    //                   }}
-    //                 >
-    //                   <option
-    //                     value={task.Project.id}
-    //                     id={task.Project.id}
-    //                     selected
-    //                   >
-    //                     {task.Project.name}
-    //                   </option>
-    //                   {renderedProjects}
-    //                 </select>
-    //                 {/* <p style={{ margin: 0 }}> {task.Project.name}</p> */}
-    //               </div>
-
-    //               {/* <p style={{ marginTop: "17px" }}> {task.description}</p> */}
-    //               <div className="task-detail-description-container">
-    //                 <textarea
-    //                   className="task-detail-edit-description"
-    //                   placeholder="Click to add team description..."
-    //                   value={teamDescription}
-    //                   onChange={handleDescriptionUpdate}
-    //                   onBlur={updateDescription}
-    //                 ></textarea>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </form>
-    //         <div className="task-detail-user-comments-container">
-    //           {renderedComments}
-    //         </div>
-    //       </div>
-    //       <div
-    //         // className={
-    //         //   commentBox
-    //         //     ? "task-detail-comment-container active"
-    //         //     : "task-detail-comment-container"
-    //         // }
-    //         className="task-detail-comment-container"
-    //       >
-    //         <div
-    //           // className={
-    //           //   commentBox
-    //           //     ? "task-detail-user-comment active"
-    //           //     : "task-detail-user-comment"
-    //           // }
-    //           className="task-detail-user-comment"
-    //         >
-    //           <div
-    //             className="task-detail-comment-avatar"
-    //             style={{ width: "25px", height: "25px", fontSize: "10px" }}
-    //           >
-    //             <UserAvatar id={localStorage.getItem("userId")} />
-    //           </div>
-    //           <div className="task-detail-comment-box">
-    //             <form
-    //               className="task-detail-comment-form"
-    //               onSubmit={handleSubmit(handleCommentSubmit)}
-    //               onFocus={expandCommentBox}
-    //               onBlur={expandCommentBox}
-    //             >
-    //               <div style={{ width: "100%", height: "100%" }}>
-    //                 <textarea
-    //                   name="text"
-    //                   className="comment-textarea"
-    //                   placeholder="Ask a question or post an update..."
-    //                   ref={register({ required: true })}
-    //                 ></textarea>
-    //               </div>
-
-    //               {/* {commentBox ? ( */}
-    //               <div style={{ alignSelf: "flex-end", marginTop: "10px" }}>
-    //                 <button
-    //                   className="comment-button"
-    //                   style={{ height: "30px", width: "80px" }}
-    //                   type="submit"
-    //                 >
-    //                   Comment
-    //                 </button>
-    //               </div>
-    //               {/* ) : null} */}
-    //             </form>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </>
     <>
       <div className={"task-detail-menu active"}>
         <div
@@ -379,6 +199,7 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
             </div>
             {/* <div style={{ height: "80%" }}> */}
             <div
+              id="scrollable"
               style={{
                 display: "flex",
                 flex: "1 1 auto",
@@ -387,6 +208,7 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
                 zIndex: "100",
                 padding: "0 24px",
                 overflowY: "auto",
+                borderBottom: "1px solid lightgrey",
               }}
             >
               <div>
