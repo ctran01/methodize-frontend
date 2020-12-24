@@ -12,6 +12,7 @@ import TaskDetailsForm from "../tasks/TaskDetailsForm";
 
 import "../../css/Project.css";
 import "../../css/TaskList.css";
+import ColumnTasklist from "../tasks/ColumnTasklist";
 
 const ProjectPage = () => {
   const { projectId, projectName, teamId } = useParams();
@@ -19,7 +20,6 @@ const ProjectPage = () => {
   const [tasks, setTasks] = useState();
   const [project, setProject] = useState();
   const [tasklists, setTasklists] = useState();
-  const [taskArray, setTaskArray] = useState();
 
   const [openTaskProjectForm, setOpenTaskProjectForm] = useState(false);
   const [tasklistTasks, setTasklistTasks] = useState();
@@ -250,113 +250,123 @@ const ProjectPage = () => {
   );
 
   const renderedTasklists = tasklists.map((tasklist, index) => {
-    //returns individual tasklist tasks
-
     return (
-      <div key={tasklist.id}>
-        <Draggable
-          type="tasklist"
-          draggableId={`Column-${tasklist.column_index.toString()}`}
-          index={index}
-          key={`Column-${tasklist.id.toString()}`}
-        >
-          {(provided) => (
-            <div
-              className="tasklist-container"
-              {...provided.draggableProps}
-              ref={provided.innerRef}
-              {...provided.dragHandleProps}
-            >
-              <div className="tasklist-header">{tasklist.name}</div>
-              <div className="tasklist-add-task--button"></div>
-              <Droppable
-                type="task"
-                droppableId={`${tasklist.id.toString()}-${index.toString()}`}
-              >
-                {(provided) => (
-                  <div
-                    className="tasklist-task--list"
-                    ref={provided.innerRef}
-                    {...provided.droppableProps}
-                  >
-                    {/* //----------------------------------TaskItemProject */}
-                    {tasklist.Tasks.map((task, index) => {
-                      return (
-                        <div key={task.id}>
-                          <Draggable
-                            draggableId={`${task.id.toString()}`}
-                            type="task"
-                            key={`${task.id}`}
-                            //this index needs to pull from tasksArray
-                            index={index}
-                          >
-                            {(provided, snapshot) => (
-                              <div
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                                ref={provided.innerRef}
-                                className="task-project-item"
-                                onClick={openTaskDetailFormModal}
-                              >
-                                {task.name}
-                              </div>
-                            )}
-                          </Draggable>
-                          <div>
-                            <Modal
-                              open={openTaskDetailForm}
-                              onClose={closeTaskDetailFormModal}
-                              style={{ backgroundColor: "white" }}
-                            >
-                              <div className="modal-container">
-                                <TaskDetailsForm
-                                  // setTasks={setTasks}
-                                  setTasklistTasks={setTasklistTasks}
-                                  task={task}
-                                  closeModal={closeTaskDetailFormModal}
-                                />
-                              </div>
-                            </Modal>
-                          </div>
-                        </div>
-                      );
-                    })}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-
-              <div
-                className="tasklist-new-task--button"
-                onClick={openTaskProjectFormModal}
-              >
-                + Add task
-              </div>
-            </div>
-          )}
-        </Draggable>
-        <div>
-          <Modal
-            className="modal"
-            style={{ backgroundColor: "white" }}
-            open={openTaskProjectForm}
-            onClose={closeTaskProjectFormModal}
-          >
-            <div className="modal-container">
-              <AddTaskProjectForm
-                setTasklists={setTasklists}
-                setTasklistTasks={setTasklistTasks}
-                tasklistId={tasklist.id}
-                projectId={tasklist.project_id}
-                clickClose={closeTaskProjectFormModal}
-                open={openTaskProjectForm}
-              ></AddTaskProjectForm>
-            </div>
-          </Modal>
-        </div>
-      </div>
+      <ColumnTasklist
+        tasklist={tasklist}
+        index={index}
+        setTasklists={setTasklists}
+      />
     );
   });
+  // const renderedTasklists = tasklists.map((tasklist, index) => {
+  //   //returns individual tasklist tasks
+
+  //   return (
+  //     <div key={tasklist.id}>
+  //       <Draggable
+  //         type="tasklist"
+  //         draggableId={`Column-${tasklist.column_index.toString()}`}
+  //         index={index}
+  //         key={`Column-${tasklist.id.toString()}`}
+  //       >
+  //         {(provided) => (
+  //           <div
+  //             className="tasklist-container"
+  //             {...provided.draggableProps}
+  //             ref={provided.innerRef}
+  //             {...provided.dragHandleProps}
+  //           >
+  //             <div className="tasklist-header">{tasklist.name}</div>
+  //             <div className="tasklist-add-task--button"></div>
+  //             <Droppable
+  //               type="task"
+  //               droppableId={`${tasklist.id.toString()}-${index.toString()}`}
+  //             >
+  //               {(provided) => (
+  //                 <div
+  //                   className="tasklist-task--list"
+  //                   ref={provided.innerRef}
+  //                   {...provided.droppableProps}
+  //                 >
+  //                   {/* //----------------------------------TaskItemProject */}
+  //                   {tasklist.Tasks.map((task, index) => {
+  //                     return (
+  //                       <div key={task.id}>
+  //                         <Draggable
+  //                           draggableId={`${task.id.toString()}`}
+  //                           type="task"
+  //                           key={`${task.id}`}
+  //                           //this index needs to pull from tasksArray
+  //                           index={index}
+  //                         >
+  //                           {(provided, snapshot) => (
+  //                             <div
+  //                               {...provided.draggableProps}
+  //                               {...provided.dragHandleProps}
+  //                               ref={provided.innerRef}
+  //                               className="task-project-item"
+  //                               onClick={openTaskDetailFormModal}
+  //                             >
+  //                               {task.name}
+  //                             </div>
+  //                           )}
+  //                         </Draggable>
+  //                         <div>
+  //                           <Modal
+  //                             open={openTaskDetailForm}
+  //                             onClose={closeTaskDetailFormModal}
+  //                             style={{ backgroundColor: "white" }}
+  //                           >
+  //                             <div className="modal-container">
+  //                               <TaskDetailsForm
+  //                                 // setTasks={setTasks}
+  //                                 setTasklistTasks={setTasklistTasks}
+  //                                 task={task}
+  //                                 closeModal={closeTaskDetailFormModal}
+  //                               />
+  //                             </div>
+  //                           </Modal>
+  //                         </div>
+  //                       </div>
+  //                     );
+  //                   })}
+  //                   {provided.placeholder}
+  //                 </div>
+  //               )}
+  //             </Droppable>
+
+  //             <div
+  //               className="tasklist-new-task--button"
+  //               onClick={openTaskProjectFormModal}
+  //             >
+  //               + Add task
+  //             </div>
+  //           </div>
+  //         )}
+  //       </Draggable>
+  //       <div>
+  //         <Modal
+  //           className="modal"
+  //           style={{ backgroundColor: "white" }}
+  //           open={openTaskProjectForm}
+  //           onClose={closeTaskProjectFormModal}
+  //         >
+  //           <div className="modal-container">
+  //             <AddTaskProjectForm
+  //               setTasklists={setTasklists}
+  //               setTasklistTasks={setTasklistTasks}
+  //               tasklistId={tasklist.id}
+  //               projectId={tasklist.project_id}
+  //               clickClose={closeTaskProjectFormModal}
+  //               open={openTaskProjectForm}
+  //             ></AddTaskProjectForm>
+  //           </div>
+  //         </Modal>
+  //       </div>
+  //     </div>
+  //   );
+  // });
+
   //----------------------------------------------Project
   return (
     <div>
