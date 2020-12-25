@@ -8,6 +8,7 @@ import UserAvatar from "../NavigationBar/UserAvatar";
 import apiServer from "../../config/apiServer";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { BiCheck } from "react-icons/bi";
 
 const PopOutTask = ({ showSideMenu, sideMenu }) => {
   const [open, setOpen] = useState(true);
@@ -187,16 +188,44 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
           }}
         >
           <div className="task-detail-menu-container">
-            <div className="task-detail-collapse-icon">
-              <RiCloseLine
-                style={{
-                  color: "black",
-                  fontSize: "24px",
-                  cursor: "pointer",
-                }}
-                onClick={showSideMenu}
-              />
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                borderBottom: "1px solid lightgray",
+                marginBottom: "10px",
+              }}
+              className="task-detail-menu-top"
+            >
+              <div className="mark-complete-container">
+                <div
+                  style={{
+                    borderColor: "#cbd4db",
+                    fontSize: "12px",
+                    height: "28px",
+                    lineHeight: "28px",
+                    display: "flex",
+                  }}
+                  className="complete-button"
+                >
+                  <div style={{ margin: "0px 5px" }}>
+                    <BiCheck />
+                  </div>
+                  <div style={{ marginRight: "5px" }}>Mark Complete</div>
+                </div>
+              </div>
+              <div className="task-detail-collapse-icon">
+                <RiCloseLine
+                  style={{
+                    color: "black",
+                    fontSize: "24px",
+                    cursor: "pointer",
+                  }}
+                  onClick={showSideMenu}
+                />
+              </div>
             </div>
+
             {/* <div style={{ height: "80%" }}> */}
             <div
               id="scrollable"
@@ -209,6 +238,7 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
                 padding: "0 24px",
                 overflowY: "auto",
                 borderBottom: "1px solid lightgrey",
+                marginBottom: "5px",
               }}
             >
               <div>
