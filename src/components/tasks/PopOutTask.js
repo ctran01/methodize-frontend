@@ -193,25 +193,20 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
                 display: "flex",
                 justifyContent: "space-between",
                 borderBottom: "1px solid lightgray",
-                marginBottom: "10px",
+
+                paddingBottom: "10px",
               }}
               className="task-detail-menu-top"
             >
               <div className="mark-complete-container">
-                <div
-                  style={{
-                    borderColor: "#cbd4db",
-                    fontSize: "12px",
-                    height: "28px",
-                    lineHeight: "28px",
-                    display: "flex",
-                  }}
-                  className="complete-button"
-                >
-                  <div style={{ margin: "0px 5px" }}>
-                    <BiCheck />
+                <div className="complete-button">
+                  <div
+                    class="check-mark-container"
+                    style={{ margin: "0px 5px" }}
+                  >
+                    <BiCheck className="check-mark-icon" />
                   </div>
-                  <div style={{ marginRight: "5px" }}>Mark Complete</div>
+                  <div className="mark-complete">Mark Complete</div>
                 </div>
               </div>
               <div className="task-detail-collapse-icon">

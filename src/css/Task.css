@@ -270,7 +270,7 @@
 
 .task-detail-menu.active {
   background-color: white;
-  width: 70%;
+  width: 60%;
   height: 100%;
   display: flex;
   box-shadow: 0 1px 4px 0 rgba(21, 27, 38, 0.08);
@@ -307,6 +307,35 @@
 
 .task-detail-collapse-icon {
   align-self: flex-end;
+}
+
+.mark-complete-container:hover .complete-button {
+  border: 1px solid lightgreen;
+}
+.mark-complete-container:hover .check-mark-icon {
+  color: lightgreen;
+}
+.mark-complete-container:hover .mark-complete {
+  color: lightgreen;
+}
+
+.complete-button {
+  font-size: 12px;
+  height: 28px;
+  line-height: 28px;
+  display: flex;
+  border: 1px solid #cbd4db;
+  cursor: pointer;
+}
+.check-mark-container {
+  margin: 0px 5px;
+}
+.check-mark-icon {
+  color: #cbd4db;
+}
+.mark-complete {
+  margin-right: 5px;
+  color: #cbd4db;
 }
 
 .task-detail-title {
