@@ -309,17 +309,45 @@
   align-self: flex-end;
 }
 
-.mark-complete-container:hover .complete-button {
+.mark-complete-container__incompleted:hover .complete-button__incompleted {
   border: 1px solid lightgreen;
 }
-.mark-complete-container:hover .check-mark-icon {
+.mark-complete-container__incompleted:hover .check-mark-icon__incompleted {
   color: lightgreen;
 }
-.mark-complete-container:hover .mark-complete {
+.mark-complete-container__incompleted:hover .mark-complete__incompleted {
+  color: lightgreen;
+}
+.mark-complete-container__completed:hover .complete-button__completed {
+  border: 1px solid #cbd4db;
+}
+.mark-complete-container__completed:hover .check-mark-icon__completed {
+  color: #cbd4db;
+}
+.mark-complete-container__completed:hover .mark-complete__completed {
+  color: #cbd4db;
+}
+
+.complete-button__completed {
+  font-size: 12px;
+  height: 28px;
+  line-height: 28px;
+  display: flex;
+  border: 1px solid lightgreen;
+  cursor: pointer;
+}
+.check-mark-container {
+  margin: 0px 5px;
+}
+.check-mark-icon__completed {
+  color: lightgreen;
+}
+.mark-complete__completed {
+  margin-right: 5px;
   color: lightgreen;
 }
 
-.complete-button {
+.complete-button__incompleted {
   font-size: 12px;
   height: 28px;
   line-height: 28px;
@@ -327,13 +355,11 @@
   border: 1px solid #cbd4db;
   cursor: pointer;
 }
-.check-mark-container {
-  margin: 0px 5px;
-}
-.check-mark-icon {
+
+.check-mark-icon__incompleted {
   color: #cbd4db;
 }
-.mark-complete {
+.mark-complete__incompleted {
   margin-right: 5px;
   color: #cbd4db;
 }

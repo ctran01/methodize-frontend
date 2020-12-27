@@ -21,13 +21,15 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
   const [assigneeUser, setAssigneeUser] = useState(task.User);
   const [taskComments, setTaskComments] = useState(task.Comments);
   const [dueDate, setDueDate] = useState(new Date(task.due_date));
+  // const [completed, setCompleted] = useState(task.completed);
   const [commentBox, setCommentBox] = useState(false);
-
+  var completed = task.completed;
   const date = moment(
     task.due_date.substring(0, 10).replace("-", ""),
     "YYYYMMDD"
   );
 
+  console.log(task);
   // console.log(task.due_date, "task.due_date DB");
   // console.log(date, "moment date convert from db");
   // console.log(dueDate, "dueDate state new Date convert ");
@@ -98,6 +100,29 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
     updateScroll();
   };
 
+  const handleMarkComplete = async () => {
+    await updateComplete();
+  };
+
+  const updateComplete = async () => {
+    console.log(completed, "before");
+    completed = !completed;
+    const userId = localStorage.getItem("userId");
+    console.log(completed, "after");
+
+    const updatedTask = await apiServer.put(`/task/${task.id}/complete`, {
+      completed,
+    });
+    await taskdispatch({
+      type: "get_selected_task",
+      payload: updatedTask.data,
+    });
+
+    console.log(task, "after update");
+
+    const res = await apiServer.get(`/task/user/${userId}`);
+    await taskdispatch({ type: "get_user_tasks", payload: res.data });
+  };
   const expandCommentBox = () => {
     setCommentBox(!commentBox);
   };
@@ -198,15 +223,42 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
               }}
               className="task-detail-menu-top"
             >
-              <div className="mark-complete-container">
-                <div className="complete-button">
+              <div
+                className={
+                  completed
+                    ? "mark-complete-container__completed"
+                    : "mark-complete-container__incompleted"
+                }
+                onClick={handleMarkComplete}
+              >
+                <div
+                  className={
+                    completed
+                      ? "complete-button__completed"
+                      : "complete-button__incompleted"
+                  }
+                >
                   <div
                     class="check-mark-container"
                     style={{ margin: "0px 5px" }}
                   >
-                    <BiCheck className="check-mark-icon" />
+                    <BiCheck
+                      className={
+                        completed
+                          ? "check-mark-icon__completed"
+                          : "check-mark-icon__incompleted"
+                      }
+                    />
                   </div>
-                  <div className="mark-complete">Mark Complete</div>
+                  <div
+                    className={
+                      completed
+                        ? "mark-complete__completed"
+                        : "mark-complete__incompleted"
+                    }
+                  >
+                    Mark Complete
+                  </div>
                 </div>
               </div>
               <div className="task-detail-collapse-icon">
