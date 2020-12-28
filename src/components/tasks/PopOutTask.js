@@ -105,10 +105,10 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
   };
 
   const updateComplete = async () => {
-    console.log(completed, "before");
+    // console.log(completed, "before");
     completed = !completed;
     const userId = localStorage.getItem("userId");
-    console.log(completed, "after");
+    // console.log(completed, "after");
 
     const updatedTask = await apiServer.put(`/task/${task.id}/complete`, {
       completed,
@@ -118,7 +118,7 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
       payload: updatedTask.data,
     });
 
-    console.log(task, "after update");
+    // console.log(task, "after update");
 
     const res = await apiServer.get(`/task/user/${userId}`);
     await taskdispatch({ type: "get_user_tasks", payload: res.data });
@@ -193,13 +193,6 @@ const PopOutTask = ({ showSideMenu, sideMenu }) => {
     );
   });
 
-  const DateButton = ({ value, onClick }) => (
-    // const date = moment(value).format("MMM D");
-    // console.log(date);
-    <button style={{ color: "blue" }} onClick={onClick}>
-      {value}
-    </button>
-  );
   return (
     <>
       <div className={"task-detail-menu active"}>

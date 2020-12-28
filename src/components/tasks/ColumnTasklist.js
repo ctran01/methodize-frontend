@@ -3,10 +3,13 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Modal, responsiveFontSizes } from "@material-ui/core";
 import AddTaskProjectForm from "../Forms/AddTaskProjectForm";
 import ColumnTaskItem from "./ColumnTaskItem";
+import { AiOutlineEllipsis } from "react-icons/ai";
+import { Menu, MenuItem } from "@material-ui/core";
 
 const ColumnTasklist = ({ tasklist, index, setTasklists }) => {
   const [openTaskProjectForm, setOpenTaskProjectForm] = useState(false);
   const [tasklistTasks, setTasklistTasks] = useState();
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const openTaskProjectFormModal = () => {
     setOpenTaskProjectForm(true);
@@ -14,6 +17,13 @@ const ColumnTasklist = ({ tasklist, index, setTasklists }) => {
 
   const closeTaskProjectFormModal = () => {
     setOpenTaskProjectForm(false);
+  };
+
+  const handleMenuClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleMenuClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -31,8 +41,22 @@ const ColumnTasklist = ({ tasklist, index, setTasklists }) => {
             ref={provided.innerRef}
             {...provided.dragHandleProps}
           >
-            <div className="tasklist-header">{tasklist.name}</div>
-            <div className="tasklist-add-task--button"></div>
+            <div className="tasklist-header">
+              <div className="tasklist-title">{tasklist.name}</div>
+              <div className="tasklist-more-menu" onClick={handleMenuClick}>
+                <AiOutlineEllipsis style={{ fontSize: "24px" }} />
+              </div>
+              <Menu
+                style={{}}
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleMenuClose}
+              >
+                <MenuItem onClick={handleMenuClose}>Delete</MenuItem>
+              </Menu>
+            </div>
+
             <Droppable
               type="task"
               droppableId={`${tasklist.id.toString()}-${index.toString()}`}

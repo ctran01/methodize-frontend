@@ -60,7 +60,17 @@ const TaskItemTask = ({ task, showSideMenu, sideMenu, setInitialLoad }) => {
           ) : (
             <RiCheckboxBlankCircleLine style={{ fontSize: "16px" }} />
           )}
-          <p style={{ paddingLeft: "5px", color: "gray" }}>{task.name}</p>
+          <p
+            style={{
+              paddingLeft: "5px",
+              color: "gray",
+              WebkitUserSelect: "none",
+              MozUserSelect: "none",
+              msUserSelect: "none",
+            }}
+          >
+            {task.name}
+          </p>
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
           <div
@@ -72,13 +82,25 @@ const TaskItemTask = ({ task, showSideMenu, sideMenu, setInitialLoad }) => {
                 padding: "5px",
                 fontSize: "12px",
                 fontWeight: "500",
+                WebkitUserSelect: "none",
+                MozUserSelect: "none",
+                msUserSelect: "none",
               }}
             >
               {task.Project.name}
             </p>
           </div>
           <div>
-            <p style={{ color: "gray" }}>{date.format("MMM D YYYY")}</p>
+            <p
+              style={{
+                color: "gray",
+                WebkitUserSelect: "none",
+                MozUserSelect: "none",
+                msUserSelect: "none",
+              }}
+            >
+              {date.format("MMM D YYYY")}
+            </p>
           </div>
         </div>
       </li>

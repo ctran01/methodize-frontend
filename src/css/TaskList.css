@@ -10,11 +10,22 @@
 }
 
 .tasklist-header {
+  display: flex;
+  margin: 10px 0px;
+  width: inherit;
+}
+.tasklist-title {
+  display: flex;
   font-size: 16px;
   font-weight: 500;
-  margin: 10px 0px;
+  width: inherit;
+  align-content: center;
+  justify-content: center;
 }
-.tasklist-add-task--button {
+
+.tasklist-more-menu {
+  display: flex;
+  cursor: pointer;
 }
 .tasklist-task--list {
   width: 260px;
