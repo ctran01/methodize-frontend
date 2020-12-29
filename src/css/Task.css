@@ -107,12 +107,32 @@
   box-sizing: border-box;
   cursor: pointer;
   border-radius: 4px;
-  /* height: 100px; */
+  height: 90px;
   transition: 0.2s;
+}
+
+.task-project-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.task-project-name {
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  width: 150px;
+}
+
+.task-project-icons {
+  display: flex;
 }
 .task-project-item:hover {
   background: #e8ecee;
 }
+
 .task-home-item-name-container {
   display: flex;
   flex-direction: column;
@@ -184,7 +204,7 @@
   background-color: rgba(133, 140, 155, 0.08);
 }
 
-.task-project-name-container {
+.task-project-home-name-container {
   border-radius: 20px;
   width: 140px;
   margin-right: 30px;

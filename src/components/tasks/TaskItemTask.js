@@ -74,7 +74,7 @@ const TaskItemTask = ({ task, showSideMenu, sideMenu, setInitialLoad }) => {
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
           <div
-            className={`task-project-name-container task-project-${task.Project.id}`}
+            className={`task-project-home-name-container task-project-${task.Project.id}`}
           >
             <p
               style={{
