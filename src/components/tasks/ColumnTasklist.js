@@ -9,6 +9,7 @@ import { Menu, MenuItem } from "@material-ui/core";
 const ColumnTasklist = ({ tasklist, index, setTasklists }) => {
   const [openTaskProjectForm, setOpenTaskProjectForm] = useState(false);
   const [tasklistTasks, setTasklistTasks] = useState();
+  const [titleSelect, setTitleSelect] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const openTaskProjectFormModal = () => {
@@ -26,6 +27,13 @@ const ColumnTasklist = ({ tasklist, index, setTasklists }) => {
     setAnchorEl(null);
   };
 
+  const handleTitleChange = (e) => {
+    setTitleSelect(true);
+  };
+
+  const closeTitleChange = (e) => {
+    setTitleSelect(false);
+  };
   return (
     <div key={tasklist.id}>
       <Draggable
@@ -42,7 +50,23 @@ const ColumnTasklist = ({ tasklist, index, setTasklists }) => {
             {...provided.dragHandleProps}
           >
             <div className="tasklist-header">
-              <div className="tasklist-title">{tasklist.name}</div>
+              <div className="tasklist-title" onClick={handleTitleChange}>
+                {/* {tasklist.name} */}
+                {titleSelect ? (
+                  <form>
+                    <textarea
+                      id="title-textarea"
+                      placeholder="Click to add team description..."
+                      value={tasklist.name}
+                      onBlur={closeTitleChange}
+                      autoFocus
+                    ></textarea>
+                  </form>
+                ) : (
+                  tasklist.name
+                )}
+              </div>
+
               <div className="tasklist-more-menu" onClick={handleMenuClick}>
                 <AiOutlineEllipsis style={{ fontSize: "24px" }} />
               </div>
