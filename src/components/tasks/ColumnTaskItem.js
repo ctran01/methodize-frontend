@@ -2,7 +2,8 @@ import React, { useEffect, useState, useContext } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import TaskDetailsForm from "../tasks/TaskDetailsForm";
 import { Modal, responsiveFontSizes } from "@material-ui/core";
-
+import Pin from "../../assets/pin";
+import Comments from "../../assets/comments";
 const ColumnTaskItem = ({ task, index }) => {
   const [openTaskDetailForm, setOpenTaskDetailForm] = useState(false);
 
@@ -20,7 +21,6 @@ const ColumnTaskItem = ({ task, index }) => {
         draggableId={`${task.id.toString()}`}
         type="task"
         key={`${task.id}`}
-        //this index needs to pull from tasksArray
         index={index}
       >
         {(provided, snapshot) => (
@@ -31,7 +31,17 @@ const ColumnTaskItem = ({ task, index }) => {
             className="task-project-item"
             onClick={openTaskDetailFormModal}
           >
-            {task.name}
+            <div className="task-project-container">
+              <div className="task-project-name">{task.name}</div>
+              <div className="task-project-icons">
+                <div>
+                  <Pin /> 8
+                </div>
+                <div>
+                  <Comments /> 9
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </Draggable>
