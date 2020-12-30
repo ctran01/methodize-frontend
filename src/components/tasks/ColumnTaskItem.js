@@ -4,9 +4,15 @@ import TaskDetailsForm from "../tasks/TaskDetailsForm";
 import { Modal, responsiveFontSizes } from "@material-ui/core";
 import Pin from "../../assets/pin";
 import Comments from "../../assets/comments";
+import UserAvatar from "../NavigationBar/UserAvatar";
+import moment from "moment";
 const ColumnTaskItem = ({ task, index }) => {
   const [openTaskDetailForm, setOpenTaskDetailForm] = useState(false);
 
+  const date = moment(
+    task.due_date.substring(0, 10).replace("-", ""),
+    "YYYYMMDD"
+  );
   const openTaskDetailFormModal = () => {
     setOpenTaskDetailForm(true);
   };
@@ -31,15 +37,27 @@ const ColumnTaskItem = ({ task, index }) => {
             className="task-project-item"
             onClick={openTaskDetailFormModal}
           >
-            <div className="task-project-container">
+            <div className="task-project-container-left">
               <div className="task-project-name">{task.name}</div>
               <div className="task-project-icons">
-                <div>
-                  <Pin /> 8
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <Pin />{" "}
+                  <p style={{ color: "darkgray", marginLeft: "5px" }}>8</p>
                 </div>
-                <div>
-                  <Comments /> 9
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <Comments />{" "}
+                  <p style={{ color: "darkgray", marginLeft: "5px" }}>9</p>
                 </div>
+              </div>
+            </div>
+            <div className="task-project-container-right">
+              <div className="task-project-assignee-avatar">
+                <div className="user-avatar">
+                  {(task.User.name[0] + task.User.name[1]).toUpperCase()}
+                </div>
+              </div>
+              <div className="task-project-due_date">
+                <p style={{ color: "darkgray" }}>{date.format("MMM D")}</p>
               </div>
             </div>
           </div>
