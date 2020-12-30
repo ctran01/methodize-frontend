@@ -13,6 +13,7 @@ import TaskDetailsForm from "../tasks/TaskDetailsForm";
 import "../../css/Project.css";
 import "../../css/TaskList.css";
 import ColumnTasklist from "../tasks/ColumnTasklist";
+import Add from "../../assets/Add";
 
 const ProjectPage = () => {
   const { projectId, projectName, teamId } = useParams();
@@ -369,8 +370,8 @@ const ProjectPage = () => {
 
   //----------------------------------------------Project
   return (
-    <div>
-      <div>
+    <div style={{ height: "inherit" }}>
+      <div style={{ height: "inherit" }}>
         <TopNavBar name={project.name} setTasklists={setTasklists} />
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable
@@ -400,7 +401,17 @@ const ProjectPage = () => {
                   className="tasklist-new-tasklist--button"
                   onClick={openTasklistFormModal}
                 >
-                  + Add List
+                  <div
+                    style={{
+                      display: "flex",
+                      transform: "rotate(90deg)",
+                      alignItems: "center",
+                      whiteSpace: "nowrap",
+                      marginTop: "50px",
+                    }}
+                  >
+                    <Add /> Add Column
+                  </div>
                 </div>
                 {provided.placeholder}
               </div>

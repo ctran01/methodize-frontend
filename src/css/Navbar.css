@@ -1,5 +1,6 @@
 .nav-menu.active {
   background-color: #151b26;
+
   width: 240px;
   height: 100vh;
   display: flex;
@@ -27,7 +28,9 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  background-color: #f6f8f9;
+  /* background-color: #f6f8f9; */
+  /* background-color: #f6f8ff; */
+  background-color: #ecf0f7;
 }
 
 .overlay-right-container {

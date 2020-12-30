@@ -14,12 +14,12 @@ import apiServer from "../../config/apiServer";
 
 const TaskItemTask = ({ task, showSideMenu, sideMenu, setInitialLoad }) => {
   const [taskState, taskDispatch] = useContext(TaskContext);
+  const [open, setOpen] = useState(false);
 
   const date = moment(
     task.due_date.substring(0, 10).replace("-", ""),
     "YYYYMMDD"
   );
-  const [open, setOpen] = useState(false);
   const openModal = () => {
     setOpen(true);
   };

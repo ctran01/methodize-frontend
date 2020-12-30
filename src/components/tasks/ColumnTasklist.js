@@ -1,14 +1,19 @@
 import React, { useEffect, useState, useContext } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Modal, responsiveFontSizes } from "@material-ui/core";
+import { useParams } from "react-router-dom";
 import AddTaskProjectForm from "../Forms/AddTaskProjectForm";
 import ColumnTaskItem from "./ColumnTaskItem";
+import apiServer from "../../config/apiServer";
+
 import { AiOutlineEllipsis } from "react-icons/ai";
 import { Menu, MenuItem } from "@material-ui/core";
 
 const ColumnTasklist = ({ tasklist, index, setTasklists }) => {
+  const { projectId } = useParams();
   const [openTaskProjectForm, setOpenTaskProjectForm] = useState(false);
-  const [tasklistTasks, setTasklistTasks] = useState();
+  // const [tasklistTasks, setTasklistTasks] = useState();
+  const [columnTitle, setColumnTitle] = useState(tasklist.name);
   const [titleSelect, setTitleSelect] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -31,9 +36,19 @@ const ColumnTasklist = ({ tasklist, index, setTasklists }) => {
     setTitleSelect(true);
   };
 
-  const closeTitleChange = (e) => {
+  const handleTitleUpdate = (e) => {
+    setColumnTitle(e.target.value);
+  };
+
+  const updateAndCloseTitle = async (e) => {
+    await apiServer.put(`/tasklist/${tasklist.id}/title`, { columnTitle });
+    const resp = await apiServer.get(`/project/${projectId}/tasklists`);
+    setTasklists(resp.data);
     setTitleSelect(false);
   };
+
+  useEffect(() => {}, [setColumnTitle]);
+
   return (
     <div key={tasklist.id}>
       <Draggable
@@ -51,14 +66,14 @@ const ColumnTasklist = ({ tasklist, index, setTasklists }) => {
           >
             <div className="tasklist-header">
               <div className="tasklist-title" onClick={handleTitleChange}>
-                {/* {tasklist.name} */}
                 {titleSelect ? (
                   <form>
                     <textarea
-                      id="title-textarea"
-                      placeholder="Click to add team description..."
-                      value={tasklist.name}
-                      onBlur={closeTitleChange}
+                      className="tasklist-title__textarea"
+                      placeholder="Enter column name here.."
+                      value={columnTitle}
+                      onChange={handleTitleUpdate}
+                      onBlur={updateAndCloseTitle}
                       autoFocus
                     ></textarea>
                   </form>
@@ -92,13 +107,7 @@ const ColumnTasklist = ({ tasklist, index, setTasklists }) => {
                   {...provided.droppableProps}
                 >
                   {tasklist.Tasks.map((task, index) => {
-                    return (
-                      <ColumnTaskItem
-                        task={task}
-                        index={index}
-                        setTasklistTasks={setTasklistTasks}
-                      />
-                    );
+                    return <ColumnTaskItem task={task} index={index} />;
                   })}
                   {provided.placeholder}
                 </div>
@@ -124,7 +133,7 @@ const ColumnTasklist = ({ tasklist, index, setTasklists }) => {
           <div className="modal-container">
             <AddTaskProjectForm
               setTasklists={setTasklists}
-              setTasklistTasks={setTasklistTasks}
+              // setTasklistTasks={setTasklistTasks}
               tasklistId={tasklist.id}
               projectId={tasklist.project_id}
               clickClose={closeTaskProjectFormModal}
