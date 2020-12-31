@@ -9,7 +9,13 @@ import apiServer from "../../config/apiServer";
 import { AiOutlineEllipsis } from "react-icons/ai";
 import { Menu, MenuItem } from "@material-ui/core";
 
-const ColumnTasklist = ({ tasklist, index, setTasklists }) => {
+const ColumnTasklist = ({
+  tasklist,
+  index,
+  setTasklists,
+  showSideTaskDetails,
+  sideTaskDetails,
+}) => {
   const { projectId } = useParams();
   const [openTaskProjectForm, setOpenTaskProjectForm] = useState(false);
   // const [tasklistTasks, setTasklistTasks] = useState();
@@ -38,6 +44,14 @@ const ColumnTasklist = ({ tasklist, index, setTasklists }) => {
 
   const handleTitleUpdate = (e) => {
     setColumnTitle(e.target.value);
+  };
+
+  const handleTasklistDelete = async (e) => {
+    console.log(tasklist.id);
+
+    await apiServer.delete(`/tasklist/${tasklist.id}`);
+    const resp = await apiServer.get(`/project/${projectId}/tasklists`);
+    setTasklists(resp.data);
   };
 
   const updateAndCloseTitle = async (e) => {
@@ -92,7 +106,7 @@ const ColumnTasklist = ({ tasklist, index, setTasklists }) => {
                 open={Boolean(anchorEl)}
                 onClose={handleMenuClose}
               >
-                <MenuItem onClick={handleMenuClose}>Delete</MenuItem>
+                <MenuItem onClick={handleTasklistDelete}>Delete</MenuItem>
               </Menu>
             </div>
 
@@ -107,7 +121,15 @@ const ColumnTasklist = ({ tasklist, index, setTasklists }) => {
                   {...provided.droppableProps}
                 >
                   {tasklist.Tasks.map((task, index) => {
-                    return <ColumnTaskItem task={task} index={index} />;
+                    return (
+                      <ColumnTaskItem
+                        key={index}
+                        task={task}
+                        index={index}
+                        showSideTaskDetails={showSideTaskDetails}
+                        sideTaskDetails={sideTaskDetails}
+                      />
+                    );
                   })}
                   {provided.placeholder}
                 </div>

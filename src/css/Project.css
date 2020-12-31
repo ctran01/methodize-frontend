@@ -246,3 +246,13 @@
   height: 100%;
   width: 500px;
 }
+
+.project-page-container {
+  display: flex;
+  padding: 20px 15px 15px 15px;
+  align-items: center;
+  box-sizing: border-box;
+}
+.project-page-main-content {
+  display: contents;
+}

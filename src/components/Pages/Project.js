@@ -7,24 +7,32 @@ import TopNavBar from "../NavigationBar/TopNavBar";
 import TaskListItem from "../tasks/TaskListItem";
 import TaskListForm from "../Forms/TaskListForm";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import AddTaskProjectForm from "../Forms/AddTaskProjectForm";
-import TaskDetailsForm from "../tasks/TaskDetailsForm";
+import PopOutTaskDetails from "../tasks/PopOutTaskDetails";
+import { Context as TaskContext } from "../../context/store/TaskStore";
 
 import "../../css/Project.css";
 import "../../css/TaskList.css";
 import ColumnTasklist from "../tasks/ColumnTasklist";
 import Add from "../../assets/Add";
 
-const ProjectPage = () => {
+const ProjectPage = ({ sidebar }) => {
   const { projectId, projectName, teamId } = useParams();
+  const [taskState, taskDispatch] = useContext(TaskContext);
   const [openTasklistForm, setOpenTasklistForm] = useState(false);
   const [tasks, setTasks] = useState();
   const [project, setProject] = useState();
   const [tasklists, setTasklists] = useState();
 
-  const [openTaskProjectForm, setOpenTaskProjectForm] = useState(false);
-  const [tasklistTasks, setTasklistTasks] = useState();
-  const [openTaskDetailForm, setOpenTaskDetailForm] = useState(false);
+  //Side Menus
+  const [sideTaskForm, setSideTaskForm] = useState(false);
+  const [sideTasklistForm, setSideTasklistForm] = useState(false);
+  const [sideTaskDetails, setSideTaskDetails] = useState(false);
+
+  const showSideTaskForm = () => setSideTaskForm(!sideTaskForm);
+
+  const showSideTasklistForm = () => setSideTasklistForm(!sideTasklistForm);
+
+  const showSideTaskDetails = () => setSideTaskDetails(!sideTaskDetails);
 
   //Task through get /project/id/taskslists. Set here so we can refer to it in the ondragend funnction
   const [loading, setLoading] = useState(true);
@@ -35,14 +43,6 @@ const ProjectPage = () => {
 
   const closeTasklistFormModal = () => {
     setOpenTasklistForm(false);
-  };
-
-  const openTaskDetailFormModal = () => {
-    setOpenTaskDetailForm(true);
-  };
-
-  const closeTaskDetailFormModal = () => {
-    setOpenTaskDetailForm(false);
   };
 
   const onDragEnd = async (result) => {
@@ -214,13 +214,6 @@ const ProjectPage = () => {
   };
 
   //----------------------------------------------------------------------------
-  const openTaskProjectFormModal = () => {
-    setOpenTaskProjectForm(true);
-  };
-
-  const closeTaskProjectFormModal = () => {
-    setOpenTaskProjectForm(false);
-  };
 
   // const updateTasks = async () => {
   //   //returns individual tasklist tasks
@@ -231,6 +224,7 @@ const ProjectPage = () => {
 
   useEffect(() => {
     getProject();
+    taskDispatch({ type: "get_selected_task", payload: null });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setProject, setTasklists, setTasks]);
 
@@ -253,9 +247,12 @@ const ProjectPage = () => {
   const renderedTasklists = tasklists.map((tasklist, index) => {
     return (
       <ColumnTasklist
+        key={index}
         tasklist={tasklist}
         index={index}
         setTasklists={setTasklists}
+        showSideTaskDetails={showSideTaskDetails}
+        sideTaskDetails={sideTaskDetails}
       />
     );
   });
@@ -370,59 +367,78 @@ const ProjectPage = () => {
 
   //----------------------------------------------Project
   return (
-    <div style={{ height: "inherit" }}>
-      <div style={{ height: "inherit" }}>
-        <TopNavBar name={project.name} setTasklists={setTasklists} />
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable
-            droppableId="all-columns"
-            direction="horizontal"
-            type="column"
-          >
-            {(provided) => (
-              <div
-                className="project-container"
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-              >
-                {renderedTasklists}
-                {/* {tasklists.map((tasklist, i) => {
+    // <div style={{ height: "inherit" }}>
+    // <div style={{ height: "inherit" }}>
+    <>
+      <TopNavBar
+        name={project.name}
+        setTasklists={setTasklists}
+        sidebar={sidebar}
+      />
+      <div className="project-page-container">
+        <div className="project-page-main-content">
+          <DragDropContext onDragEnd={onDragEnd}>
+            <Droppable
+              droppableId="all-columns"
+              direction="horizontal"
+              type="column"
+            >
+              {(provided) => (
+                <div
+                  className="project-container"
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {renderedTasklists}
+                  {/* {tasklists.map((tasklist, i) => {
                   return ( */}
-                {/* <TaskListItem
+                  {/* <TaskListItem
                       index={i}
                       teamId={teamId}
                       tasklist={tasklist}
                       key={tasklist.id}
                     /> */}
 
-                {/* );
+                  {/* );
                 })} */}
-                <div
-                  className="tasklist-new-tasklist--button"
-                  onClick={openTasklistFormModal}
-                >
+
+                  {provided.placeholder}
                   <div
-                    style={{
-                      display: "flex",
-                      transform: "rotate(90deg)",
-                      alignItems: "center",
-                      whiteSpace: "nowrap",
-                      marginTop: "50px",
-                    }}
+                    className="tasklist-new-tasklist--button"
+                    onClick={openTasklistFormModal}
                   >
-                    <Add /> Add Column
+                    <div
+                      style={{
+                        display: "flex",
+                        transform: "rotate(90deg)",
+                        alignItems: "center",
+                        whiteSpace: "nowrap",
+                        marginTop: "50px",
+                      }}
+                    >
+                      <Add /> Add Column
+                    </div>
                   </div>
                 </div>
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
+              )}
+            </Droppable>
+          </DragDropContext>
+
+          {sideTaskDetails && taskState.selectedTask ? (
+            <PopOutTaskDetails
+              showSideTaskDetails={showSideTaskDetails}
+              sideTaskDetails={sideTaskDetails}
+            />
+          ) : null}
+        </div>
       </div>
-      <Modal open={openTasklistForm} onClose={closeTasklistFormModal}>
-        {tasklistFormModal}
-      </Modal>
-    </div>
+
+      {/* </div> */}
+      {/* <Modal open={openTasklistForm} onClose={closeTasklistFormModal}>
+    //     {tasklistFormModal}
+    //   </Modal> */}
+      {/* // // </div> */}
+    </>
   );
 };
 
