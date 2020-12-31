@@ -6,8 +6,17 @@ import Pin from "../../assets/pin";
 import Comments from "../../assets/comments";
 import UserAvatar from "../NavigationBar/UserAvatar";
 import moment from "moment";
-const ColumnTaskItem = ({ task, index }) => {
+import { Context as TaskContext } from "../../context/store/TaskStore";
+import apiServer from "../../config/apiServer";
+
+const ColumnTaskItem = ({
+  task,
+  index,
+  showSideTaskDetails,
+  sideTaskDetails,
+}) => {
   const [openTaskDetailForm, setOpenTaskDetailForm] = useState(false);
+  const [taskState, taskDispatch] = useContext(TaskContext);
 
   const date = moment(
     task.due_date.substring(0, 10).replace("-", ""),
@@ -19,6 +28,16 @@ const ColumnTaskItem = ({ task, index }) => {
 
   const closeTaskDetailFormModal = () => {
     setOpenTaskDetailForm(false);
+  };
+
+  const setTaskPopOut = async () => {
+    if (sideTaskDetails === false) {
+      showSideTaskDetails();
+    } else {
+      taskDispatch({ type: "get_selected_task", payload: null });
+      const res = await apiServer.get(`/task/${task.id}`);
+      await taskDispatch({ type: "get_selected_task", payload: res.data });
+    }
   };
 
   return (
@@ -35,7 +54,8 @@ const ColumnTaskItem = ({ task, index }) => {
             {...provided.dragHandleProps}
             ref={provided.innerRef}
             className="task-project-item"
-            onClick={openTaskDetailFormModal}
+            // onClick={openTaskDetailFormModal}
+            onClick={setTaskPopOut}
           >
             <div className="task-project-container-left">
               <div className="task-project-name">{task.name}</div>
@@ -64,7 +84,7 @@ const ColumnTaskItem = ({ task, index }) => {
         )}
       </Draggable>
       <div>
-        <Modal
+        {/* <Modal
           open={openTaskDetailForm}
           onClose={closeTaskDetailFormModal}
           style={{ backgroundColor: "white" }}
@@ -77,7 +97,7 @@ const ColumnTaskItem = ({ task, index }) => {
               closeModal={closeTaskDetailFormModal}
             />
           </div>
-        </Modal>
+        </Modal> */}
       </div>
     </div>
   );

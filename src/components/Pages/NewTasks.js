@@ -3,7 +3,7 @@ import TopNavBarTask from "../NavigationBar/TopNavBarTask";
 import { Context as TaskContext } from "../../context/store/TaskStore";
 import apiServer from "../../config/apiServer";
 import TaskSection from "../tasks/TaskSection";
-import PopOutTask from "../tasks/PopOutTask";
+import PopOutTaskDetails from "../tasks/PopOutTaskDetails";
 import TaskItemTask from "../tasks/TaskItemTask";
 import Add from "../../assets/Add";
 import { RiNurseFill } from "react-icons/ri";
@@ -14,8 +14,8 @@ const NewTasks = () => {
   const [initialLoad, setInitialLoad] = useState(true);
   const [open, setOpen] = useState(false);
 
-  const [sideMenu, setSideMenu] = useState(false);
-  const showSideMenu = () => setSideMenu(!sideMenu);
+  const [sideTaskDetails, setSideTaskDetails] = useState(false);
+  const showSideTaskDetails = () => setSideTaskDetails(!sideTaskDetails);
 
   const getUserTasks = async () => {
     const id = localStorage.getItem("userId");
@@ -34,8 +34,8 @@ const NewTasks = () => {
       <TaskItemTask
         task={task}
         key={i}
-        showSideMenu={showSideMenu}
-        sideMenu={sideMenu}
+        showSideTaskDetails={showSideTaskDetails}
+        sideTaskDetails={sideTaskDetails}
         setInitialLoad={setInitialLoad}
       />
     );
@@ -79,8 +79,11 @@ const NewTasks = () => {
             {renderedTasks}
             {/* <TaskSection title={"Tasks"} tasks={sortedTasks} /> */}
           </div>
-          {sideMenu && taskState.selectedTask ? (
-            <PopOutTask showSideMenu={showSideMenu} sideMenu={sideMenu} />
+          {sideTaskDetails && taskState.selectedTask ? (
+            <PopOutTaskDetails
+              showSideTaskDetails={showSideTaskDetails}
+              sideTaskDetails={sideTaskDetails}
+            />
           ) : null}
         </div>
       </div>

@@ -11,7 +11,7 @@ import messageIcon from "../../assets/message.png";
 import Alert from "../../assets/alert";
 import { Context as UserContext } from "../../context/store/UserStore";
 
-const TopNavBar = ({ name, setTeamProjects, setTasklists }) => {
+const TopNavBar = ({ name, setTeamProjects, setTasklists, sidebar }) => {
   const { logout } = useContext(AuthContext);
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -52,6 +52,11 @@ const TopNavBar = ({ name, setTeamProjects, setTasklists }) => {
   };
 
   return (
+    // <div
+    //   className={
+    //     sidebar ? "top-nav-bar-container__short" : "top-nav-bar-container"
+    //   }
+    // >
     <div className="top-nav-bar-container">
       <div className="top-nav-bar-left">
         <h2>{name}</h2>

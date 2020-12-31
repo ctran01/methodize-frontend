@@ -64,14 +64,25 @@ const AuthRoutes = () => {
     <div className="overlay">
       <BrowserRouter>
         <LeftNavBar showSidebar={showSidebar} sidebar={sidebar} />
-        <div className="overlay-right-container">
+        <div
+          className={
+            sidebar
+              ? "overlay-right-container"
+              : "overlay-right-container__short"
+          }
+        >
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/tasks" component={NewTasksPage} />
             <Route exact path="/projects" component={ProjectsPage} />
-            <Route
+
+            {/* <Route
               path="/team/:teamId/project/:projectId/:projectName"
               component={ProjectPage}
+            /> */}
+            <Route
+              path="/team/:teamId/project/:projectId/:projectName"
+              render={() => <ProjectPage sidebar={sidebar} />}
             />
             <Route path="/team/:teamId/:teamName" component={TeamPage} />
             <Route

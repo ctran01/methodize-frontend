@@ -1,7 +1,8 @@
 .tasklist-container {
   display: flex;
   flex-direction: column;
-  width: 270px;
+  width: 300px;
+  /* width: 270px; */
   margin: 0px 10px;
   padding: 0px 10px;
   align-items: center;
@@ -38,8 +39,8 @@
   cursor: pointer;
 }
 .tasklist-task--list {
-  width: 260px;
-  /* height: 501px; */
+  width: 290px;
+  /* width: 260px; */
   display: flex;
   flex-direction: column;
 }
