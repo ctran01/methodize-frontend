@@ -18,58 +18,50 @@ const TaskListForm = ({ projectId, clickClose, open, setTasklists }) => {
     clickClose();
   };
   return (
-    <div>
-      <Modal open={open} onClose={clickClose}>
+    <div style={{ display: "flex", height: "100%" }}>
+      {/* <Modal open={open} onClose={clickClose}>
         <div
           className="tasklist-modal-container"
           style={{ minWidth: "auto", width: "200px" }}
-        >
-          <form
-            className="task-form"
-            style={{}}
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            <h2 className="form-header">Add a Tasklist</h2>
-            <div className="form-top-container">
-              <div className="form-top-left">
-                <label className="form-label">
-                  Tasklist Name
-                  <input
-                    name="name"
-                    type="text"
-                    placeholder={"Task Name"}
-                    className="form-input"
-                    ref={register({ required: true })}
-                  ></input>
-                  {errors.name?.type === "required" && (
-                    <p className="error-message">Please enter a task name</p>
-                  )}
-                </label>
-              </div>
-              <div className="form-top-middle"></div>
-              <div className="form-top-right"></div>
-            </div>
-
-            <div style={{ display: "flex", marginLeft: "100px" }}>
-              <Button
-                style={{ color: "#0093ff" }}
-                onClick={clickClose}
-                color="primary"
-              >
-                Cancel
-              </Button>
-              <Button
-                style={{ color: "#0093ff" }}
-                type="submit"
-                color="primary"
-              >
-                Add
-              </Button>
-            </div>
-          </form>
+        > */}
+      <form className="task-form" style={{}} onSubmit={handleSubmit(onSubmit)}>
+        {/* <h2 className="form-header">Add a Tasklist</h2> */}
+        <div className="form-top-container">
+          <div className="form-top-left">
+            <label className="form-label">
+              Tasklist Name
+              <input
+                name="name"
+                type="text"
+                placeholder={"Task Name"}
+                className="form-input"
+                ref={register({ required: true })}
+              ></input>
+              {errors.name?.type === "required" && (
+                <p className="error-message">Please enter a task name</p>
+              )}
+            </label>
+          </div>
+          <div className="form-top-middle"></div>
+          <div className="form-top-right"></div>
         </div>
-      </Modal>
+
+        <div style={{ display: "flex", marginLeft: "100px" }}>
+          <Button
+            style={{ color: "#0093ff" }}
+            onClick={clickClose}
+            color="primary"
+          >
+            Cancel
+          </Button>
+          <Button style={{ color: "#0093ff" }} type="submit" color="primary">
+            Add
+          </Button>
+        </div>
+      </form>
     </div>
+    // </Modal>
+    // </div>
   );
 };
 

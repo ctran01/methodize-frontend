@@ -11,8 +11,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import { BiCheck } from "react-icons/bi";
 
 const PopOutTaskDetails = ({ showSideTaskDetails, sideTaskDetails }) => {
-  const [open, setOpen] = useState(true);
-  const [loading, setLoading] = useState(true);
   const [taskState, taskdispatch] = useContext(TaskContext);
   const { selectedTask: task } = taskState;
   const [projectState, projectdispatch] = useContext(ProjectContext);
@@ -23,6 +21,7 @@ const PopOutTaskDetails = ({ showSideTaskDetails, sideTaskDetails }) => {
   const [dueDate, setDueDate] = useState(new Date(task.due_date));
   // const [completed, setCompleted] = useState(task.completed);
   const [commentBox, setCommentBox] = useState(false);
+
   var completed = task.completed;
   const date = moment(
     task.due_date.substring(0, 10).replace("-", ""),
@@ -206,16 +205,7 @@ const PopOutTaskDetails = ({ showSideTaskDetails, sideTaskDetails }) => {
           }}
         >
           <div className="task-detail-menu-container">
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                borderBottom: "1px solid lightgray",
-
-                paddingBottom: "10px",
-              }}
-              className="task-detail-menu-top"
-            >
+            <div className="task-detail-menu-top">
               <div
                 className={
                   completed
@@ -232,7 +222,7 @@ const PopOutTaskDetails = ({ showSideTaskDetails, sideTaskDetails }) => {
                   }
                 >
                   <div
-                    class="check-mark-container"
+                    className="check-mark-container"
                     style={{ margin: "0px 5px" }}
                   >
                     <BiCheck
@@ -254,7 +244,7 @@ const PopOutTaskDetails = ({ showSideTaskDetails, sideTaskDetails }) => {
                   </div>
                 </div>
               </div>
-              <div className="task-detail-collapse-icon">
+              <div className="task-detail-close-icon">
                 <RiCloseLine
                   style={{
                     color: "black",
@@ -394,7 +384,11 @@ const PopOutTaskDetails = ({ showSideTaskDetails, sideTaskDetails }) => {
                   </div>
                 </form>
                 <div className="task-detail-user-comments-container">
-                  {renderedComments}
+                  {taskComments.length !== 0 ? (
+                    renderedComments
+                  ) : (
+                    <div>No comments yet.. </div>
+                  )}
                 </div>
               </div>
             </div>
