@@ -33,6 +33,10 @@ const ColumnTaskItem = ({
   const setTaskPopOut = async () => {
     if (sideTaskDetails === false) {
       showSideTaskDetails();
+      //---
+      taskDispatch({ type: "get_selected_task", payload: null });
+      const res = await apiServer.get(`/task/${task.id}`);
+      await taskDispatch({ type: "get_selected_task", payload: res.data });
     } else {
       taskDispatch({ type: "get_selected_task", payload: null });
       const res = await apiServer.get(`/task/${task.id}`);

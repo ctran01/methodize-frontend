@@ -36,7 +36,14 @@ const TaskItemTask = ({
   const setTaskPopOut = async () => {
     if (sideTaskDetails === false) {
       showSideTaskDetails();
+      //---
+      taskDispatch({ type: "get_selected_task", payload: null });
+      const res = await apiServer.get(`/task/${task.id}`);
+      await taskDispatch({ type: "get_selected_task", payload: res.data });
+      setInitialLoad(false);
+      console.log("if popout");
     } else {
+      console.log("else popout");
       taskDispatch({ type: "get_selected_task", payload: null });
       const res = await apiServer.get(`/task/${task.id}`);
       await taskDispatch({ type: "get_selected_task", payload: res.data });
@@ -109,9 +116,9 @@ const TaskItemTask = ({
           </div>
         </div>
       </li>
-      <Modal open={open} onClose={closeModal}>
+      {/* <Modal open={open} onClose={closeModal}>
         {body}
-      </Modal>
+      </Modal> */}
     </>
   );
 };
