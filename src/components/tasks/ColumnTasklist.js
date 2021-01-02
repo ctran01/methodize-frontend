@@ -15,6 +15,7 @@ const ColumnTasklist = ({
   setTasklists,
   showSideTaskDetails,
   sideTaskDetails,
+  showSideTaskForm,
 }) => {
   const { projectId } = useParams();
   const [openTaskProjectForm, setOpenTaskProjectForm] = useState(false);
@@ -138,7 +139,8 @@ const ColumnTasklist = ({
 
             <div
               className="tasklist-new-task--button"
-              onClick={openTaskProjectFormModal}
+              // onClick={openTaskProjectFormModal}
+              onClick={showSideTaskForm}
             >
               + Add task
             </div>
@@ -146,7 +148,7 @@ const ColumnTasklist = ({
         )}
       </Draggable>
       <div>
-        <Modal
+        {/* <Modal
           className="modal"
           style={{ backgroundColor: "white" }}
           open={openTaskProjectForm}
@@ -162,7 +164,7 @@ const ColumnTasklist = ({
               open={openTaskProjectForm}
             ></AddTaskProjectForm>
           </div>
-        </Modal>
+        </Modal> */}
       </div>
     </div>
   );

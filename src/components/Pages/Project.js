@@ -4,10 +4,11 @@ import { Modal, responsiveFontSizes } from "@material-ui/core";
 import apiServer from "../../config/apiServer";
 import Loader from "../Loader";
 import TopNavBar from "../NavigationBar/TopNavBar";
-import TaskListItem from "../tasks/TaskListItem";
 import TaskListForm from "../Forms/TaskListForm";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import PopOutTaskDetails from "../tasks/PopOutTaskDetails";
+import AddTasklistPopOut from "../PopOutMenu/AddTasklistPopOut";
+import AddTaskPopOut from "../PopOutMenu/AddTaskPopOut";
 import { Context as TaskContext } from "../../context/store/TaskStore";
 
 import "../../css/Project.css";
@@ -28,11 +29,23 @@ const ProjectPage = ({ sidebar }) => {
   const [sideTasklistForm, setSideTasklistForm] = useState(false);
   const [sideTaskDetails, setSideTaskDetails] = useState(false);
 
-  const showSideTaskForm = () => setSideTaskForm(!sideTaskForm);
+  const showSideTaskForm = () => {
+    setSideTaskDetails(false);
+    setSideTaskForm(false);
+    setSideTaskForm(!sideTaskForm);
+  };
 
-  const showSideTasklistForm = () => setSideTasklistForm(!sideTasklistForm);
+  const showSideTasklistForm = () => {
+    setSideTaskDetails(false);
+    setSideTaskForm(false);
+    setSideTasklistForm(!sideTasklistForm);
+  };
 
-  const showSideTaskDetails = () => setSideTaskDetails(!sideTaskDetails);
+  const showSideTaskDetails = () => {
+    setSideTasklistForm(false);
+    setSideTaskForm(false);
+    setSideTaskDetails(!sideTaskDetails);
+  };
 
   //Task through get /project/id/taskslists. Set here so we can refer to it in the ondragend funnction
   const [loading, setLoading] = useState(true);
@@ -253,117 +266,10 @@ const ProjectPage = ({ sidebar }) => {
         setTasklists={setTasklists}
         showSideTaskDetails={showSideTaskDetails}
         sideTaskDetails={sideTaskDetails}
+        showSideTaskForm={showSideTaskForm}
       />
     );
   });
-  // const renderedTasklists = tasklists.map((tasklist, index) => {
-  //   //returns individual tasklist tasks
-
-  //   return (
-  //     <div key={tasklist.id}>
-  //       <Draggable
-  //         type="tasklist"
-  //         draggableId={`Column-${tasklist.column_index.toString()}`}
-  //         index={index}
-  //         key={`Column-${tasklist.id.toString()}`}
-  //       >
-  //         {(provided) => (
-  //           <div
-  //             className="tasklist-container"
-  //             {...provided.draggableProps}
-  //             ref={provided.innerRef}
-  //             {...provided.dragHandleProps}
-  //           >
-  //             <div className="tasklist-header">{tasklist.name}</div>
-  //             <div className="tasklist-add-task--button"></div>
-  //             <Droppable
-  //               type="task"
-  //               droppableId={`${tasklist.id.toString()}-${index.toString()}`}
-  //             >
-  //               {(provided) => (
-  //                 <div
-  //                   className="tasklist-task--list"
-  //                   ref={provided.innerRef}
-  //                   {...provided.droppableProps}
-  //                 >
-  //                   {/* //----------------------------------TaskItemProject */}
-  //                   {tasklist.Tasks.map((task, index) => {
-  //                     return (
-  //                       <div key={task.id}>
-  //                         <Draggable
-  //                           draggableId={`${task.id.toString()}`}
-  //                           type="task"
-  //                           key={`${task.id}`}
-  //                           //this index needs to pull from tasksArray
-  //                           index={index}
-  //                         >
-  //                           {(provided, snapshot) => (
-  //                             <div
-  //                               {...provided.draggableProps}
-  //                               {...provided.dragHandleProps}
-  //                               ref={provided.innerRef}
-  //                               className="task-project-item"
-  //                               onClick={openTaskDetailFormModal}
-  //                             >
-  //                               {task.name}
-  //                             </div>
-  //                           )}
-  //                         </Draggable>
-  //                         <div>
-  //                           <Modal
-  //                             open={openTaskDetailForm}
-  //                             onClose={closeTaskDetailFormModal}
-  //                             style={{ backgroundColor: "white" }}
-  //                           >
-  //                             <div className="modal-container">
-  //                               <TaskDetailsForm
-  //                                 // setTasks={setTasks}
-  //                                 setTasklistTasks={setTasklistTasks}
-  //                                 task={task}
-  //                                 closeModal={closeTaskDetailFormModal}
-  //                               />
-  //                             </div>
-  //                           </Modal>
-  //                         </div>
-  //                       </div>
-  //                     );
-  //                   })}
-  //                   {provided.placeholder}
-  //                 </div>
-  //               )}
-  //             </Droppable>
-
-  //             <div
-  //               className="tasklist-new-task--button"
-  //               onClick={openTaskProjectFormModal}
-  //             >
-  //               + Add task
-  //             </div>
-  //           </div>
-  //         )}
-  //       </Draggable>
-  //       <div>
-  //         <Modal
-  //           className="modal"
-  //           style={{ backgroundColor: "white" }}
-  //           open={openTaskProjectForm}
-  //           onClose={closeTaskProjectFormModal}
-  //         >
-  //           <div className="modal-container">
-  //             <AddTaskProjectForm
-  //               setTasklists={setTasklists}
-  //               setTasklistTasks={setTasklistTasks}
-  //               tasklistId={tasklist.id}
-  //               projectId={tasklist.project_id}
-  //               clickClose={closeTaskProjectFormModal}
-  //               open={openTaskProjectForm}
-  //             ></AddTaskProjectForm>
-  //           </div>
-  //         </Modal>
-  //       </div>
-  //     </div>
-  //   );
-  // });
 
   //----------------------------------------------Project
   return (
@@ -405,7 +311,8 @@ const ProjectPage = ({ sidebar }) => {
                   {provided.placeholder}
                   <div
                     className="tasklist-new-tasklist--button"
-                    onClick={openTasklistFormModal}
+                    // onClick={openTasklistFormModal}
+                    onClick={showSideTasklistForm}
                   >
                     <div
                       style={{
@@ -428,6 +335,18 @@ const ProjectPage = ({ sidebar }) => {
             <PopOutTaskDetails
               showSideTaskDetails={showSideTaskDetails}
               sideTaskDetails={sideTaskDetails}
+            />
+          ) : null}
+          {sideTasklistForm ? (
+            <AddTasklistPopOut
+              showSideTasklistForm={showSideTasklistForm}
+              title={"Add Tasklist"}
+            />
+          ) : null}
+          {sideTaskForm ? (
+            <AddTaskPopOut
+              showSideTaskForm={showSideTaskForm}
+              title={"Add Task"}
             />
           ) : null}
         </div>

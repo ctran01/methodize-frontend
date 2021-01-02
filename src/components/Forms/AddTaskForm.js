@@ -8,6 +8,7 @@ import { Context as ProjectContext } from "../../context/store/ProjectStore";
 import { Context as TasklistContext } from "../../context/store/TasklistStore";
 import { Context as TaskContext } from "../../context/store/TaskStore";
 
+//Form to add task from anywhere
 const TaskForm = ({ handleNewClose, clickClose, open, setTasklists }) => {
   const { register, handleSubmit, errors, clearErrors } = useForm();
   const [projectError, setProjectError] = useState();

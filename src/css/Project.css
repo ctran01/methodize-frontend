@@ -196,14 +196,6 @@
   font-size: 15px;
 }
 
-.project-container {
-  display: flex;
-  /* padding: 15px; */
-  margin: 30px 15px;
-  height: 80%;
-  /* width: 100%; */
-}
-
 .project-home-item {
   /* display: flex;
   justify-content: space-between; */
@@ -252,7 +244,17 @@
   padding: 20px 15px 15px 15px;
   align-items: center;
   box-sizing: border-box;
+  height: 100%;
 }
 .project-page-main-content {
   display: contents;
+}
+
+.project-container {
+  display: flex;
+  /* padding: 15px; */
+  /* margin: 30px 15px; */
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
 }
