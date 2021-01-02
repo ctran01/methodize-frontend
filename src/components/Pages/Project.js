@@ -31,7 +31,7 @@ const ProjectPage = ({ sidebar }) => {
 
   const showSideTaskForm = () => {
     setSideTaskDetails(false);
-    setSideTaskForm(false);
+    setSideTasklistForm(false);
     setSideTaskForm(!sideTaskForm);
   };
 
