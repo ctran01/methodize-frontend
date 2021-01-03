@@ -8,6 +8,7 @@ import TeamMemberIcon from "../teams/TeamMemberIcon";
 import ProjectTile from "../projects/ProjectTile";
 import NewProjectTile from "../projects/NewProjectTile";
 import NewTeamMemberIcon from "../teams/NewTeamMemberIcon";
+import AddProjectPopOut from "../PopOutMenu/AddProjectPopOut";
 
 const TeamPage = () => {
   const { teamId, teamName } = useParams();
@@ -16,6 +17,11 @@ const TeamPage = () => {
   const [teamUsers, setTeamUsers] = useState();
   const [teamDescription, setTeamDescription] = useState();
   const [loading, setLoading] = useState(true);
+  const [sideProjectForm, setSideProjectForm] = useState(false);
+
+  const showSideProjectForm = () => {
+    setSideProjectForm(!sideProjectForm);
+  };
 
   const getTeam = async () => {
     try {
@@ -59,7 +65,7 @@ const TeamPage = () => {
     );
   });
   return (
-    <div>
+    <>
       <TopNavBar name={teamName} setTeamProjects={setTeamProjects} />
       <div className="team-page-container">
         <div className="team-page-content-container">
@@ -97,12 +103,19 @@ const TeamPage = () => {
             </div>
             <div className="team-content-right-projects--list">
               {projectsList}
-              <NewProjectTile />
+              <NewProjectTile showSideProjectForm={showSideProjectForm} />
             </div>
           </div>
         </div>
+        {sideProjectForm ? (
+          <AddProjectPopOut
+            showSideProjectForm={showSideProjectForm}
+            setTeamProjects={setTeamProjects}
+            title={"Add Project"}
+          />
+        ) : null}
       </div>
-    </div>
+    </>
   );
 };
 
