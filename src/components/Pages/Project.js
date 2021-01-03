@@ -8,7 +8,7 @@ import TaskListForm from "../Forms/TaskListForm";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import PopOutTaskDetails from "../tasks/PopOutTaskDetails";
 import AddTasklistPopOut from "../PopOutMenu/AddTasklistPopOut";
-import AddTaskPopOut from "../PopOutMenu/AddTaskPopOut";
+import AddTaskPopOutProjectPage from "../PopOutMenu/AddTaskPopOutProjectPage";
 import { Context as TaskContext } from "../../context/store/TaskStore";
 
 import "../../css/Project.css";
@@ -344,7 +344,7 @@ const ProjectPage = ({ sidebar }) => {
             />
           ) : null}
           {sideTaskForm ? (
-            <AddTaskPopOut
+            <AddTaskPopOutProjectPage
               showSideTaskForm={showSideTaskForm}
               title={"Add Task"}
             />

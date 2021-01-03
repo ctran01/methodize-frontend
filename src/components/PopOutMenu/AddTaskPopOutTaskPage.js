@@ -1,8 +1,8 @@
 import React from "react";
-import AddTaskProjectForm from "../Forms/AddTaskProjectForm";
+import AddTaskForm from "../Forms/AddTaskForm";
 import "../../css/PopOutForms.css";
 import { RiCloseLine } from "react-icons/ri";
-const AddTaskPopOut = ({ showSideTaskForm, title }) => {
+const AddTaskPopOutTaskPage = ({ showSideTaskForm, title }) => {
   return (
     <>
       <div className={"popout-form"}>
@@ -17,7 +17,9 @@ const AddTaskPopOut = ({ showSideTaskForm, title }) => {
         >
           <div className="popout-form-container">
             <div className="popout-form-top">
-              <div className="popout-form-header">{title}</div>
+              <div className="popout-form-header">
+                <h2 className="form-header">{title}</h2>
+              </div>
               <div className="popout-form-close-icon">
                 <RiCloseLine
                   style={{
@@ -29,7 +31,7 @@ const AddTaskPopOut = ({ showSideTaskForm, title }) => {
                 />
               </div>
             </div>
-            <AddTaskProjectForm />
+            <AddTaskForm />
           </div>
         </div>
       </div>
@@ -37,4 +39,4 @@ const AddTaskPopOut = ({ showSideTaskForm, title }) => {
   );
 };
 
-export default AddTaskPopOut;
+export default AddTaskPopOutTaskPage;

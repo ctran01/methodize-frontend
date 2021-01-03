@@ -6,16 +6,25 @@ import TaskSection from "../tasks/TaskSection";
 import PopOutTaskDetails from "../tasks/PopOutTaskDetails";
 import TaskItemTask from "../tasks/TaskItemTask";
 import Add from "../../assets/Add";
-import { RiNurseFill } from "react-icons/ri";
+import AddTaskPopOutTaskPage from "../PopOutMenu/AddTaskPopOutTaskPage";
 
 const NewTasks = () => {
   const [taskState, taskdispatch] = useContext(TaskContext);
   const [loading, setLoading] = useState(true);
   const [initialLoad, setInitialLoad] = useState(true);
   const [open, setOpen] = useState(false);
+  const [sideTaskForm, setSideTaskForm] = useState(false);
 
   const [sideTaskDetails, setSideTaskDetails] = useState(false);
-  const showSideTaskDetails = () => setSideTaskDetails(!sideTaskDetails);
+
+  const showSideTaskForm = () => {
+    setSideTaskDetails(false);
+    setSideTaskForm(!sideTaskForm);
+  };
+  const showSideTaskDetails = () => {
+    setSideTaskForm(false);
+    setSideTaskDetails(!sideTaskDetails);
+  };
 
   const getUserTasks = async () => {
     const id = localStorage.getItem("userId");
@@ -66,7 +75,10 @@ const NewTasks = () => {
                 : "tasks-inner-container hidden"
             }
           >
-            <div className="tasks-add-task-container" onClick={openModal}>
+            <div
+              className="tasks-add-task-container"
+              onClick={showSideTaskForm}
+            >
               <div className="tasks-add-task-icon">
                 <Add />
               </div>
@@ -83,6 +95,12 @@ const NewTasks = () => {
             <PopOutTaskDetails
               showSideTaskDetails={showSideTaskDetails}
               sideTaskDetails={sideTaskDetails}
+            />
+          ) : null}
+          {sideTaskForm ? (
+            <AddTaskPopOutTaskPage
+              showSideTaskForm={showSideTaskForm}
+              title={"Add a Task"}
             />
           ) : null}
         </div>
