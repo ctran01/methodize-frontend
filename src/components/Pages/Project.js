@@ -348,6 +348,7 @@ const ProjectPage = ({ sidebar }) => {
             <AddTaskPopOutProjectPage
               showSideTaskForm={showSideTaskForm}
               title={"Add Task"}
+              setTasklists={setTasklists}
             />
           ) : null}
         </div>

@@ -23,6 +23,7 @@ const TaskListForm = ({ setTasklists, showSideTasklistForm }) => {
     // tasklistdispatch({ type: "update_project_tasklists", payload: res.data });
     showSideTasklistForm();
   };
+
   return (
     <form
       className="form-container"
@@ -31,7 +32,7 @@ const TaskListForm = ({ setTasklists, showSideTasklistForm }) => {
     >
       {/* <h2 className="form-header">Add a Tasklist</h2> */}
       <div className="form-top-container">
-        <div className="form-top-left">
+        <div className="form-section">
           <div className="label-container">
             <label className="form-label">Column Name</label>
           </div>

@@ -20,13 +20,16 @@
   align-items: center;
 }
 
-.form-top-left {
+.form-section {
   flex-direction: column;
   margin-bottom: 48px;
   margin-top: 32px;
   display: flex;
   flex: 1 1 auto;
   min-width: 1px;
+}
+.input-section {
+  margin: 10px;
 }
 .label-container {
   box-sizing: border-box;

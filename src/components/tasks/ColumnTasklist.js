@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import AddTaskProjectForm from "../Forms/AddTaskProjectForm";
 import ColumnTaskItem from "./ColumnTaskItem";
 import apiServer from "../../config/apiServer";
-
+import { Context as TasklistContext } from "../../context/store/TasklistStore";
 import { AiOutlineEllipsis } from "react-icons/ai";
 import { Menu, MenuItem } from "@material-ui/core";
 
@@ -23,6 +23,7 @@ const ColumnTasklist = ({
   const [columnTitle, setColumnTitle] = useState(tasklist.name);
   const [titleSelect, setTitleSelect] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [tasklistState, tasklistdispatch] = useContext(TasklistContext);
 
   const openTaskProjectFormModal = () => {
     setOpenTaskProjectForm(true);
@@ -32,6 +33,13 @@ const ColumnTasklist = ({
     setOpenTaskProjectForm(false);
   };
 
+  const handleAddTaskClick = async () => {
+    await tasklistdispatch({
+      type: "get_selected_tasklist",
+      payload: tasklist.id,
+    });
+    showSideTaskForm();
+  };
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -140,7 +148,7 @@ const ColumnTasklist = ({
             <div
               className="tasklist-new-task--button"
               // onClick={openTaskProjectFormModal}
-              onClick={showSideTaskForm}
+              onClick={handleAddTaskClick}
             >
               + Add task
             </div>
