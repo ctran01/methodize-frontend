@@ -2,7 +2,11 @@ import React from "react";
 import AddTaskProjectForm from "../Forms/AddTaskProjectForm";
 import "../../css/PopOutForms.css";
 import { RiCloseLine } from "react-icons/ri";
-const AddTaskPopOutProjectPage = ({ showSideTaskForm, title }) => {
+const AddTaskPopOutProjectPage = ({
+  showSideTaskForm,
+  title,
+  setTasklists,
+}) => {
   return (
     <>
       <div className={"popout-form"}>
@@ -31,7 +35,10 @@ const AddTaskPopOutProjectPage = ({ showSideTaskForm, title }) => {
                 />
               </div>
             </div>
-            <AddTaskProjectForm showSideTaskForm={showSideTaskForm} />
+            <AddTaskProjectForm
+              showSideTaskForm={showSideTaskForm}
+              setTasklists={setTasklists}
+            />
           </div>
         </div>
       </div>
