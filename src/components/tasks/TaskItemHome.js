@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import moment from "moment";
 import { Modal } from "@material-ui/core";
 import "../../css/Modal.css";
@@ -9,13 +9,18 @@ import {
 } from "react-icons/ri";
 import { AiOutlineEllipsis } from "react-icons/ai";
 import { Menu, MenuItem } from "@material-ui/core";
+import { Context as TaskContext } from "../../context/store/TaskStore";
+import apiServer from "../../config/apiServer";
+
 //Task item list for home and task page
 
-const TaskItemHome = ({ task }) => {
+const TaskItemHome = ({ task, showSideTaskDetails, sideTaskDetails }) => {
   const date = moment(
     task.due_date.substring(0, 10).replace("-", ""),
     "YYYYMMDD"
   );
+
+  const [taskState, taskDispatch] = useContext(TaskContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
   const openModal = () => {
@@ -33,6 +38,24 @@ const TaskItemHome = ({ task }) => {
     setAnchorEl(null);
   };
 
+  const setTaskPopOut = async () => {
+    if (sideTaskDetails === false) {
+      showSideTaskDetails();
+      //---
+      taskDispatch({ type: "get_selected_task", payload: null });
+      const res = await apiServer.get(`/task/${task.id}`);
+      await taskDispatch({ type: "get_selected_task", payload: res.data });
+      // setInitialLoad(false);
+      console.log("if popout");
+    } else {
+      console.log("else popout");
+      taskDispatch({ type: "get_selected_task", payload: null });
+      const res = await apiServer.get(`/task/${task.id}`);
+      await taskDispatch({ type: "get_selected_task", payload: res.data });
+      // setInitialLoad(false);
+    }
+  };
+
   //import component as body such as forms, details, etc
   const body = (
     <div className="modal-container">
@@ -45,9 +68,9 @@ const TaskItemHome = ({ task }) => {
   );
   return (
     <>
-      <div className="task-home-item">
+      <div className="task-home-item" onClick={setTaskPopOut}>
         <div className="task-home-item-inner-container">
-          <div className="task-home-item-inner-left" onClick={openModal}>
+          <div className="task-home-item-inner-left">
             <div className="task-home-item-icon-container">
               {/* {task.completed ? (
                 <RiCheckboxCircleLine
@@ -91,9 +114,9 @@ const TaskItemHome = ({ task }) => {
           </Menu>
         </div>
       </div>
-      <Modal open={open} onClose={closeModal}>
+      {/* <Modal open={open} onClose={closeModal}>
         {body}
-      </Modal>
+      </Modal> */}
       {/* <TaskDetailsForm task={task} closeModal={closeModal} open={open} /> */}
     </>
   );

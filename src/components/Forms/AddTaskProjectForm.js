@@ -16,6 +16,7 @@ const AddTaskProjectForm = ({
   open,
   setTasklistTasks,
   setTasklists,
+  showSideTaskForm,
 }) => {
   const { register, handleSubmit, errors } = useForm();
 
@@ -60,7 +61,7 @@ const AddTaskProjectForm = ({
     // setTasklistTasks(res.data);
     const resp = await apiServer.get(`/project/${projectId}/tasklists`);
     setTasklists(resp.data);
-    clickClose();
+    showSideTaskForm();
   };
 
   if (loading) {
@@ -79,8 +80,8 @@ const AddTaskProjectForm = ({
     <div>
       {/* <Modal open={open} onClose={clickClose}> */}
       {/* <div className="modal-container"> */}
-      <form className="task-form" onSubmit={handleSubmit(onSubmit)}>
-        <h2 className="form-header">Add a Task</h2>
+      <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
+        {/* <h2 className="form-header">Add a Task</h2> */}
         <div className="form-top-container">
           <div className="form-top-left">
             <label className="form-label">
@@ -151,10 +152,10 @@ const AddTaskProjectForm = ({
           ></textarea>
         </div>
 
-        <div style={{ display: "flex", marginLeft: "500px" }}>
+        <div className="form-button-container">
           <Button
             style={{ color: "#0093ff" }}
-            onClick={clickClose}
+            onClick={showSideTaskForm}
             color="primary"
           >
             Cancel

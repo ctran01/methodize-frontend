@@ -3,7 +3,7 @@ import TopNavBarTask from "../NavigationBar/TopNavBarTask";
 import { Context as TaskContext } from "../../context/store/TaskStore";
 import apiServer from "../../config/apiServer";
 import TaskSection from "../tasks/TaskSection";
-import PopOutTaskDetails from "../tasks/PopOutTaskDetails";
+import PopOutTaskDetails from "../PopOutMenu/PopOutTaskDetails";
 import TaskItemTask from "../tasks/TaskItemTask";
 import Add from "../../assets/Add";
 import AddTaskPopOutTaskPage from "../PopOutMenu/AddTaskPopOutTaskPage";

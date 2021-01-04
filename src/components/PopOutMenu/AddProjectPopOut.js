@@ -8,7 +8,7 @@ const AddProjectPopOut = ({ showSideProjectForm, title, setTeamProjects }) => {
     <>
       <div
         className={"popout-form"}
-        style={{ width: "30%", height: "96%", marginTop: "10px" }}
+        style={{ width: "30%", height: "96%", margin: "10px 20px 10px 10px" }}
       >
         <div
           style={{
@@ -21,7 +21,9 @@ const AddProjectPopOut = ({ showSideProjectForm, title, setTeamProjects }) => {
         >
           <div className="popout-form-container">
             <div className="popout-form-top">
-              <div className="popout-form-header">{title}</div>
+              <div className="popout-form-header">
+                <h2 className="form-header">{title}</h2>
+              </div>
               <div className="popout-form-close-icon">
                 <RiCloseLine
                   style={{

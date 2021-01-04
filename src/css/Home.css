@@ -1,11 +1,3 @@
-.home-container {
-  margin: 20px 120px;
-  height: 100%;
-  /* overflow-y: scroll; */
-  width: 900px;
-
-  margin: 0 auto;
-}
 .home-welcome-header {
   display: flex;
   align-items: center;
@@ -28,6 +20,12 @@
   margin: 32px;
 }
 
+.home-main-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
 .home-main-content-container {
   display: flex;
   flex-direction: row;
@@ -62,8 +60,15 @@
 }
 
 .home-container {
+  /* margin: 20px 120px; */
+  height: 100%;
+  /* overflow-y: scroll; */
+  /* width: 900px; */
+  display: flex;
+  /* margin: 0 auto; */
+  justify-content: center;
+  overflow-y: scroll;
 }
-
 .home-container::-webkit-scrollbar {
   display: none;
 }

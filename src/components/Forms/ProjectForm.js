@@ -61,8 +61,8 @@ const ProjectForm = ({
     <div>
       {/* <Modal open={open} onClose={clickClose}>
         <div className="modal-container"> */}
-      <form className="task-form" onSubmit={handleSubmit(onSubmit)}>
-        <h2 className="form-header">Add a Project</h2>
+      <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
+        {/* <h2 className="form-header">Add a Project</h2> */}
         <div className="form-top-container">
           <div className="form-top-left">
             <label className="form-label">
@@ -98,7 +98,7 @@ const ProjectForm = ({
           </div>
         </div>
 
-        <div style={{ display: "flex" }}>
+        <div className="form-button-container">
           {/* marginLeft: "400px" */}
           <Button
             style={{ color: "#0093ff" }}

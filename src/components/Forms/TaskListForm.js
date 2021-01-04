@@ -24,7 +24,11 @@ const TaskListForm = ({ projectId, clickClose, open, setTasklists }) => {
           className="tasklist-modal-container"
           style={{ minWidth: "auto", width: "200px" }}
         > */}
-      <form className="task-form" style={{}} onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className="form-container"
+        style={{}}
+        onSubmit={handleSubmit(onSubmit)}
+      >
         {/* <h2 className="form-header">Add a Tasklist</h2> */}
         <div className="form-top-container">
           <div className="form-top-left">
@@ -46,7 +50,7 @@ const TaskListForm = ({ projectId, clickClose, open, setTasklists }) => {
           <div className="form-top-right"></div>
         </div>
 
-        <div style={{ display: "flex", marginLeft: "100px" }}>
+        <div className="form-button-container">
           <Button
             style={{ color: "#0093ff" }}
             onClick={clickClose}
