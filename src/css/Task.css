@@ -91,6 +91,9 @@
   cursor: pointer;
   align-items: center;
   -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .task-home-item:hover {
   background-color: rgba(133, 140, 155, 0.08);
@@ -172,6 +175,9 @@
 
 .task-section > div {
   -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .task-section-header {
   display: flex;

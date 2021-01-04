@@ -139,7 +139,7 @@ const HomePage = () => {
                 </div>
                 <div>
                   <Link
-                    to="/tasks"
+                    to="/projects"
                     style={{ textDecoration: "none", color: "blue" }}
                   >
                     <p style={{ fontSize: "14px" }}>See all my projects</p>

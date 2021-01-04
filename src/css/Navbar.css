@@ -155,6 +155,10 @@
 .top-nav-bar--icon {
   font-size: 36px;
   -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
   cursor: pointer;
 }
 
@@ -173,6 +177,9 @@
   line-height: 36px;
   color: white;
   -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   /* cursor: pointer; */
 }
 
