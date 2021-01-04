@@ -211,6 +211,9 @@
   cursor: pointer;
   align-items: center;
   -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .project-home-item:hover {
   background-color: rgba(133, 140, 155, 0.08);

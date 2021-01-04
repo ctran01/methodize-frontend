@@ -2,7 +2,7 @@ import React from "react";
 import TasklistForm from "../Forms/TaskListForm";
 import "../../css/PopOutForms.css";
 import { RiCloseLine } from "react-icons/ri";
-const AddTasklistPopOut = ({ showSideTasklistForm, title }) => {
+const AddTasklistPopOut = ({ showSideTasklistForm, title, setTasklists }) => {
   return (
     <>
       <div className={"popout-form"}>
@@ -31,7 +31,10 @@ const AddTasklistPopOut = ({ showSideTasklistForm, title }) => {
                 />
               </div>
             </div>
-            <TasklistForm />
+            <TasklistForm
+              setTasklists={setTasklists}
+              showSideTasklistForm={showSideTasklistForm}
+            />
           </div>
         </div>
       </div>
