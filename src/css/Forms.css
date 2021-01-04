@@ -1,4 +1,9 @@
+.form-container {
+  width: 100%;
+}
+
 .form-header {
+  margin: 0;
 }
 
 .textarea {
@@ -50,4 +55,9 @@
   margin: 1px;
   font-size: 13px;
   width: 200px;
+}
+
+.form-button-container {
+  display: flex;
+  justify-content: flex-end;
 }

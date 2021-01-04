@@ -125,10 +125,10 @@ const TaskForm = ({ handleNewClose, clickClose, open, setTasklists }) => {
   });
 
   return (
-    <div>
+    <>
       {/* <Modal open={open} onClose={clickClose}>
         <div className="modal-container"> */}
-      <form className="task-form" onSubmit={handleSubmit(onSubmit)}>
+      <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
         {/* <h2 className="form-header">Add a Task</h2> */}
         <div className="form-top-container">
           <div className="form-top-left">
@@ -239,7 +239,7 @@ const TaskForm = ({ handleNewClose, clickClose, open, setTasklists }) => {
           ></textarea>
         </div>
 
-        <div style={{ display: "flex", marginLeft: "500px" }}>
+        <div className="form-button-container">
           <Button
             style={{ color: "#0093ff" }}
             onClick={clickClose}
@@ -252,7 +252,7 @@ const TaskForm = ({ handleNewClose, clickClose, open, setTasklists }) => {
           </Button>
         </div>
       </form>
-    </div>
+    </>
     //   </Modal>
     // </div>
   );

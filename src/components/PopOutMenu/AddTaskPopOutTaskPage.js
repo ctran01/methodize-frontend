@@ -31,7 +31,7 @@ const AddTaskPopOutTaskPage = ({ showSideTaskForm, title }) => {
                 />
               </div>
             </div>
-            <AddTaskForm />
+            <AddTaskForm showSideTaskForm={showSideTaskForm} />
           </div>
         </div>
       </div>

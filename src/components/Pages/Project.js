@@ -6,7 +6,7 @@ import Loader from "../Loader";
 import TopNavBar from "../NavigationBar/TopNavBar";
 import TaskListForm from "../Forms/TaskListForm";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import PopOutTaskDetails from "../tasks/PopOutTaskDetails";
+import PopOutTaskDetails from "../PopOutMenu/PopOutTaskDetails";
 import AddTasklistPopOut from "../PopOutMenu/AddTasklistPopOut";
 import AddTaskPopOutProjectPage from "../PopOutMenu/AddTaskPopOutProjectPage";
 import { Context as TaskContext } from "../../context/store/TaskStore";

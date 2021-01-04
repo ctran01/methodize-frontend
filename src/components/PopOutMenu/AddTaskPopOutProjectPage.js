@@ -17,7 +17,9 @@ const AddTaskPopOutProjectPage = ({ showSideTaskForm, title }) => {
         >
           <div className="popout-form-container">
             <div className="popout-form-top">
-              <div className="popout-form-header">{title}</div>
+              <div className="popout-form-header">
+                <h2 className="form-header">{title}</h2>
+              </div>
               <div className="popout-form-close-icon">
                 <RiCloseLine
                   style={{
@@ -29,7 +31,7 @@ const AddTaskPopOutProjectPage = ({ showSideTaskForm, title }) => {
                 />
               </div>
             </div>
-            <AddTaskProjectForm />
+            <AddTaskProjectForm showSideTaskForm={showSideTaskForm} />
           </div>
         </div>
       </div>
