@@ -155,7 +155,11 @@ const AddTaskProjectForm = ({
               </div>
               <div className="input-container">
                 <input
-                  style={{ margin: "10px 0" }}
+                  style={{
+                    margin: "0px 0px 14px 40px",
+                    width: "16px",
+                    height: "16px",
+                  }}
                   type="checkbox"
                   name="completed"
                   //here

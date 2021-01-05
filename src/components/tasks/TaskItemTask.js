@@ -102,7 +102,13 @@ const TaskItemTask = ({
               {task.Project.name}
             </p>
           </div>
-          <div>
+          <div
+            style={{
+              width: "73px",
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
             <p
               style={{
                 color: "gray",
