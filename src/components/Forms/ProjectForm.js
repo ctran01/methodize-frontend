@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Modal } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import { useForm } from "react-hook-form";
@@ -14,10 +14,15 @@ const ProjectForm = ({
   showSideProjectForm,
 }) => {
   const { register, handleSubmit, errors, clearErrors } = useForm();
+  const [projectName, setProjectName] = useState();
   const [teamState, teamdispatch] = useContext(TeamContext);
   const [projectState, projectdispatch] = useContext(ProjectContext);
+
   const userId = localStorage.getItem("userId");
 
+  const handleNameChange = (e) => {
+    setProjectName(e.target.value);
+  };
   const onSubmit = async ({ name, teamId }) => {
     await apiServer.post(`/team/${teamId}/project/`, {
       name,
@@ -58,31 +63,34 @@ const ProjectForm = ({
   });
 
   return (
-    <div>
+    <>
       {/* <Modal open={open} onClose={clickClose}>
         <div className="modal-container"> */}
       <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
         {/* <h2 className="form-header">Add a Project</h2> */}
         <div className="form-top-container">
-          <div className="form-top-left">
-            <label className="form-label">
-              Project Name
+          <div className="form-section">
+            <div className="label-container">
+              <label className="form-label">Project Name</label>
+            </div>
+            <div className="input-container">
               <input
                 name="name"
                 type="text"
                 placeholder={"Project Name"}
                 className="form-input"
-                onChange={clearError}
+                // onChange={clearError}
+                onChange={handleNameChange}
                 ref={register({ required: true })}
               ></input>
               {errors.name?.type === "required" && (
                 <p className="error-message">Please fill out project name</p>
               )}
-            </label>
-          </div>
-          <div className="form-top-middle">
-            <label className="form-label" style={{ width: "200px" }}>
-              Team
+            </div>
+            <div className="label-container">
+              <label className="form-label">Team</label>
+            </div>
+            <div className="input-container">
               <select
                 id="team-select"
                 name="teamId"
@@ -94,25 +102,31 @@ const ProjectForm = ({
               {errors.teamId?.type === "required" && (
                 <p className="error-message">Please choose a team</p>
               )}
-            </label>
+            </div>
           </div>
         </div>
 
         <div className="form-button-container">
           {/* marginLeft: "400px" */}
-          <Button
-            style={{ color: "#0093ff" }}
-            onClick={clickClose}
+          <button
+            className="cancel-button"
+            onClick={showSideProjectForm}
             color="primary"
           >
             Cancel
-          </Button>
-          <Button style={{ color: "#0093ff" }} type="submit" color="primary">
-            Add
-          </Button>
+          </button>
+          <button
+            className={
+              projectName ? "submit-button enabled" : "submit-button disabled"
+            }
+            disabled={projectName ? false : true}
+            type="submit"
+          >
+            Create Project
+          </button>
         </div>
       </form>
-    </div>
+    </>
     //   </Modal>
     // </div>
   );

@@ -14,6 +14,7 @@ const TaskListForm = ({ setTasklists, showSideTasklistForm }) => {
   const handleNameChange = (e) => {
     setTasklistName(e.target.value);
   };
+
   const onSubmit = async ({ name }) => {
     const userId = localStorage.getItem("userId");
     await apiServer.post(`/project/${projectId}/tasklist`, { name, userId });

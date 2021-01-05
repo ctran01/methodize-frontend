@@ -50,11 +50,12 @@ const HomePage = () => {
     return new Date(b.due_date) - new Date(a.due_date);
   });
 
+  const upcomingTasklist = sortedTaskList.slice(0, 4);
   // const upcomingTasklist = sortedTaskList
   //   .slice(sortedTaskList.length - 4)
   //   .reverse();
 
-  const taskList = sortedTaskList.map((task, i) => {
+  const taskList = upcomingTasklist.map((task, i) => {
     return (
       !task.completed && (
         <TaskItemHome
