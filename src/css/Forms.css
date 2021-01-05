@@ -28,6 +28,7 @@
   display: flex;
   flex: 1 1 auto;
   min-width: 1px;
+  margin-right: 10px;
 }
 .input-section {
   margin: 10px;

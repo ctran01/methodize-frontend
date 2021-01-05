@@ -9,10 +9,19 @@ import { Context as TasklistContext } from "../../context/store/TasklistStore";
 import { Context as TaskContext } from "../../context/store/TaskStore";
 
 //Form to add task from anywhere
-const TaskForm = ({ handleNewClose, clickClose, open, setTasklists }) => {
+const TaskForm = ({
+  handleNewClose,
+  clickClose,
+  open,
+  setTasklists,
+  showSideTaskForm,
+}) => {
   const { register, handleSubmit, errors, clearErrors } = useForm();
   const [projectError, setProjectError] = useState();
   const [assigneeError, setAssigneeError] = useState();
+  const [taskName, setTaskName] = useState();
+  const [dueDate, setDueDate] = useState();
+
   const [projectState, projectdispatch] = useContext(ProjectContext);
   const [taskState, taskdispatch] = useContext(TaskContext);
   const [projectUsers, setProjectUsers] = useState([
@@ -35,6 +44,12 @@ const TaskForm = ({ handleNewClose, clickClose, open, setTasklists }) => {
   //   setLoading(false);
   // };
 
+  const handleNameChange = (e) => {
+    setTaskName(e.target.value);
+  };
+  const handleDateChange = (e) => {
+    setDueDate(e.target.value);
+  };
   const getProjectUsers = async (event) => {
     var projectSelect = document.getElementById("project-select");
     var assigneeSelect = document.getElementById("assignee-select");
@@ -75,12 +90,6 @@ const TaskForm = ({ handleNewClose, clickClose, open, setTasklists }) => {
       description,
     });
 
-    // console.log(name);
-    // console.log(projectId);
-    // console.log(assigneeId);
-    // console.log(due_date);
-    // console.log(completed);
-    // console.log(description);
     // const res = await apiServer.get(
     //   `/project/user/${localStorage.getItem("userId")}`
     // );
@@ -97,7 +106,7 @@ const TaskForm = ({ handleNewClose, clickClose, open, setTasklists }) => {
       setTasklists(taskResponse.data);
     }
 
-    clickClose();
+    showSideTaskForm();
   };
 
   const renderedProjects = projectState.projects.map((project, i) => {
@@ -131,22 +140,28 @@ const TaskForm = ({ handleNewClose, clickClose, open, setTasklists }) => {
       <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
         {/* <h2 className="form-header">Add a Task</h2> */}
         <div className="form-top-container">
-          <div className="form-top-left">
-            <label className="form-label">
-              Task Name
+          <div className="form-section">
+            <div className="label-container">
+              <label className="form-label">Task Name</label>
+            </div>
+            <div className="input-container">
               <input
                 name="name"
                 type="text"
                 placeholder={"Task Name"}
                 className="form-input"
                 ref={register({ required: true })}
+                onChange={handleNameChange}
               ></input>
               {errors.name?.type === "required" && (
                 <p className="error-message">Please enter a task name</p>
               )}
-            </label>
-            <label className="form-label">
-              Project
+            </div>
+
+            <div className="label-container">
+              <label className="form-label">Project</label>
+            </div>
+            <div className="input-container">
               <select
                 id="project-select"
                 name="projectId"
@@ -161,11 +176,28 @@ const TaskForm = ({ handleNewClose, clickClose, open, setTasklists }) => {
               {errors.projectId?.type === "required" && (
                 <p className="error-message">Please choose a project</p>
               )}
-            </label>
+            </div>
           </div>
-          <div className="form-top-middle">
-            <label className="form-label">
-              Assignee
+          <div className="form-section">
+            <div className="label-container">
+              <label className="form-label">Due date</label>
+            </div>
+            <div className="input-container">
+              <input
+                className="form-input"
+                type="date"
+                name="due_date"
+                ref={register({ required: true })}
+                onChange={handleDateChange}
+              ></input>
+              {errors.due_date?.type === "required" && (
+                <p className="error-message">Please choose a Due Date</p>
+              )}
+            </div>
+            <div className="label-container">
+              <label className="form-label">Assignee</label>
+            </div>
+            <div className="input-container">
               <select
                 id="assignee-select"
                 name="assigneeId"
@@ -178,23 +210,30 @@ const TaskForm = ({ handleNewClose, clickClose, open, setTasklists }) => {
               {errors.assigneeId?.type === "required" && (
                 <p className="error-message">Please choose an assignee</p>
               )}
-            </label>
-            <label className="form-label">
-              Due date
-              <input
-                className="form-input"
-                type="date"
-                name="due_date"
-                ref={register({ required: true })}
-              ></input>
-              {errors.due_date?.type === "required" && (
-                <p className="error-message">Please choose a Due Date</p>
-              )}
-            </label>
+            </div>
           </div>
-          <div className="form-top-right">
-            <label className="form-label" style={{ paddingBottom: "10px" }}>
-              Tasklist
+          <div className="form-section">
+            <div className="label-container">
+              <label className="form-label">Mark Complete</label>
+            </div>
+            <div className="input-container">
+              <input
+                style={{
+                  margin: "9px 0px 18px 40px",
+                  width: "16px",
+                  height: "16px",
+                }}
+                type="checkbox"
+                name="completed"
+                defaultChecked={false}
+                ref={register}
+              ></input>
+            </div>
+
+            <div className="label-container">
+              <label className="form-label">Tasklist</label>
+            </div>
+            <div className="input-container">
               <select
                 id="tasklist-select"
                 name="tasklistId"
@@ -213,23 +252,10 @@ const TaskForm = ({ handleNewClose, clickClose, open, setTasklists }) => {
                   first before adding a task.
                 </p>
               )}
-            </label>
-            <label
-              className="form-label"
-              style={{ padding: "10px 5px 10px 0px" }}
-            >
-              Mark Complete
-              <input
-                style={{ margin: "10px 0" }}
-                type="checkbox"
-                name="completed"
-                defaultChecked={false}
-                ref={register}
-              ></input>
-            </label>
+            </div>
           </div>
         </div>
-        <div>
+        <div className="form-description-container">
           <textarea
             name="description"
             type="text"
@@ -240,16 +266,24 @@ const TaskForm = ({ handleNewClose, clickClose, open, setTasklists }) => {
         </div>
 
         <div className="form-button-container">
-          <Button
-            style={{ color: "#0093ff" }}
-            onClick={clickClose}
+          <button
+            className="cancel-button"
+            onClick={showSideTaskForm}
             color="primary"
           >
             Cancel
-          </Button>
-          <Button style={{ color: "#0093ff" }} type="submit" color="primary">
-            Add
-          </Button>
+          </button>
+          <button
+            className={
+              taskName && dueDate
+                ? "submit-button enabled"
+                : "submit-button disabled"
+            }
+            disabled={taskName && dueDate ? false : true}
+            type="submit"
+          >
+            Create Task
+          </button>
         </div>
       </form>
     </>
