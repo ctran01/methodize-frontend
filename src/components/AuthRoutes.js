@@ -4,6 +4,7 @@ import HomePage from "./Pages/Home";
 import TasksPage from "./Pages/Tasks";
 import ProjectPage from "./Pages/Project";
 import ProjectsPage from "./Pages/Projects";
+import NewProjectPage from "./Pages/NewProject";
 import TeamPage from "./Pages/Team";
 import NewTasksPage from "./Pages/NewTasks";
 import "../css/Navbar.css";

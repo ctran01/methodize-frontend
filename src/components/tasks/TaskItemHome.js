@@ -68,9 +68,9 @@ const TaskItemHome = ({ task, showSideTaskDetails, sideTaskDetails }) => {
   );
   return (
     <>
-      <div className="task-home-item" onClick={setTaskPopOut}>
+      <div className="task-home-item">
         <div className="task-home-item-inner-container">
-          <div className="task-home-item-inner-left">
+          <div className="task-home-item-inner-left" onClick={setTaskPopOut}>
             <div className="task-home-item-icon-container">
               {/* {task.completed ? (
                 <RiCheckboxCircleLine

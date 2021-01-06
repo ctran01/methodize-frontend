@@ -50,7 +50,7 @@ const HomePage = () => {
     return new Date(b.due_date) - new Date(a.due_date);
   });
 
-  const upcomingTasklist = sortedTaskList.slice(0, 4);
+  const upcomingTasklist = sortedTaskList.slice(0, 9);
   // const upcomingTasklist = sortedTaskList
   //   .slice(sortedTaskList.length - 4)
   //   .reverse();
@@ -68,11 +68,11 @@ const HomePage = () => {
     );
   });
 
-  const projectLists = projectState.projects.slice(0, 4);
+  const projectLists = projectState.projects.slice(0, 5);
 
   const projectTiles = projectLists.map((project, i) => {
-    return <ProjectItemHome project={project} key={i} id={project.id} />;
-    // return <ProjectTile project={project} key={i} id={project.id} />;
+    // return <ProjectItemHome project={project} key={i} id={project.id} />;
+    return <ProjectTile project={project} key={i} id={project.id} />;
   });
 
   return (
@@ -81,12 +81,10 @@ const HomePage = () => {
       <div className="home-container">
         <div className="home-main-container">
           <div className="home-welcome-header">
-            <div>
-              <p className="home-welcome-message">Hi, {userState.user.name}!</p>
-              <p style={{ display: "flex", alignSelf: "center" }}>
-                Welcome to your dashboard.
-              </p>
-            </div>
+            <p className="home-welcome-message">Hi, {userState.user.name}!</p>
+            <p style={{ display: "flex", margin: "0", alignSelf: "center" }}>
+              Welcome to your dashboard.
+            </p>
           </div>
           <div className="home-main-content-container">
             <div className="home-tasks-container">
@@ -138,26 +136,28 @@ const HomePage = () => {
                     Projects
                   </h2>
                 </div>
-                <div>
+                {/* <div>
                   <Link
                     to="/projects"
                     style={{ textDecoration: "none", color: "blue" }}
                   >
                     <p style={{ fontSize: "14px" }}>See all my projects</p>
                   </Link>
-                </div>
+                </div> */}
               </div>
               <div className="home-projects--list">
                 {/* call get all projects for specific user route */}
                 {projectTiles}
                 <div
-                  className="new-home-item-container"
+                  // className="new-home-item-container"
                   onClick={showSideProjectForm}
+                  style={{ height: "60%" }}
                 >
-                  <div className="new-home-icon-container">
+                  {/* <div className="new-home-icon-container">
                     <Add className="new-home-item-icon" />
                   </div>
-                  <div className="new-home-item-name">Create Project</div>
+                  <div className="new-home-item-name">Create Project</div> */}
+                  <NewProjectTile />
                 </div>
               </div>
             </div>

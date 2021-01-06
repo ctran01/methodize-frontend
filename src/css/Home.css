@@ -1,34 +1,48 @@
 .home-welcome-header {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
+  /* margin-left: 269px; */
+  margin-top: 10px;
+  flex-direction: column;
+  align-self: center;
+  width: 77%;
 }
 
 .home-welcome-message {
   color: #151b26;
   font-weight: 500;
   font-size: 24px;
+  margin: 0;
+  display: flex;
+  align-self: center;
 }
 .home-tasks-container {
-  height: 175px;
+  width: 80%;
+  height: 100%;
   /* margin: 32px auto; */
   margin-top: 32px;
 }
 
 .home-projects-container {
-  height: 175px;
+  width: 48%;
+  /* height: 175px; */
+  height: 60%;
   /* margin: 32px auto; */
-  margin: 32px;
+  /* margin: 32px; */
+  margin-top: 32px;
 }
 
 .home-main-container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  align-items: center;
+  /* align-items: center; */
 }
 .home-main-content-container {
   display: flex;
   flex-direction: row;
+  height: 100%;
+  align-self: center;
 }
 
 .home-tasks-header,
@@ -45,10 +59,11 @@
 }
 
 .home-projects--list {
-  /* display: flex;
-  flex-flow: row wrap; */
-  /* padding-top: 20px; */
+  display: flex;
+  flex-flow: row wrap;
+  padding-top: 20px;
   margin: 0px 25px;
+  width: 110%;
 }
 
 .home-tasks--list {
@@ -57,6 +72,10 @@
   /* padding-top: 20px; */
   /* overflow: hidden; */
   margin: 0px 25px;
+  display: flex;
+  flex-flow: column wrap;
+  height: 530px;
+  padding-top: 39px;
 }
 
 .home-container {
