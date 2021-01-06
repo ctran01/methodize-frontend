@@ -56,6 +56,14 @@ const TaskItemHome = ({ task, showSideTaskDetails, sideTaskDetails }) => {
     }
   };
 
+  const handleTaskDelete = async (e) => {
+    // console.log(task.id);
+    handleMenuClose();
+    await apiServer.delete(`/task/${task.id}`);
+    const id = localStorage.getItem("userId");
+    const res = await apiServer.get(`/task/user/${id}`);
+    await taskDispatch({ type: "get_user_tasks", payload: res.data });
+  };
   //import component as body such as forms, details, etc
   const body = (
     <div className="modal-container">
@@ -110,7 +118,7 @@ const TaskItemHome = ({ task, showSideTaskDetails, sideTaskDetails }) => {
             open={Boolean(anchorEl)}
             onClose={handleMenuClose}
           >
-            <MenuItem onClick={handleMenuClose}>Delete</MenuItem>
+            <MenuItem onClick={handleTaskDelete}>Delete</MenuItem>
           </Menu>
         </div>
       </div>
