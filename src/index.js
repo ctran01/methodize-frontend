@@ -10,5 +10,5 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-//"start": "node --max_old_space_size=5120 node_modules/.bin/react-scripts start",
-// "build": "node --max_old_space_size=5120 node_modules/.bin/react-scripts build",
+//"start": "node --max_old_space_size=6144 node_modules/.bin/react-scripts start",
+// "build": "node --max_old_space_size=6144 node_modules/.bin/react-scripts build",
