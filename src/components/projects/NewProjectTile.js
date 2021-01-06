@@ -18,18 +18,13 @@ const NewProjectTile = ({ showSideProjectForm }) => {
     </div>
   );
   return (
-    <div>
-      <div className="project-tile-container" onClick={showSideProjectForm}>
-        <div className="project-tile-box">
-          <div className="new-project-tile-icon-container">
-            <FiPlus className="new-project-tile-icon" />
-          </div>
+    <div className="project-tile-container" onClick={showSideProjectForm}>
+      <div className="project-tile-box">
+        <div className="new-project-tile-icon-container">
+          <FiPlus className="new-project-tile-icon" />
         </div>
-        <div className="project-tile-name">New Project</div>
       </div>
-      {/* <Modal open={open} onClose={closeModal}>
-        {modalBody}
-      </Modal> */}
+      <div className="project-tile-name">New Project</div>
     </div>
   );
 };

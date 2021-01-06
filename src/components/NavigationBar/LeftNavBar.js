@@ -57,7 +57,10 @@ const LeftNavBar = ({ showSidebar, sidebar }) => {
         <div className={sidebar ? "nav-menu active" : "nav-menu collapsed"}>
           <div className="left-nav-menu-container">
             <div className="left-nav-menu-top">
-              <div className="logo" style={{ color: "white" }}>
+              <div
+                className="logo"
+                style={{ color: "white", marginLeft: "10px" }}
+              >
                 <Logo style={{}} />
               </div>
               <div className="collapse-menu-icon-container">

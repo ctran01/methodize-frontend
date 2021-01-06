@@ -15,20 +15,12 @@ const ColumnTaskItem = ({
   showSideTaskDetails,
   sideTaskDetails,
 }) => {
-  const [openTaskDetailForm, setOpenTaskDetailForm] = useState(false);
   const [taskState, taskDispatch] = useContext(TaskContext);
 
   const date = moment(
     task.due_date.substring(0, 10).replace("-", ""),
     "YYYYMMDD"
   );
-  const openTaskDetailFormModal = () => {
-    setOpenTaskDetailForm(true);
-  };
-
-  const closeTaskDetailFormModal = () => {
-    setOpenTaskDetailForm(false);
-  };
 
   const setTaskPopOut = async () => {
     if (sideTaskDetails === false) {
@@ -87,22 +79,6 @@ const ColumnTaskItem = ({
           </div>
         )}
       </Draggable>
-      <div>
-        {/* <Modal
-          open={openTaskDetailForm}
-          onClose={closeTaskDetailFormModal}
-          style={{ backgroundColor: "white" }}
-        >
-          <div className="modal-container">
-            <TaskDetailsForm
-              // setTasks={setTasks}
-              // setTasklistTasks={setTasklistTasks}
-              task={task}
-              closeModal={closeTaskDetailFormModal}
-            />
-          </div>
-        </Modal> */}
-      </div>
     </div>
   );
 };

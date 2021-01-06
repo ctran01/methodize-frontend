@@ -1,7 +1,7 @@
 .project-tile-container {
   border-radius: 30px;
   box-sizing: border-box;
-  height: 220px;
+  height: 170px;
   min-width: 152px;
   padding: 16px 0;
   width: 152px;
@@ -144,6 +144,7 @@
 
 .project-tile--link {
   text-decoration: none;
+  height: 25%;
 }
 
 .project-tile--link:visited {
