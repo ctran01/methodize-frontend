@@ -367,7 +367,7 @@ const ProjectPage = () => {
             direction="horizontal"
             type="column"
           >
-            {(provided, snapshot) => (
+            {(provided) => (
               <div
                 className="project-container"
                 {...provided.droppableProps}

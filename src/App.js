@@ -46,10 +46,7 @@ const App = () => {
           <TeamStore>
             <TasklistStore>
               <TaskStore>
-                {/* {state.auth ? <Routes /> : <LandingRoutes/> } */}
-                {/* <Route exact path="/" component={LandingPage}></Route> */}
                 <Routes />
-                {/* {state.auth ? <Route path="/" component={Home} /> : <Routes />} */}
               </TaskStore>
             </TasklistStore>
           </TeamStore>

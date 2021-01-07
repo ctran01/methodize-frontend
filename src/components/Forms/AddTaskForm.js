@@ -231,7 +231,7 @@ const TaskForm = ({
             </div>
 
             <div className="label-container">
-              <label className="form-label">Tasklist</label>
+              <label className="form-label">Column</label>
             </div>
             <div className="input-container">
               <select
@@ -243,13 +243,20 @@ const TaskForm = ({
                 })}
               >
                 {/* <option value={0}>Choose a project first</option> */}
-                {renderedTasklists}
+                {projectTaskLists.length === 0 ? (
+                  <option>
+                    You need to make a column in your project first.
+                  </option>
+                ) : (
+                  renderedTasklists
+                )}
+                {/* {renderedTasklists} */}
               </select>
               {/* <p className="error-message">{taskListError}</p> */}
               {errors.tasklistId?.type === "required" && (
                 <p className="error-message">
-                  Please choose a tasklist. You may need to make a tasklist
-                  first before adding a task.
+                  Please choose a column. You may need to make a column in your
+                  project first before adding a task.
                 </p>
               )}
             </div>
