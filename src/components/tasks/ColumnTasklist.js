@@ -56,8 +56,8 @@ const ColumnTasklist = ({
   };
 
   const handleTasklistDelete = async (e) => {
-    console.log(tasklist.id);
-
+    // console.log(tasklist.id);
+    handleMenuClose();
     await apiServer.delete(`/tasklist/${tasklist.id}`);
     const resp = await apiServer.get(`/project/${projectId}/tasklists`);
     setTasklists(resp.data);

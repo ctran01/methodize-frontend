@@ -10,7 +10,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { BiCheck } from "react-icons/bi";
 
-const PopOutTaskDetails = ({ showSideTaskDetails, sideTaskDetails }) => {
+const PopOutTaskDetailsHome = ({ showSideTaskDetails, sideTaskDetails }) => {
   const [taskState, taskdispatch] = useContext(TaskContext);
   const { selectedTask: task } = taskState;
   const [projectState, projectdispatch] = useContext(ProjectContext);
@@ -194,7 +194,10 @@ const PopOutTaskDetails = ({ showSideTaskDetails, sideTaskDetails }) => {
 
   return (
     <>
-      <div className={"task-detail-menu active"}>
+      <div
+        className={"task-detail-menu active"}
+        style={{ width: "50%", height: "96%" }}
+      >
         <div
           style={{
             display: "flex",
@@ -452,4 +455,4 @@ const PopOutTaskDetails = ({ showSideTaskDetails, sideTaskDetails }) => {
   );
 };
 
-export default PopOutTaskDetails;
+export default PopOutTaskDetailsHome;

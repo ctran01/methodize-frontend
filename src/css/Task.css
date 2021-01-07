@@ -97,7 +97,7 @@
   margin-right: 16px;
 }
 .task-home-item:hover {
-  background-color: rgba(133, 140, 155, 0.08);
+  background-color: rgba(133, 140, 155, -1.92);
 }
 
 .task-project-item {
@@ -157,6 +157,7 @@
   width: 150px;
   text-overflow: ellipsis;
   margin-left: 25px;
+  margin-right: 63px;
 }
 
 .task-home-item-inner-container {

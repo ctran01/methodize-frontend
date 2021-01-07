@@ -59,7 +59,11 @@ const LeftNavBar = ({ showSidebar, sidebar }) => {
             <div className="left-nav-menu-top">
               <div
                 className="logo"
-                style={{ color: "white", marginLeft: "10px" }}
+                style={{
+                  color: "white",
+                  marginLeft: "10px",
+                  cursor: "default",
+                }}
               >
                 <Logo style={{}} />
               </div>
@@ -110,7 +114,7 @@ const LeftNavBar = ({ showSidebar, sidebar }) => {
                 </div>
               </NavLink>
 
-              <NavLink
+              {/* <NavLink
                 to="/projects"
                 className="left-nav-bar-main-link"
                 activeClassName="navlink--active"
@@ -121,7 +125,7 @@ const LeftNavBar = ({ showSidebar, sidebar }) => {
                     <p className="left-nav-bar-link-title">Projects</p>
                   </div>
                 </div>
-              </NavLink>
+              </NavLink> */}
             </div>
             <div className="teams-items-container">
               <div className="teams-items-header" style={{ display: "flex" }}>

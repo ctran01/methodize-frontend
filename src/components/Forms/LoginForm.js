@@ -8,16 +8,44 @@ const LoginForm = () => {
 
   const [errorMessage, setErrorMessage] = useState("");
   const { setAuth, setEmail, setUserId, setUser } = useContext(AuthContext);
-  const [formEmail, setFormEmail] = useState();
-  const [password, setPassword] = useState();
+  const [formEmail, setFormEmail] = useState("");
+  const [password, setPassword] = useState("");
   const onSubmit = async ({ email, password }) => {
-    if (!email && !password) {
-      email = "demo@email.com";
-      password = "password";
-      setFormEmail(email);
-      setPassword(password);
-    }
+    // if (!email && !password) {
+    //   email = "demo@email.com";
+    //   password = "password";
+    //   setFormEmail(email);
+    //   setPassword(password);
+    // }
 
+    try {
+      const res = await apiServer.post("/login", { email, password });
+
+      localStorage.setItem("email", res.data.email);
+      localStorage.setItem("userId", res.data.id);
+      localStorage.setItem("token", res.data.token);
+      setErrorMessage("");
+      setAuth(res.data.token);
+      // setUserId(res.data.id);
+      // setEmail(res.data.email);
+      // setUser(res.data);
+    } catch (err) {
+      setErrorMessage("The provided credentials were invalid");
+    }
+  };
+
+  const handleEmailChange = (e) => {
+    setFormEmail(e.target.value);
+  };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    setErrorMessage("");
+
+    const email = "demo@email.com";
+    const password = "password";
     try {
       const res = await apiServer.post("/login", { email, password });
 
@@ -30,31 +58,10 @@ const LoginForm = () => {
       setEmail(res.data.email);
       setUser(res.data);
     } catch (err) {
-      setErrorMessage("The provided credentials were invalid");
+      console.log(err.status);
+      setErrorMessage("Something went wrong");
     }
   };
-
-  // const demoUser = async () => {
-  //   setErrorMessage("");
-
-  //   const email = "demo@email.com";
-  //   const password = "password";
-  //   try {
-  //     const res = await apiServer.post("/login", { email, password });
-
-  //     localStorage.setItem("email", res.data.email);
-  //     localStorage.setItem("userId", res.data.id);
-  //     localStorage.setItem("token", res.data.token);
-  //     setErrorMessage("");
-  //     setAuth(res.data.token);
-  //     setUserId(res.data.id);
-  //     setEmail(res.data.email);
-  //     setUser(res.data);
-  //   } catch (err) {
-  //     console.log(err.status);
-  //     setErrorMessage("Something went wrong");
-  //   }
-  // };
 
   return (
     <form className="login-page--form" onSubmit={handleSubmit(onSubmit)}>
@@ -64,6 +71,7 @@ const LoginForm = () => {
           name="email"
           type="email"
           value={formEmail}
+          onChange={handleEmailChange}
           ref={register({ required: true })}
         ></input>
         {errors.email?.type === "required" && (
@@ -78,6 +86,7 @@ const LoginForm = () => {
           name="password"
           type="password"
           value={password}
+          onChange={handlePasswordChange}
           ref={register({ required: true })}
         ></input>
         {errors.password?.type === "required" && (
@@ -88,7 +97,7 @@ const LoginForm = () => {
       {errorMessage ? (
         <p style={{ color: "red", margin: "1px" }}>{errorMessage}</p>
       ) : null}
-      <button onClick={onSubmit}>Guest Login</button>
+      <button onClick={demoLogin}>Guest Login</button>
     </form>
   );
 };

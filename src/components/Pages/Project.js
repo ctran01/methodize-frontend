@@ -18,7 +18,7 @@ import Add from "../../assets/Add";
 
 const ProjectPage = ({ sidebar }) => {
   const { projectId, projectName, teamId } = useParams();
-  const [taskState, taskDispatch] = useContext(TaskContext);
+  const [taskState, taskdispatch] = useContext(TaskContext);
   const [openTasklistForm, setOpenTasklistForm] = useState(false);
   const [tasks, setTasks] = useState();
   const [project, setProject] = useState();
@@ -237,7 +237,7 @@ const ProjectPage = ({ sidebar }) => {
 
   useEffect(() => {
     getProject();
-    taskDispatch({ type: "get_selected_task", payload: null });
+    taskdispatch({ type: "get_selected_task", payload: null });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setProject, setTasklists, setTasks]);
 
