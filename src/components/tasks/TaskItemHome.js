@@ -20,7 +20,7 @@ const TaskItemHome = ({ task, showSideTaskDetails, sideTaskDetails }) => {
     "YYYYMMDD"
   );
 
-  const [taskState, taskDispatch] = useContext(TaskContext);
+  const [taskState, taskdispatch] = useContext(TaskContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
   const openModal = () => {
@@ -42,16 +42,16 @@ const TaskItemHome = ({ task, showSideTaskDetails, sideTaskDetails }) => {
     if (sideTaskDetails === false) {
       showSideTaskDetails();
       //---
-      taskDispatch({ type: "get_selected_task", payload: null });
+      taskdispatch({ type: "get_selected_task", payload: null });
       const res = await apiServer.get(`/task/${task.id}`);
-      await taskDispatch({ type: "get_selected_task", payload: res.data });
+      await taskdispatch({ type: "get_selected_task", payload: res.data });
       // setInitialLoad(false);
       console.log("if popout");
     } else {
       console.log("else popout");
-      taskDispatch({ type: "get_selected_task", payload: null });
+      taskdispatch({ type: "get_selected_task", payload: null });
       const res = await apiServer.get(`/task/${task.id}`);
-      await taskDispatch({ type: "get_selected_task", payload: res.data });
+      await taskdispatch({ type: "get_selected_task", payload: res.data });
       // setInitialLoad(false);
     }
   };
@@ -62,7 +62,7 @@ const TaskItemHome = ({ task, showSideTaskDetails, sideTaskDetails }) => {
     await apiServer.delete(`/task/${task.id}`);
     const id = localStorage.getItem("userId");
     const res = await apiServer.get(`/task/user/${id}`);
-    await taskDispatch({ type: "get_user_tasks", payload: res.data });
+    await taskdispatch({ type: "get_user_tasks", payload: res.data });
   };
   //import component as body such as forms, details, etc
   const body = (

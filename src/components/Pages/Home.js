@@ -11,12 +11,12 @@ import homeImage from "../../assets/codeVersion.png";
 import Add from "../../assets/Add";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import ProjectItemHome from "../projects/ProjectItemHome";
 import AddProjectPopOut from "../PopOutMenu/AddProjectPopOut";
 import AddTaskPopOutTaskPage from "../PopOutMenu/AddTaskPopOutTaskPage";
-import PopOutTaskDetails from "../PopOutMenu/PopOutTaskDetails";
+import PopOutTaskDetailsHome from "../PopOutMenu/PopOutTaskDetailsHome";
 
 const HomePage = () => {
+  // debugger;
   const [userState] = useContext(UserContext);
   const [taskState] = useContext(TaskContext);
   const [projectState] = useContext(ProjectContext);
@@ -80,63 +80,100 @@ const HomePage = () => {
       <TopNavBarHome />
       <div className="home-container">
         <div className="home-main-container">
-          <div className="home-welcome-header">
-            <p className="home-welcome-message">Hi, {userState.user.name}!</p>
-            <p style={{ display: "flex", margin: "0", alignSelf: "center" }}>
-              Welcome to your dashboard.
-            </p>
-          </div>
-          <div className="home-main-content-container">
-            <div className="home-tasks-container">
-              <div className="home-tasks-header">
-                <div>
-                  <h2
-                    style={{
-                      color: "#151b26",
-                      fontWeight: 500,
-                      fontSize: "20px",
-                    }}
-                  >
-                    Tasks Due Soon
-                  </h2>
-                </div>
-                <div>
-                  <Link
-                    to="/tasks"
-                    style={{ textDecoration: "none", color: "blue" }}
-                  >
-                    <p style={{ fontSize: "14px" }}>See all my tasks</p>
-                  </Link>
-                </div>
-              </div>
-              <div className="home-tasks--list">
-                {/* call get all tasks for specific user route */}
-                {taskList}
-                <div
-                  className="new-home-item-container"
-                  onClick={showSideTaskForm}
+          <div
+            className="home-main-content-container"
+            style={{ display: "flex" }}
+          >
+            <div
+              className="home-inner-container"
+              style={{
+                background: "transparent",
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
+                width: "100%",
+              }}
+            >
+              <div className="home-welcome-header">
+                <p className="home-welcome-message">
+                  Hi, {userState.user.name}!
+                </p>
+                <p
+                  style={{ display: "flex", margin: "0", alignSelf: "center" }}
                 >
-                  <div className="new-home-icon-container">
-                    <Add className="new-home-item-icon" />
-                  </div>
-                  <div className="new-home-item-name">Create Task</div>
-                </div>
+                  Welcome to your dashboard.
+                </p>
               </div>
-            </div>
-            <div className="home-projects-container">
-              <div className="home-projects-header">
-                <div>
-                  <h2
-                    style={{
-                      color: "#151b26",
-                      fontWeight: 500,
-                      fontSize: "20px",
-                    }}
-                  >
-                    Projects
-                  </h2>
+              <div
+                className="home-task-project-container"
+                style={{ display: "flex", justifyContent: "center" }}
+              >
+                <div
+                  className={
+                    upcomingTasklist.length < 5
+                      ? "home-tasks-container--smaller"
+                      : sideTaskForm || sideProjectForm || sideTaskDetails
+                      ? "home-tasks-container--small"
+                      : "home-tasks-container"
+                  }
+                >
+                  <div className="home-tasks-header">
+                    <div>
+                      <h2
+                        style={{
+                          color: "#151b26",
+                          fontWeight: 500,
+                          fontSize: "20px",
+                        }}
+                      >
+                        Tasks Due Soon
+                      </h2>
+                    </div>
+                    <div>
+                      <Link
+                        to="/tasks"
+                        style={{ textDecoration: "none", color: "blue" }}
+                      >
+                        <p style={{ fontSize: "14px" }}>See all my tasks</p>
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="home-tasks--list">
+                    {/* call get all tasks for specific user route */}
+                    {taskList}
+                    <div
+                      className="new-home-item-container"
+                      onClick={showSideTaskForm}
+                    >
+                      <div className="new-home-icon-container">
+                        <Add className="new-home-item-icon" />
+                      </div>
+                      <div className="new-home-item-name">Create Task</div>
+                    </div>
+                  </div>
                 </div>
-                {/* <div>
+                <div
+                  className={
+                    upcomingTasklist.length < 5
+                      ? "home-tasks-container--smaller"
+                      : sideTaskForm || sideProjectForm || sideTaskDetails
+                      ? "home-projects-container--small"
+                      : "home-projects-container"
+                  }
+                >
+                  <div className="home-projects-header">
+                    <div>
+                      <h2
+                        style={{
+                          color: "#151b26",
+                          fontWeight: 500,
+                          fontSize: "20px",
+                        }}
+                      >
+                        Projects
+                      </h2>
+                    </div>
+                    {/* <div>
                   <Link
                     to="/projects"
                     style={{ textDecoration: "none", color: "blue" }}
@@ -144,44 +181,46 @@ const HomePage = () => {
                     <p style={{ fontSize: "14px" }}>See all my projects</p>
                   </Link>
                 </div> */}
-              </div>
-              <div className="home-projects--list">
-                {/* call get all projects for specific user route */}
-                {projectTiles}
-                <div
-                  // className="new-home-item-container"
-                  onClick={showSideProjectForm}
-                  style={{ height: "60%" }}
-                >
-                  {/* <div className="new-home-icon-container">
+                  </div>
+                  <div className="home-projects--list">
+                    {/* call get all projects for specific user route */}
+                    {projectTiles}
+                    <div
+                      // className="new-home-item-container"
+                      onClick={showSideProjectForm}
+                      style={{ height: "60%" }}
+                    >
+                      {/* <div className="new-home-icon-container">
                     <Add className="new-home-item-icon" />
                   </div>
                   <div className="new-home-item-name">Create Project</div> */}
-                  <NewProjectTile />
+                      <NewProjectTile />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            {sideTaskForm ? (
+              <AddTaskPopOutTaskPage
+                showSideTaskForm={showSideTaskForm}
+                title={"Add a Task"}
+              />
+            ) : null}
+            {sideProjectForm ? (
+              <AddProjectPopOut
+                showSideProjectForm={showSideProjectForm}
+                // setTeamProjects={setTeamProjects}
+                title={"Add Project"}
+              />
+            ) : null}
+            {sideTaskDetails && taskState.selectedTask ? (
+              <PopOutTaskDetailsHome
+                showSideTaskDetails={showSideTaskDetails}
+                sideTaskDetails={sideTaskDetails}
+              />
+            ) : null}
           </div>
         </div>
-        {sideTaskForm ? (
-          <AddTaskPopOutTaskPage
-            showSideTaskForm={showSideTaskForm}
-            title={"Add a Task"}
-          />
-        ) : null}
-        {sideProjectForm ? (
-          <AddProjectPopOut
-            showSideProjectForm={showSideProjectForm}
-            // setTeamProjects={setTeamProjects}
-            title={"Add Project"}
-          />
-        ) : null}
-        {sideTaskDetails && taskState.selectedTask ? (
-          <PopOutTaskDetails
-            showSideTaskDetails={showSideTaskDetails}
-            sideTaskDetails={sideTaskDetails}
-          />
-        ) : null}
       </div>
     </>
   );

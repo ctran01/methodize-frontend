@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import TaskDetailsForm from "../tasks/TaskDetailsForm";
 import { Modal, responsiveFontSizes } from "@material-ui/core";
@@ -15,7 +15,7 @@ const ColumnTaskItem = ({
   showSideTaskDetails,
   sideTaskDetails,
 }) => {
-  const [taskState, taskDispatch] = useContext(TaskContext);
+  const [taskState, taskdispatch] = useContext(TaskContext);
 
   const date = moment(
     task.due_date.substring(0, 10).replace("-", ""),
@@ -26,13 +26,13 @@ const ColumnTaskItem = ({
     if (sideTaskDetails === false) {
       showSideTaskDetails();
       //---
-      taskDispatch({ type: "get_selected_task", payload: null });
+      taskdispatch({ type: "get_selected_task", payload: null });
       const res = await apiServer.get(`/task/${task.id}`);
-      await taskDispatch({ type: "get_selected_task", payload: res.data });
+      await taskdispatch({ type: "get_selected_task", payload: res.data });
     } else {
-      taskDispatch({ type: "get_selected_task", payload: null });
+      taskdispatch({ type: "get_selected_task", payload: null });
       const res = await apiServer.get(`/task/${task.id}`);
-      await taskDispatch({ type: "get_selected_task", payload: res.data });
+      await taskdispatch({ type: "get_selected_task", payload: res.data });
     }
   };
 

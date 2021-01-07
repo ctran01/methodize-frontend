@@ -18,7 +18,7 @@ const TaskItemTask = ({
   sideTaskDetails,
   setInitialLoad,
 }) => {
-  const [taskState, taskDispatch] = useContext(TaskContext);
+  const [taskState, taskdispatch] = useContext(TaskContext);
   const [open, setOpen] = useState(false);
 
   const date = moment(
@@ -37,16 +37,16 @@ const TaskItemTask = ({
     if (sideTaskDetails === false) {
       showSideTaskDetails();
       //---
-      taskDispatch({ type: "get_selected_task", payload: null });
+      taskdispatch({ type: "get_selected_task", payload: null });
       const res = await apiServer.get(`/task/${task.id}`);
-      await taskDispatch({ type: "get_selected_task", payload: res.data });
+      await taskdispatch({ type: "get_selected_task", payload: res.data });
       setInitialLoad(false);
       console.log("if popout");
     } else {
       console.log("else popout");
-      taskDispatch({ type: "get_selected_task", payload: null });
+      taskdispatch({ type: "get_selected_task", payload: null });
       const res = await apiServer.get(`/task/${task.id}`);
-      await taskDispatch({ type: "get_selected_task", payload: res.data });
+      await taskdispatch({ type: "get_selected_task", payload: res.data });
       setInitialLoad(false);
     }
   };
