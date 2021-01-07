@@ -131,6 +131,7 @@
   color: #9ca6af;
   fill: #9ca6af;
   margin-right: 15px;
+  cursor: pointer;
 }
 .submit-button.disabled {
   align-items: center;

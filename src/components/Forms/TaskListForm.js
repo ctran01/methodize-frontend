@@ -25,6 +25,13 @@ const TaskListForm = ({ setTasklists, showSideTasklistForm }) => {
     showSideTasklistForm();
   };
 
+  const handleUserKeyPress = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      // e.preventDefault();
+      handleSubmit(onSubmit)();
+    }
+  };
+
   return (
     <form
       className="form-container"
@@ -45,6 +52,7 @@ const TaskListForm = ({ setTasklists, showSideTasklistForm }) => {
               className="form-input"
               ref={register({ required: true })}
               onChange={handleNameChange}
+              onKeyPress={handleUserKeyPress}
             ></input>
             {errors.name?.type === "required" && (
               <p className="error-message">Please enter a column name</p>

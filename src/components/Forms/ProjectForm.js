@@ -23,6 +23,12 @@ const ProjectForm = ({
   const handleNameChange = (e) => {
     setProjectName(e.target.value);
   };
+  const handleUserKeyPress = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      // e.preventDefault();
+      handleSubmit(onSubmit)();
+    }
+  };
   const onSubmit = async ({ name, teamId }) => {
     await apiServer.post(`/team/${teamId}/project/`, {
       name,
@@ -81,6 +87,7 @@ const ProjectForm = ({
                 className="form-input"
                 // onChange={clearError}
                 onChange={handleNameChange}
+                onKeyPress={handleUserKeyPress}
                 ref={register({ required: true })}
               ></input>
               {errors.name?.type === "required" && (
