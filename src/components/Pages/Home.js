@@ -7,7 +7,6 @@ import TaskItemHome from "../tasks/TaskItemHome";
 import TopNavBarHome from "../NavigationBar/TopNavBarHome";
 import ProjectTile from "../projects/ProjectTile";
 import NewProjectTile from "../projects/NewProjectTile";
-import homeImage from "../../assets/codeVersion.png";
 import Add from "../../assets/Add";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
