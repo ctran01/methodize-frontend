@@ -154,7 +154,7 @@ const HomePage = () => {
                 <div
                   className={
                     upcomingTasklist.length < 5
-                      ? "home-tasks-container--smaller"
+                      ? "home-projects-container--smaller"
                       : sideTaskForm || sideProjectForm || sideTaskDetails
                       ? "home-projects-container--small"
                       : "home-projects-container"

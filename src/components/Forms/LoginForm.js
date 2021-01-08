@@ -10,6 +10,8 @@ const LoginForm = () => {
   const { setAuth, setEmail, setUserId, setUser } = useContext(AuthContext);
   const [formEmail, setFormEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [demoLoading, setDemoLoading] = useState(false);
   const onSubmit = async ({ email, password }) => {
     // if (!email && !password) {
     //   email = "demo@email.com";
@@ -17,7 +19,7 @@ const LoginForm = () => {
     //   setFormEmail(email);
     //   setPassword(password);
     // }
-
+    setLoading(true);
     try {
       const res = await apiServer.post("/login", { email, password });
 
@@ -30,6 +32,7 @@ const LoginForm = () => {
       // setEmail(res.data.email);
       // setUser(res.data);
     } catch (err) {
+      setLoading(false);
       setErrorMessage("The provided credentials were invalid");
     }
   };
@@ -43,7 +46,7 @@ const LoginForm = () => {
   const demoLogin = async (e) => {
     e.preventDefault();
     setErrorMessage("");
-
+    setDemoLoading(true);
     const email = "demo@email.com";
     const password = "password";
     try {
@@ -58,6 +61,7 @@ const LoginForm = () => {
       setEmail(res.data.email);
       setUser(res.data);
     } catch (err) {
+      setLoading(false);
       console.log(err.status);
       setErrorMessage("Something went wrong");
     }
@@ -93,11 +97,13 @@ const LoginForm = () => {
           <p style={{ color: "red", margin: "1px" }}>Please enter a password</p>
         )}
       </div>
-      <button type="submit">Login</button>
+      <button type="submit">{loading ? "Logging in.." : "Login"}</button>
       {errorMessage ? (
         <p style={{ color: "red", margin: "1px" }}>{errorMessage}</p>
       ) : null}
-      <button onClick={demoLogin}>Guest Login</button>
+      <button onClick={demoLogin}>
+        {demoLoading ? "Logging in as demo user" : "Demo User"}
+      </button>
     </form>
   );
 };
