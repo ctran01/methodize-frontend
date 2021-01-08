@@ -71,6 +71,7 @@
   margin-right: 24px;
   padding: 8px 0;
   position: relative;
+  justify-content: space-between;
 }
 .team-content-left-members--list {
   margin: 5px 24px;

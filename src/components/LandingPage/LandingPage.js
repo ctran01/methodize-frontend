@@ -1,8 +1,6 @@
 import React from "react";
 import "../../css/LandingPage.css";
-import logo from "../../assets/logo3.png";
 import picture from "../../assets/Product-screenshot.png";
-import bg from "../../assets/Methodize_lp-bg.png";
 import circles from "../../assets/Methodize_lp-circles-bg.png";
 import { BsCardChecklist } from "react-icons/bs";
 import { AiOutlineTeam } from "react-icons/ai";
