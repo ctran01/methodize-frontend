@@ -200,3 +200,12 @@
     overflow: scroll;
   }
 }
+
+@media only screen and (min-width: 1685px) {
+  .home-tasks-container {
+    width: 5%;
+  }
+  .home-tasks-container--small {
+    width: 49%;
+  }
+}
