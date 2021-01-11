@@ -204,8 +204,12 @@
 @media only screen and (min-width: 1685px) {
   .home-tasks-container {
     width: 5%;
+    margin-left: 100px;
   }
   .home-tasks-container--small {
     width: 49%;
+  }
+  .home-projects-container {
+    width: 5%;
   }
 }
