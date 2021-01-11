@@ -1,14 +1,38 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import "../../css/LandingPage.css";
 import picture from "../../assets/Product-screenshot.png";
 import circles from "../../assets/Methodize_lp-circles-bg.png";
-import { BsCardChecklist } from "react-icons/bs";
-import { AiOutlineTeam } from "react-icons/ai";
-import { MdAssignment } from "react-icons/md";
-import { Button } from "@material-ui/core";
+import AuthContext from "../../context/AuthContext";
+import apiServer from "../../config/apiServer";
+
 import Logo from "../../assets/Logo";
 
 const LandingPage = () => {
+  const [demoLoading, setDemoLoading] = useState(false);
+  const { setAuth, setEmail, setUserId, setUser } = useContext(AuthContext);
+
+  const demoLogin = async (e) => {
+    e.preventDefault();
+
+    setDemoLoading(true);
+    const email = "demo@email.com";
+    const password = "password";
+    try {
+      const res = await apiServer.post("/login", { email, password });
+
+      localStorage.setItem("email", res.data.email);
+      localStorage.setItem("userId", res.data.id);
+      localStorage.setItem("token", res.data.token);
+      setAuth(res.data.token);
+      setUserId(res.data.id);
+      setEmail(res.data.email);
+      setUser(res.data);
+    } catch (err) {
+      setDemoLoading(false);
+      console.log(err.status);
+    }
+  };
+
   return (
     <div
       style={{
@@ -79,9 +103,9 @@ const LandingPage = () => {
               in sync, hit deadlines, and reach your goals
             </h3>
             <div className="landing-message-button--div">
-              <a href="/login">
-                <button className="landing-message--button">Try Demo</button>
-              </a>
+              <button className="landing-message--button" onClick={demoLogin}>
+                {demoLoading ? "Starting demo.." : "Try Demo"}{" "}
+              </button>
             </div>
           </div>
           <div className="landing-main-picture">
