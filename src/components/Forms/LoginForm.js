@@ -61,7 +61,7 @@ const LoginForm = () => {
       setEmail(res.data.email);
       setUser(res.data);
     } catch (err) {
-      setLoading(false);
+      setDemoLoading(false);
       console.log(err.status);
       setErrorMessage("Something went wrong");
     }
