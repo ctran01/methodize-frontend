@@ -10,7 +10,6 @@ import Logo from "../../assets/Logo";
 const LandingPage = () => {
   const [demoLoading, setDemoLoading] = useState(false);
   const { setAuth, setEmail, setUserId, setUser } = useContext(AuthContext);
-
   const demoLogin = async (e) => {
     e.preventDefault();
 
