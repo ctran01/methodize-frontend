@@ -16,6 +16,7 @@ import AddProjectPopOut from "../PopOutMenu/AddProjectPopOut";
 import { AiOutlineEllipsis } from "react-icons/ai";
 
 const TeamPage = () => {
+  // console.log("TeamPage");
   const { teamId, teamName } = useParams();
   const [team, setTeam] = useState();
   const [teamProjects, setTeamProjects] = useState();

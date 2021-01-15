@@ -5,6 +5,7 @@ import LandingPage from "./LandingPage";
 import RegisterPage from "./RegisterPage";
 import Onboard from "./Onboard";
 const LandingRoutes = () => {
+  // console.log("LandingRoutes");
   return (
     <BrowserRouter>
       <Switch>

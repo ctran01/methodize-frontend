@@ -7,7 +7,7 @@ import "../../css/LoginPage.css";
 const Onboard = (props) => {
   const { register, handleSubmit, errors } = useForm();
   const { setAuth } = useContext(AuthContext);
-
+  // console.log("Onboard");
   const [errorMessage, setErrorMessage] = useState("");
   const onboard = async ({ teamName }) => {
     const email = localStorage.getItem("email");

@@ -5,6 +5,7 @@ import "../../css/LoginPage.css";
 import LoginForm from "../Forms/LoginForm";
 import { MdKeyboardBackspace } from "react-icons/md";
 const LoginPage = () => {
+  // console.log("LoginPage");
   return (
     <div className="login-page-container">
       <div className="login-page-header">

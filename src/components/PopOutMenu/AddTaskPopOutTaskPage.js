@@ -3,6 +3,7 @@ import AddTaskForm from "../Forms/AddTaskForm";
 import "../../css/PopOutForms.css";
 import { RiCloseLine } from "react-icons/ri";
 const AddTaskPopOutTaskPage = ({ showSideTaskForm, title }) => {
+  // console.log("AddTaskPopOutTaskPage");
   return (
     <>
       <div className={"popout-form"}>

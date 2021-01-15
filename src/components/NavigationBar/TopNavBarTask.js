@@ -16,7 +16,7 @@ const TopNavBarTask = () => {
   const { name } = userState.user;
   const [taskState] = useContext(TaskContext);
   const numTask = taskState.tasks.filter((task) => task.completed === true);
-
+  // console.log("TopNavBarTask");
   // const [anchorEl, setAnchorEl] = useState(null);
   const [anchorEle, setAnchorEle] = useState(null);
   // const [openProject, setOpenProject] = useState(false);

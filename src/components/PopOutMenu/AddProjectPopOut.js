@@ -4,6 +4,7 @@ import "../../css/PopOutForms.css";
 import { RiCloseLine } from "react-icons/ri";
 import ProjectForm from "../Forms/ProjectForm";
 const AddProjectPopOut = ({ showSideProjectForm, title, setTeamProjects }) => {
+  // console.log("AddProjectPopOut");
   return (
     <>
       <div

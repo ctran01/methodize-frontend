@@ -11,6 +11,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { BiCheck } from "react-icons/bi";
 
 const PopOutTaskDetails = ({ showSideTaskDetails, sideTaskDetails }) => {
+  console.log("PopOutTaskDetails");
   const [taskState, taskdispatch] = useContext(TaskContext);
   const { selectedTask: task } = taskState;
   const [projectState] = useContext(ProjectContext);
@@ -149,7 +150,7 @@ const PopOutTaskDetails = ({ showSideTaskDetails, sideTaskDetails }) => {
     ).format("MMM D");
 
     return (
-      <div className="comment-container">
+      <div key={i} className="comment-container">
         <div className="comment-header">
           <div
             className="user-avatar"

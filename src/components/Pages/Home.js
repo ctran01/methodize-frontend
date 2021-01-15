@@ -14,6 +14,7 @@ import AddTaskPopOutTaskPage from "../PopOutMenu/AddTaskPopOutTaskPage";
 import PopOutTaskDetailsHome from "../PopOutMenu/PopOutTaskDetailsHome";
 
 const HomePage = () => {
+  // console.log("HomePage");
   // debugger;
   const [userState] = useContext(UserContext);
   const [taskState] = useContext(TaskContext);

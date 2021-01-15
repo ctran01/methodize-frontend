@@ -3,6 +3,7 @@ import Reducer from "../reducer/ProjectReducer";
 
 const initialState = {
   projects: [],
+  userProject: [],
 };
 
 const ProjectStore = ({ children }) => {

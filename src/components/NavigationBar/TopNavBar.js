@@ -10,7 +10,7 @@ import { Context as UserContext } from "../../context/store/UserStore";
 
 const TopNavBar = ({ name, setTeamProjects, setTasklists, sidebar }) => {
   const { logout } = useContext(AuthContext);
-
+  // console.log("TopNavBar");
   // const [anchorEl, setAnchorEl] = useState(null);
   const [anchorEle, setAnchorEle] = useState(null);
   // const [openProject, setOpenProject] = useState(false);

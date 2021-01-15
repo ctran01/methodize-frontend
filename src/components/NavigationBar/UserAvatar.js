@@ -5,7 +5,7 @@ import apiServer from "../../config/apiServer";
 const UserAvatar = ({ id }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
-
+  // console.log("UserAvatar");
   const getUser = async () => {
     const res = await apiServer.get(`/user/${id}`);
     setUser(res.data);

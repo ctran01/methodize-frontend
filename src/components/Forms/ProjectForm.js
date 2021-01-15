@@ -15,7 +15,7 @@ const ProjectForm = ({
   const [projectName, setProjectName] = useState();
   const [teamState, teamdispatch] = useContext(TeamContext);
   const [projectState, projectdispatch] = useContext(ProjectContext);
-
+  // console.log("ProjectForm");
   const userId = localStorage.getItem("userId");
 
   const handleNameChange = (e) => {

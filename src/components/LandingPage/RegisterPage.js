@@ -10,6 +10,7 @@ const RegisterPage = () => {
   const { setAuth, setEmail, setUserId, setUser } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  // console.log("RegisterPage");
   const onSubmit = async ({ name, email, password }) => {
     setLoading(true);
     try {

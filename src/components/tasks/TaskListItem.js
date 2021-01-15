@@ -9,6 +9,7 @@ import AddTaskProjectForm from "../Forms/AddTaskProjectForm";
 
 //Project page task list
 const TaskListItem = ({ index, tasklist, tasks, setTasks }) => {
+  console.log("TaskListItem");
   const [tasklistTasks, setTasklistTasks] = useState();
   const [loading, setLoading] = useState(true);
   const [openTaskProjectForm, setOpenTaskProjectForm] = useState(false);

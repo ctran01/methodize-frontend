@@ -12,6 +12,7 @@ import Tasks from "../../assets/tasks";
 import Team from "../../assets/team.svg";
 import Logo from "../../assets/Logo";
 const LeftNavBar = ({ showSidebar, sidebar }) => {
+  // console.log("LeftNavBar");
   // const [teams, setTeams] = useState([]);
   const [teamState] = useContext(TeamContext);
   const [open, setOpen] = useState(false);

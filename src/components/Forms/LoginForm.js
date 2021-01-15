@@ -5,7 +5,7 @@ import "../../css/LoginPage.css";
 import apiServer from "../../config/apiServer";
 const LoginForm = () => {
   const { register, handleSubmit, errors } = useForm();
-
+  // console.log("LoginForm");
   const [errorMessage, setErrorMessage] = useState("");
   const { setAuth, setEmail, setUserId, setUser } = useContext(AuthContext);
   const [formEmail, setFormEmail] = useState("");

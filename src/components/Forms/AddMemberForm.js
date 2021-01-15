@@ -11,7 +11,7 @@ const AddMemberForm = ({ teamId, clickClose, open, setTeamUsers }) => {
   const [users, setUsers] = useState();
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
-
+  // console.log("AddMemberForm");
   const onSubmit = async ({ userId }) => {
     try {
       await apiServer.post(`/team/${teamId}/user/${userId}`);

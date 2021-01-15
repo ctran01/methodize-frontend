@@ -12,7 +12,7 @@ import { Context as UserContext } from "../../context/store/UserStore";
 const TopNavBarHome = () => {
   const { logout } = useContext(AuthContext);
   const [userState] = useContext(UserContext);
-
+  // console.log("TopNavBarHome");
   // const [anchorEl, setAnchorEl] = useState(null);
   const [anchorEle, setAnchorEle] = useState(null);
   // const [openProject, setOpenProject] = useState(false);
