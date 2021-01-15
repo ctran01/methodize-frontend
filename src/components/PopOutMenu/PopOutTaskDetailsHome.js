@@ -13,7 +13,7 @@ import { BiCheck } from "react-icons/bi";
 const PopOutTaskDetailsHome = ({ showSideTaskDetails, sideTaskDetails }) => {
   const [taskState, taskdispatch] = useContext(TaskContext);
   const { selectedTask: task } = taskState;
-  const [projectState, projectdispatch] = useContext(ProjectContext);
+  const [projectState] = useContext(ProjectContext);
   const [teamDescription, setTeamDescription] = useState(task.description);
   const [projectUsers, setProjectUsers] = useState(task.Project.Users);
   const [assigneeUser, setAssigneeUser] = useState(task.User);
@@ -23,15 +23,6 @@ const PopOutTaskDetailsHome = ({ showSideTaskDetails, sideTaskDetails }) => {
   const [commentBox, setCommentBox] = useState(false);
 
   var completed = task.completed;
-  const date = moment(
-    task.due_date.substring(0, 10).replace("-", ""),
-    "YYYYMMDD"
-  );
-
-  console.log(task);
-  // console.log(task.due_date, "task.due_date DB");
-  // console.log(date, "moment date convert from db");
-  // console.log(dueDate, "dueDate state new Date convert ");
 
   const { register, handleSubmit, clearErrors } = useForm();
 
@@ -45,7 +36,7 @@ const PopOutTaskDetailsHome = ({ showSideTaskDetails, sideTaskDetails }) => {
     const userList = res.data.Users.filter((user) => {
       return user.id !== task.User.id;
     });
-    console.log(userList, "userList");
+
     setProjectUsers(userList);
     updateProject();
   };
@@ -53,7 +44,7 @@ const PopOutTaskDetailsHome = ({ showSideTaskDetails, sideTaskDetails }) => {
   const updateProject = async (e) => {
     var projectId = document.getElementById("project-select").value;
     const userId = localStorage.getItem("userId");
-    console.log(projectId);
+
     await apiServer.put(`/task/${task.id}/project/${projectId}`);
     const res = await apiServer.get(`/task/user/${userId}`);
     await taskdispatch({ type: "get_user_tasks", payload: res.data });
@@ -74,13 +65,10 @@ const PopOutTaskDetailsHome = ({ showSideTaskDetails, sideTaskDetails }) => {
   const updateDueDate = async (date) => {
     setDueDate(date);
     await apiServer.put(`/task/${task.id}/dueDate`, { date });
-    console.log(date);
   };
   const updateDescription = async (e) => {
     const description = e.target.value;
     await apiServer.put(`/task/${task.id}/description`, { description });
-
-    console.log(e.target.value);
   };
 
   const handleDescriptionUpdate = (e) => {

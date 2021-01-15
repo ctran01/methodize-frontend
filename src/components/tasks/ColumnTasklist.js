@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { Modal, responsiveFontSizes } from "@material-ui/core";
+import { Droppable, Draggable } from "react-beautiful-dnd";
 import { useParams } from "react-router-dom";
-import AddTaskProjectForm from "../Forms/AddTaskProjectForm";
 import ColumnTaskItem from "./ColumnTaskItem";
 import apiServer from "../../config/apiServer";
 import { Context as TasklistContext } from "../../context/store/TasklistStore";
@@ -18,20 +16,19 @@ const ColumnTasklist = ({
   showSideTaskForm,
 }) => {
   const { projectId } = useParams();
-  const [openTaskProjectForm, setOpenTaskProjectForm] = useState(false);
-  // const [tasklistTasks, setTasklistTasks] = useState();
+  // const [openTaskProjectForm, setOpenTaskProjectForm] = useState(false);
   const [columnTitle, setColumnTitle] = useState(tasklist.name);
   const [titleSelect, setTitleSelect] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [tasklistState, tasklistdispatch] = useContext(TasklistContext);
 
-  const openTaskProjectFormModal = () => {
-    setOpenTaskProjectForm(true);
-  };
+  // const openTaskProjectFormModal = () => {
+  //   setOpenTaskProjectForm(true);
+  // };
 
-  const closeTaskProjectFormModal = () => {
-    setOpenTaskProjectForm(false);
-  };
+  // const closeTaskProjectFormModal = () => {
+  //   setOpenTaskProjectForm(false);
+  // };
 
   const handleAddTaskClick = async () => {
     await tasklistdispatch({

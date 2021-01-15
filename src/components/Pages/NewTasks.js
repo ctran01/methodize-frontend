@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import TopNavBarTask from "../NavigationBar/TopNavBarTask";
 import { Context as TaskContext } from "../../context/store/TaskStore";
 import apiServer from "../../config/apiServer";
-import TaskSection from "../tasks/TaskSection";
 import PopOutTaskDetails from "../PopOutMenu/PopOutTaskDetails";
 import TaskItemTask from "../tasks/TaskItemTask";
 import Add from "../../assets/Add";
@@ -12,7 +11,6 @@ const NewTasks = () => {
   const [taskState, taskdispatch] = useContext(TaskContext);
   const [loading, setLoading] = useState(true);
   const [initialLoad, setInitialLoad] = useState(true);
-  const [open, setOpen] = useState(false);
   const [sideTaskForm, setSideTaskForm] = useState(false);
 
   const [sideTaskDetails, setSideTaskDetails] = useState(false);
@@ -49,13 +47,6 @@ const NewTasks = () => {
       />
     );
   });
-  const openModal = () => {
-    setOpen(true);
-  };
-
-  const closeModal = () => {
-    setOpen(false);
-  };
 
   useEffect(() => {
     getUserTasks();

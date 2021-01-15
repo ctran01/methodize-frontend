@@ -8,7 +8,7 @@ import { Modal } from "@material-ui/core";
 import TeamForm from "../Forms/TeamForm";
 import Home from "../../assets/Home";
 import Tasks from "../../assets/tasks";
-import Project from "../../assets/project";
+// import Project from "../../assets/project";
 import Team from "../../assets/team.svg";
 import Logo from "../../assets/Logo";
 const LeftNavBar = ({ showSidebar, sidebar }) => {

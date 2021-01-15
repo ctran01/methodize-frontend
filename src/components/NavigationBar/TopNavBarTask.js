@@ -3,50 +3,49 @@ import AuthContext from "../../context/AuthContext";
 import { Context as UserContext } from "../../context/store/UserStore";
 import { Context as TaskContext } from "../../context/store/TaskStore";
 import "../../css/Navbar.css";
-import { GrAddCircle } from "react-icons/gr";
 import UserAvatar from "./UserAvatar";
 import { Menu, MenuItem } from "@material-ui/core";
-import ProjectForm from "../Forms/ProjectForm";
-import TaskForm from "../Forms/AddTaskForm";
+
 import Search from "../../assets/search";
 import messageIcon from "../../assets/message.png";
 import Alert from "../../assets/alert";
 
 const TopNavBarTask = () => {
   const { logout } = useContext(AuthContext);
-  const [userState, userdispatch] = useContext(UserContext);
+  const [userState] = useContext(UserContext);
   const { name } = userState.user;
-  const [taskState, taskdispatch] = useContext(TaskContext);
+  const [taskState] = useContext(TaskContext);
   const numTask = taskState.tasks.filter((task) => task.completed === true);
 
-  const [anchorEl, setAnchorEl] = useState(null);
+  // const [anchorEl, setAnchorEl] = useState(null);
   const [anchorEle, setAnchorEle] = useState(null);
-  const [openProject, setOpenProject] = useState(false);
-  const [openTask, setOpenTask] = useState(false);
+  // const [openProject, setOpenProject] = useState(false);
+  // const [openTask, setOpenTask] = useState(false);
 
-  const clickOpenTask = () => {
-    setOpenTask(true);
-    handleNewClose();
-  };
+  // const clickOpenTask = () => {
+  //   setOpenTask(true);
+  //   handleNewClose();
+  // };
 
-  const clickCloseTask = () => {
-    setOpenTask(false);
-  };
+  // const clickCloseTask = () => {
+  //   setOpenTask(false);
+  // };
 
-  const clickOpenProject = () => {
-    setOpenProject(true);
-    handleNewClose();
-  };
-  const clickCloseProject = () => {
-    setOpenProject(false);
-  };
+  // const clickOpenProject = () => {
+  //   setOpenProject(true);
+  //   handleNewClose();
+  // };
+  // const clickCloseProject = () => {
+  //   setOpenProject(false);
+  // };
 
-  const handleNewClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleNewClose = () => {
-    setAnchorEl(null);
-  };
+  // const handleNewClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
+
+  // const handleNewClose = () => {
+  //   setAnchorEl(null);
+  // };
 
   const handleProfClick = (event) => {
     setAnchorEle(event.currentTarget);

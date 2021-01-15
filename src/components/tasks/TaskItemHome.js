@@ -1,12 +1,7 @@
 import React, { useState, useContext } from "react";
 import moment from "moment";
-import { Modal } from "@material-ui/core";
 import "../../css/Modal.css";
-import TaskDetailsForm from "./TaskDetailsForm";
-import {
-  RiCheckboxBlankCircleLine,
-  RiCheckboxCircleLine,
-} from "react-icons/ri";
+
 import { AiOutlineEllipsis } from "react-icons/ai";
 import { Menu, MenuItem } from "@material-ui/core";
 import { Context as TaskContext } from "../../context/store/TaskStore";
@@ -22,14 +17,6 @@ const TaskItemHome = ({ task, showSideTaskDetails, sideTaskDetails }) => {
 
   const [taskState, taskdispatch] = useContext(TaskContext);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [open, setOpen] = useState(false);
-  const openModal = () => {
-    setOpen(true);
-  };
-
-  const closeModal = () => {
-    setOpen(false);
-  };
 
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -46,9 +33,7 @@ const TaskItemHome = ({ task, showSideTaskDetails, sideTaskDetails }) => {
       const res = await apiServer.get(`/task/${task.id}`);
       await taskdispatch({ type: "get_selected_task", payload: res.data });
       // setInitialLoad(false);
-      console.log("if popout");
     } else {
-      console.log("else popout");
       taskdispatch({ type: "get_selected_task", payload: null });
       const res = await apiServer.get(`/task/${task.id}`);
       await taskdispatch({ type: "get_selected_task", payload: res.data });
@@ -65,15 +50,15 @@ const TaskItemHome = ({ task, showSideTaskDetails, sideTaskDetails }) => {
     await taskdispatch({ type: "get_user_tasks", payload: res.data });
   };
   //import component as body such as forms, details, etc
-  const body = (
-    <div className="modal-container">
-      {/* <h2 id="modal-title">Task Detail</h2>
-      <p id="modal-description">
-        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-      </p> */}
-      <TaskDetailsForm task={task} closeModal={closeModal} />
-    </div>
-  );
+  // const body = (
+  //   <div className="modal-container">
+  //     {/* <h2 id="modal-title">Task Detail</h2>
+  //     <p id="modal-description">
+  //       Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+  //     </p> */}
+  //     <TaskDetailsForm task={task} closeModal={closeModal} />
+  //   </div>
+  // );
   return (
     <>
       <div className="task-home-item">

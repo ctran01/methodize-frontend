@@ -1,10 +1,7 @@
-import React, { useState } from "react";
-import { Modal } from "@material-ui/core";
+import React from "react";
 import { FiPlus } from "react-icons/fi";
 import "../../css/Project.css";
-import ProjectForm from "../Forms/ProjectForm";
 const NewProjectTile = ({ showSideProjectForm }) => {
-  const [open, setOpen] = useState(false);
   // const openModal = () => {
   //   setOpen(true);
   // };

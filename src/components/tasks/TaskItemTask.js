@@ -1,8 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import moment from "moment";
-import { Modal } from "@material-ui/core";
 import "../../css/Modal.css";
-import TaskDetailsForm from "../tasks/TaskDetailsForm";
 import {
   RiCheckboxBlankCircleLine,
   RiCheckboxCircleLine,
@@ -19,19 +17,11 @@ const TaskItemTask = ({
   setInitialLoad,
 }) => {
   const [taskState, taskdispatch] = useContext(TaskContext);
-  const [open, setOpen] = useState(false);
 
   const date = moment(
     task.due_date.substring(0, 10).replace("-", ""),
     "YYYYMMDD"
   );
-  const openModal = () => {
-    setOpen(true);
-  };
-
-  const closeModal = () => {
-    setOpen(false);
-  };
 
   const setTaskPopOut = async () => {
     if (sideTaskDetails === false) {
@@ -41,9 +31,7 @@ const TaskItemTask = ({
       const res = await apiServer.get(`/task/${task.id}`);
       await taskdispatch({ type: "get_selected_task", payload: res.data });
       setInitialLoad(false);
-      console.log("if popout");
     } else {
-      console.log("else popout");
       taskdispatch({ type: "get_selected_task", payload: null });
       const res = await apiServer.get(`/task/${task.id}`);
       await taskdispatch({ type: "get_selected_task", payload: res.data });
@@ -52,15 +40,15 @@ const TaskItemTask = ({
   };
 
   //import component as body such as forms, details, etc
-  const body = (
-    <div className="modal-container">
-      {/* <h2 id="modal-title">Task Detail</h2>
-      <p id="modal-description">
-        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-      </p> */}
-      <TaskDetailsForm task={task} closeModal={closeModal} />
-    </div>
-  );
+  // const body = (
+  //   <div className="modal-container">
+  //     {/* <h2 id="modal-title">Task Detail</h2>
+  //     <p id="modal-description">
+  //       Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+  //     </p> */}
+  //     <TaskDetailsForm task={task} closeModal={closeModal} />
+  //   </div>
+  // );
   return (
     <>
       <li className="task-task-item" onClick={setTaskPopOut}>

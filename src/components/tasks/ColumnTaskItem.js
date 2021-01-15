@@ -1,10 +1,7 @@
-import React, { useState, useContext } from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import TaskDetailsForm from "../tasks/TaskDetailsForm";
-import { Modal, responsiveFontSizes } from "@material-ui/core";
+import React, { useContext } from "react";
+import { Draggable } from "react-beautiful-dnd";
 import Pin from "../../assets/pin";
 import Comments from "../../assets/comments";
-import UserAvatar from "../NavigationBar/UserAvatar";
 import moment from "moment";
 import { Context as TaskContext } from "../../context/store/TaskStore";
 import apiServer from "../../config/apiServer";

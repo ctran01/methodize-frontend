@@ -10,6 +10,7 @@ import Logo from "../../assets/Logo";
 const LandingPage = () => {
   const [demoLoading, setDemoLoading] = useState(false);
   const { setAuth, setEmail, setUserId, setUser } = useContext(AuthContext);
+
   const demoLogin = async (e) => {
     e.preventDefault();
 
@@ -28,10 +29,12 @@ const LandingPage = () => {
       setUser(res.data);
     } catch (err) {
       setDemoLoading(false);
-      console.log(err.status);
     }
   };
 
+  const throwError = () => {
+    throw new Error("This is an error");
+  };
   return (
     <div
       style={{

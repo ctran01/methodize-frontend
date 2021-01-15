@@ -1,10 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import HomePage from "./Pages/Home";
-import TasksPage from "./Pages/Tasks";
 import ProjectPage from "./Pages/Project";
 import ProjectsPage from "./Pages/Projects";
-import NewProjectPage from "./Pages/NewProject";
 import TeamPage from "./Pages/Team";
 import NewTasksPage from "./Pages/NewTasks";
 import "../css/Navbar.css";

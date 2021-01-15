@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import "../../css/Task.css";
 import Button from "@material-ui/core/Button";
-import { Modal } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import apiServer from "../../config/apiServer";
 import Loader from "../Loader";
@@ -22,7 +21,7 @@ const AddTaskProjectForm = ({
   const { teamId, projectId } = useParams();
   const [projectUsers, setProjectUsers] = useState();
   const [loading, setLoading] = useState(true);
-  const [tasklistState, tasklistdispatch] = useContext(TasklistContext);
+  const [tasklistState] = useContext(TasklistContext);
 
   const { selectedTasklist } = tasklistState;
   const getProjectUsers = async (event) => {
@@ -45,10 +44,6 @@ const AddTaskProjectForm = ({
     completed,
     description,
   }) => {
-    console.log(assigneeId);
-    console.log(projectId);
-    console.log(due_date);
-    console.log(completed);
     await apiServer.post(`/tasklist/${selectedTasklist}/task`, {
       name,
       projectId,

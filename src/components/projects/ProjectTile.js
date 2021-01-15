@@ -20,7 +20,7 @@ const ProjectTile = ({ project, teamId, id }) => {
       setTeam(res.data);
       setLoading(false);
     })();
-  }, []);
+  }, [project.id]);
 
   if (loading) {
     return <Loader />;

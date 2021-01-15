@@ -62,7 +62,7 @@ const LoginForm = () => {
       setUser(res.data);
     } catch (err) {
       setDemoLoading(false);
-      console.log(err.status);
+
       setErrorMessage("Something went wrong");
     }
   };

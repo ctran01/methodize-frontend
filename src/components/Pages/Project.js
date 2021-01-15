@@ -1,11 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { Modal, responsiveFontSizes } from "@material-ui/core";
 import apiServer from "../../config/apiServer";
 import Loader from "../Loader";
 import TopNavBar from "../NavigationBar/TopNavBar";
-import TaskListForm from "../Forms/TaskListForm";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import PopOutTaskDetails from "../PopOutMenu/PopOutTaskDetails";
 import AddTasklistPopOut from "../PopOutMenu/AddTasklistPopOut";
 import AddTaskPopOutProjectPage from "../PopOutMenu/AddTaskPopOutProjectPage";
@@ -17,10 +15,9 @@ import ColumnTasklist from "../tasks/ColumnTasklist";
 import Add from "../../assets/Add";
 
 const ProjectPage = ({ sidebar }) => {
-  const { projectId, projectName, teamId } = useParams();
+  const { projectId } = useParams();
   const [taskState, taskdispatch] = useContext(TaskContext);
-  const [openTasklistForm, setOpenTasklistForm] = useState(false);
-  const [tasks, setTasks] = useState();
+  // const [openTasklistForm, setOpenTasklistForm] = useState(false);
   const [project, setProject] = useState();
   const [tasklists, setTasklists] = useState();
 
@@ -50,16 +47,15 @@ const ProjectPage = ({ sidebar }) => {
   //Task through get /project/id/taskslists. Set here so we can refer to it in the ondragend funnction
   const [loading, setLoading] = useState(true);
 
-  const openTasklistFormModal = () => {
-    setOpenTasklistForm(true);
-  };
+  // const openTasklistFormModal = () => {
+  //   setOpenTasklistForm(true);
+  // };
 
-  const closeTasklistFormModal = () => {
-    setOpenTasklistForm(false);
-  };
+  // const closeTasklistFormModal = () => {
+  //   setOpenTasklistForm(false);
+  // };
 
   const onDragEnd = async (result) => {
-    console.log(result, "result");
     const { destination, source, draggableId, type } = result;
 
     if (!destination) {
@@ -175,11 +171,11 @@ const ProjectPage = ({ sidebar }) => {
   };
 
   const updateTasks = async (source, destination, draggableId) => {
-    const sourceColumnId = source.droppableId;
+    // const sourceColumnId = source.droppableId;
     const destinationTasklistId = destination.droppableId.split("-")[0];
-    const destinationIndexId = destination.droppableId.split("-")[1];
-    const sourceTasklistId = source.droppableId.split("-")[0];
-    const sourceIndexId = source.droppableId.split("-")[1];
+    // const destinationIndexId = destination.droppableId.split("-")[1];
+    // const sourceTasklistId = source.droppableId.split("-")[0];
+    // const sourceIndexId = source.droppableId.split("-")[1];
     const taskId = draggableId;
     const updatedTasklist = await apiServer.put(`/task/${taskId}/tasklist`, {
       destinationTasklistId,
@@ -213,18 +209,18 @@ const ProjectPage = ({ sidebar }) => {
   };
 
   //NOTE: MAYBE TRY GRABBING TASKS IN ONE GET API CALL AND PUSHING IT DOWN?
-  const getTasklists = async () => {
-    try {
-      const res = await apiServer.get(`/project/${projectId}/tasklists`);
-      setTasklists(res.data);
+  // const getTasklists = async () => {
+  //   try {
+  //     const res = await apiServer.get(`/project/${projectId}/tasklists`);
+  //     setTasklists(res.data);
 
-      // setTasks(res.data.Tasks);
-      // const taskResponse = await apiServer.get(`/project/${projectId}/tasks`);
-      // setTaskArray(taskResponse.data); //Array of all tasks
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //     // setTasks(res.data.Tasks);
+  //     // const taskResponse = await apiServer.get(`/project/${projectId}/tasks`);
+  //     // setTaskArray(taskResponse.data); //Array of all tasks
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   //----------------------------------------------------------------------------
 
@@ -239,23 +235,23 @@ const ProjectPage = ({ sidebar }) => {
     getProject();
     taskdispatch({ type: "get_selected_task", payload: null });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setProject, setTasklists, setTasks]);
+  }, [setProject, setTasklists]);
 
   if (loading) {
     return <Loader />;
   }
 
   //Task list creation
-  const tasklistFormModal = (
-    <div className="modal-container">
-      <TaskListForm
-        setTasklists={setTasklists}
-        projectId={projectId}
-        clickClose={closeTasklistFormModal}
-        open={openTasklistForm}
-      ></TaskListForm>
-    </div>
-  );
+  // const tasklistFormModal = (
+  //   <div className="modal-container">
+  //     <TaskListForm
+  //       setTasklists={setTasklists}
+  //       projectId={projectId}
+  //       clickClose={closeTasklistFormModal}
+  //       open={openTasklistForm}
+  //     ></TaskListForm>
+  //   </div>
+  // );
 
   const renderedTasklists = tasklists.map((tasklist, index) => {
     return (

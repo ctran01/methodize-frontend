@@ -13,7 +13,6 @@ import ProjectTile from "../projects/ProjectTile";
 import NewProjectTile from "../projects/NewProjectTile";
 import NewTeamMemberIcon from "../teams/NewTeamMemberIcon";
 import AddProjectPopOut from "../PopOutMenu/AddProjectPopOut";
-import { BiBorderNone } from "react-icons/bi";
 import { AiOutlineEllipsis } from "react-icons/ai";
 
 const TeamPage = () => {
@@ -31,11 +30,11 @@ const TeamPage = () => {
   const showSideProjectForm = () => {
     setSideProjectForm(!sideProjectForm);
   };
-  console.log(teamUsers);
+
   const getTeam = async () => {
     try {
       const res = await apiServer.get(`/team/${teamId}`);
-      console.log(res);
+
       setTeam(res.data);
       setTeamProjects(res.data.Projects);
       setTeamUsers(res.data.Users);
@@ -71,7 +70,6 @@ const TeamPage = () => {
   const updateDescription = async (e) => {
     const description = e.target.value;
     await apiServer.put(`/team/${teamId}/description`, { description });
-    console.log(e.target.value);
   };
 
   useEffect(() => {

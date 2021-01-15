@@ -1,6 +1,4 @@
 import React, { useContext, useState } from "react";
-import { Modal } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
 import { useForm } from "react-hook-form";
 import apiServer from "../../config/apiServer";
 import { Context as TeamContext } from "../../context/store/TeamStore";
@@ -13,7 +11,7 @@ const ProjectForm = ({
   setTeamProjects,
   showSideProjectForm,
 }) => {
-  const { register, handleSubmit, errors, clearErrors } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const [projectName, setProjectName] = useState();
   const [teamState, teamdispatch] = useContext(TeamContext);
   const [projectState, projectdispatch] = useContext(ProjectContext);
@@ -56,10 +54,10 @@ const ProjectForm = ({
     showSideProjectForm();
   };
 
-  const clearError = () => {
-    var teamSelect = document.getElementById("team-select");
-    clearErrors(teamSelect.name);
-  };
+  // const clearError = () => {
+  //   var teamSelect = document.getElementById("team-select");
+  //   clearErrors(teamSelect.name);
+  // };
   const renderedTeams = teamState.teams.map((team, i) => {
     return (
       <option key={i} id={team.id} value={team.id}>

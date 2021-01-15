@@ -23,19 +23,19 @@ const Onboard = (props) => {
         //for Refresh
         setAuth(res.data.token);
       } catch (err) {
-        console.log(err.status);
         setErrorMessage("Something went wrong");
       }
     }
   };
 
-  const onSkip = () => {
-    //sets initial token
-    localStorage.setItem("token", localStorage.getItem("onboard"));
-    //for component to refresh to redirect webpage
-    setAuth(localStorage.getItem("onboard"));
-    localStorage.removeItem("onboard");
-  };
+  // const onSkip = () => {
+  //   //sets initial token
+  //   localStorage.setItem("token", localStorage.getItem("onboard"));
+  //   //for component to refresh to redirect webpage
+  //   setAuth(localStorage.getItem("onboard"));
+  //   localStorage.removeItem("onboard");
+  // };
+
   return (
     <div className="onboard-page-container">
       <div

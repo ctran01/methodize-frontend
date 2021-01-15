@@ -1,11 +1,8 @@
 import React, { useState, useContext } from "react";
 import "../../css/Task.css";
-import Button from "@material-ui/core/Button";
-import { Modal } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import apiServer from "../../config/apiServer";
 import { Context as ProjectContext } from "../../context/store/ProjectStore";
-import { Context as TasklistContext } from "../../context/store/TasklistStore";
 import { Context as TaskContext } from "../../context/store/TaskStore";
 
 //Form to add task from anywhere
@@ -17,12 +14,12 @@ const TaskForm = ({
   showSideTaskForm,
 }) => {
   const { register, handleSubmit, errors, clearErrors } = useForm();
-  const [projectError, setProjectError] = useState();
-  const [assigneeError, setAssigneeError] = useState();
+  // const [projectError, setProjectError] = useState();
+  // const [assigneeError, setAssigneeError] = useState();
   const [taskName, setTaskName] = useState();
   const [dueDate, setDueDate] = useState();
 
-  const [projectState, projectdispatch] = useContext(ProjectContext);
+  const [projectState] = useContext(ProjectContext);
   const [taskState, taskdispatch] = useContext(TaskContext);
   const [projectUsers, setProjectUsers] = useState([
     {
@@ -172,7 +169,7 @@ const TaskForm = ({
                 <option value={0}>{"<---Choose Project--->"}</option>
                 {renderedProjects}
               </select>
-              <p className="error-message">{projectError}</p>
+              {/* <p className="error-message">{projectError}</p> */}
               {errors.projectId?.type === "required" && (
                 <p className="error-message">Please choose a project</p>
               )}
@@ -206,7 +203,7 @@ const TaskForm = ({
               >
                 {renderedUsers}
               </select>
-              <p className="error-message">{assigneeError}</p>
+              {/* <p className="error-message">{assigneeError}</p> */}
               {errors.assigneeId?.type === "required" && (
                 <p className="error-message">Please choose an assignee</p>
               )}
