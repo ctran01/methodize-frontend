@@ -1,7 +1,5 @@
 import React, { useState, useContext } from "react";
 import "../../css/LandingPage.css";
-import picture from "../../assets/Product-screenshot.png";
-import circles from "../../assets/Methodize_lp-circles-bg.png";
 import AuthContext from "../../context/AuthContext";
 import apiServer from "../../config/apiServer";
 
@@ -59,7 +57,7 @@ const LandingPage = () => {
           left: "0px",
           right: "0px",
           bottom: "0px",
-          backgroundImage: `url(${circles})`,
+          backgroundImage: `url("https://projectimagebucket.s3-us-west-2.amazonaws.com/Methodize_lp-circles-bg.png")`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           zIndex: "-1",
@@ -111,7 +109,11 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="landing-main-picture">
-            <img src={picture} alt="landing" className="landing-picture" />
+            <img
+              src="https://projectimagebucket.s3-us-west-2.amazonaws.com/Product-screenshot.png"
+              alt="landing"
+              className="landing-picture"
+            />
           </div>
           {/* <div className="landing-main-bottom">
             <div className="landing-main-bottom-icons-container">

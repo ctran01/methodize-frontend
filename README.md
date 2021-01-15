@@ -2,7 +2,7 @@
 
 <!-- ![Home Page](src/assets/Product-screenshot.png) -->
 
-<p align="center"> <img height="400"  alt="home" src="src\assets\Product-screenshot.png"> </p>
+<p align="center"> <img height="400"  alt="home" src="https://projectimagebucket.s3-us-west-2.amazonaws.com/Product-screenshot.png"> </p>
 
 ## Overview
 
