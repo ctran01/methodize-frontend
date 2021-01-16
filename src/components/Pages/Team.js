@@ -93,7 +93,7 @@ const TeamPage = () => {
   // });
   return (
     <>
-      <TopNavBar name={teamName} setTeamProjects={setTeamProjects} />
+      <TopNavBar name={team.name} setTeamProjects={setTeamProjects} />
       <div className="team-page-container">
         <div className="team-page-content-container">
           <div className="team-page-content-left">

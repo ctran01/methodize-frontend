@@ -4,6 +4,7 @@ import LoginPage from "./LoginPage";
 import LandingPage from "./LandingPage";
 import RegisterPage from "./RegisterPage";
 import Onboard from "./Onboard";
+import NotFoundPage from "../Pages/NotFoundPage";
 const LandingRoutes = () => {
   // console.log("LandingRoutes");
   return (
@@ -13,12 +14,14 @@ const LandingRoutes = () => {
         <Route exact path="/register" component={RegisterPage} />
         <Route exact path="/register/onboard" component={Onboard} />
         <Route exact path="/" component={LandingPage} />
-        <Route
+        {/* <Route
           path="/*"
           render={() => {
             return <Redirect to="/" />;
           }}
-        />
+        /> */}
+        <Route path="/404" component={NotFoundPage} />
+        <Redirect to="/404" />
       </Switch>
     </BrowserRouter>
   );

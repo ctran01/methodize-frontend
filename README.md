@@ -37,6 +37,7 @@ Methodize is a project management tool. Methodize allows users to keep track of 
 - Heroku
 
 ## Technical Challenges
+One of the technical challenges was setting up drag and drop.
 
 ## Features
 
@@ -47,6 +48,8 @@ Methodize is a project management tool. Methodize allows users to keep track of 
 3. Users can create and assign tasks to members of teams
 
 4. Users can check off completed tasks via tasklists
+
+5. Users can drag and drop tasklists and tasks
 
 ## Future Features
 
