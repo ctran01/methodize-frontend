@@ -13,6 +13,7 @@ const TaskForm = ({
   setTasklists,
   showSideTaskForm,
 }) => {
+  // console.log("AddTaskForm");
   const { register, handleSubmit, errors, clearErrors } = useForm();
   // const [projectError, setProjectError] = useState();
   // const [assigneeError, setAssigneeError] = useState();

@@ -15,6 +15,7 @@ import ColumnTasklist from "../tasks/ColumnTasklist";
 import Add from "../../assets/Add";
 
 const ProjectPage = ({ sidebar }) => {
+  // console.log("ProjectPage");
   const { projectId } = useParams();
   const [taskState, taskdispatch] = useContext(TaskContext);
   // const [openTasklistForm, setOpenTasklistForm] = useState(false);
@@ -77,7 +78,7 @@ const ProjectPage = ({ sidebar }) => {
       );
 
       setTasklists(redorderedLists);
-      console.log(redorderedLists, "reordedLists");
+      // console.log(redorderedLists, "reordedLists");
       redorderedLists.map((list, index) => {
         return updateTasklist(index, list.id, list.column_index);
       });

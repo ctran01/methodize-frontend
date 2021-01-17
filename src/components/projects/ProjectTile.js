@@ -13,7 +13,7 @@ const ProjectTile = ({ project, teamId, id }) => {
     setTeam(res.data);
     setLoading(false);
   };
-
+  // console.log("ProjectTile");
   useEffect(() => {
     (async () => {
       const res = await apiServer.get(`/project/${project.id}/team`);

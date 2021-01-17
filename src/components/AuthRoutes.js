@@ -7,6 +7,7 @@ import TeamPage from "./Pages/Team";
 import NewTasksPage from "./Pages/NewTasks";
 import "../css/Navbar.css";
 import LeftNavBar from "./NavigationBar/LeftNavBar";
+import NotFoundPage from "./Pages/NotFoundPage";
 
 import { Context as UserContext } from "../context/store/UserStore";
 import { Context as TaskContext } from "../context/store/TaskStore";
@@ -22,7 +23,7 @@ const AuthRoutes = () => {
   const [userState, userdispatch] = useContext(UserContext);
   const [projectState, projectdispatch] = useContext(ProjectContext);
   const [teamState, teamdispatch] = useContext(TeamContext);
-
+  console.log("AuthRoutes");
   //Maybe grab all information here and state goes down to child components?
   const getUserInfo = async () => {
     const id = localStorage.getItem("userId");
@@ -84,12 +85,14 @@ const AuthRoutes = () => {
               render={() => <ProjectPage sidebar={sidebar} />}
             />
             <Route path="/team/:teamId/:teamName" component={TeamPage} />
-            <Route
+            {/* <Route
               path="/*"
               render={() => {
                 return <Redirect to="/" />;
               }}
-            />
+            /> */}
+            <Route path="/404" component={NotFoundPage} />
+            <Redirect to="/404" />
           </Switch>
         </div>
       </BrowserRouter>

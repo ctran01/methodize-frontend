@@ -16,6 +16,7 @@ const TaskItemTask = ({
   sideTaskDetails,
   setInitialLoad,
 }) => {
+  // console.log("TaskItemTask");
   const [taskState, taskdispatch] = useContext(TaskContext);
 
   const date = moment(

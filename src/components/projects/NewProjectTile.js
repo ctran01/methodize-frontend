@@ -14,6 +14,7 @@ const NewProjectTile = ({ showSideProjectForm }) => {
   //     <ProjectForm clickClose={closeModal} open={open}></ProjectForm>
   //   </div>
   // );
+  // console.log("NewProjectTIle");
   return (
     <div className="project-tile-container" onClick={showSideProjectForm}>
       <div className="project-tile-box">

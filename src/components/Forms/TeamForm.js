@@ -9,7 +9,7 @@ const TeamForm = ({ handleNewClose, clickClose, open }) => {
   const { register, handleSubmit, errors } = useForm();
   const [teamState, teamdispatch] = useContext(TeamContext);
   const userId = localStorage.getItem("userId");
-
+  // console.log("TeamForm");
   const onSubmit = async ({ name, description }) => {
     await apiServer.post(`/team/user/${userId}`, {
       name,

@@ -3,6 +3,7 @@ import Reducer from "../reducer/TasklistReducer";
 
 const initialState = {
   tasklists: [],
+  selectedTasklist: [],
 };
 
 const TasklistStore = ({ children }) => {

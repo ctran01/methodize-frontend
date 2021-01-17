@@ -21,7 +21,7 @@ const ProjectItemHome = ({ project }) => {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
-
+  // console.log("ProjectItemHome");
   //import component as body such as forms, details, etc
   // const body = (
   //   <div className="modal-container">

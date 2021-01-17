@@ -10,6 +10,8 @@ import apiServer from "../../config/apiServer";
 //Task item list for home and task page
 
 const TaskItemHome = ({ task, showSideTaskDetails, sideTaskDetails }) => {
+  console.log("TaskItemHome");
+
   const date = moment(
     task.due_date.substring(0, 10).replace("-", ""),
     "YYYYMMDD"
@@ -72,7 +74,7 @@ const TaskItemHome = ({ task, showSideTaskDetails, sideTaskDetails }) => {
               ) : (
                 <RiCheckboxBlankCircleLine style={{ fontSize: "16px" }} />
               )} */}
-              <span className={`dot-task-${task.id}`}></span>
+              <span className={`dot-task-${task.project_id}`}></span>
             </div>
             <div className="task-home-item-name-container">
               <p

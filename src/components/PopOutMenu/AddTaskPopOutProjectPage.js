@@ -7,6 +7,7 @@ const AddTaskPopOutProjectPage = ({
   title,
   setTasklists,
 }) => {
+  // console.log("AddTaskPopOutProjectPage");
   return (
     <>
       <div className={"popout-form"}>

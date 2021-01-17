@@ -10,7 +10,7 @@ import { Context as UserContext } from "../../context/store/UserStore";
 
 const TopNavBar = ({ name, setTeamProjects, setTasklists, sidebar }) => {
   const { logout } = useContext(AuthContext);
-
+  // console.log("TopNavBar");
   // const [anchorEl, setAnchorEl] = useState(null);
   const [anchorEle, setAnchorEle] = useState(null);
   // const [openProject, setOpenProject] = useState(false);
@@ -61,39 +61,11 @@ const TopNavBar = ({ name, setTeamProjects, setTasklists, sidebar }) => {
       </div>
       <div className="top-nav-bar-middle"></div>
       <div className="top-nav-bar-right" style={{}}>
-        {/* <div style={{ display: "flex" }}>
-          <input className="searchbar" placeholder={"Search"}></input>
-        </div> */}
-        {/* <div>
-          <GrAddCircle onClick={handleNewClick} className="top-nav-bar--icon" />
-          <Menu
-            style={{ marginTop: "40px" }}
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleNewClose}
-          >
-            <MenuItem onClick={clickOpenTask}>Add Task</MenuItem>
-            <TaskForm
-              handleNewClose={handleNewClose}
-              clickClose={clickCloseTask}
-              open={openTask}
-              setTasklists={setTasklists}
-            ></TaskForm>
-            <MenuItem onClick={clickOpenProject}>Add Project</MenuItem>
-            <ProjectForm
-              handleNewClose={handleNewClose}
-              clickClose={clickCloseProject}
-              open={openProject}
-              setTeamProjects={setTeamProjects}
-            />
-          </Menu>
-        </div> */}
         <div
           className="top-nav-icons"
           style={{ display: "flex", alignItems: "center" }}
         >
-          <div>
+          {/* <div>
             <Alert />
           </div>
           <div>
@@ -102,7 +74,7 @@ const TopNavBar = ({ name, setTeamProjects, setTasklists, sidebar }) => {
 
           <div>
             <img className="logo" style={{}} src={messageIcon} alt="logo" />
-          </div>
+          </div> */}
         </div>
 
         <div

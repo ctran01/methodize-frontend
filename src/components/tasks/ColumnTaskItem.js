@@ -12,6 +12,7 @@ const ColumnTaskItem = ({
   showSideTaskDetails,
   sideTaskDetails,
 }) => {
+  // console.log("ColumnTaskitem");
   const [taskState, taskdispatch] = useContext(TaskContext);
 
   const date = moment(
@@ -55,11 +56,13 @@ const ColumnTaskItem = ({
               <div className="task-project-icons">
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <Pin />{" "}
-                  <p style={{ color: "darkgray", marginLeft: "5px" }}>8</p>
+                  <p style={{ color: "darkgray", marginLeft: "5px" }}>0</p>
                 </div>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <Comments />{" "}
-                  <p style={{ color: "darkgray", marginLeft: "5px" }}>9</p>
+                  <p style={{ color: "darkgray", marginLeft: "5px" }}>
+                    {task.Comments.length}
+                  </p>
                 </div>
               </div>
             </div>

@@ -13,7 +13,7 @@ const App = () => {
   const [userId, setUserId] = useState(localStorage.getItem("userId") || null);
   const [email, setEmail] = useState(localStorage.getItem("email") || null);
   const [user, setUser] = useState(localStorage.getItem("user") || null);
-
+  // console.log("App");
   const [sidebar, setSidebar] = useState(true);
   const showSidebar = () => setSidebar(!sidebar);
   const logout = () => {

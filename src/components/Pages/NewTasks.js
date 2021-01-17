@@ -8,6 +8,7 @@ import Add from "../../assets/Add";
 import AddTaskPopOutTaskPage from "../PopOutMenu/AddTaskPopOutTaskPage";
 
 const NewTasks = () => {
+  // console.log("NewTasks");
   const [taskState, taskdispatch] = useContext(TaskContext);
   const [loading, setLoading] = useState(true);
   const [initialLoad, setInitialLoad] = useState(true);

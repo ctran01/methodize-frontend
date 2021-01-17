@@ -16,6 +16,7 @@ import AddProjectPopOut from "../PopOutMenu/AddProjectPopOut";
 import { AiOutlineEllipsis } from "react-icons/ai";
 
 const TeamPage = () => {
+  // console.log("TeamPage");
   const { teamId, teamName } = useParams();
   const [team, setTeam] = useState();
   const [teamProjects, setTeamProjects] = useState();
@@ -92,7 +93,7 @@ const TeamPage = () => {
   // });
   return (
     <>
-      <TopNavBar name={teamName} setTeamProjects={setTeamProjects} />
+      <TopNavBar name={team.name} setTeamProjects={setTeamProjects} />
       <div className="team-page-container">
         <div className="team-page-content-container">
           <div className="team-page-content-left">

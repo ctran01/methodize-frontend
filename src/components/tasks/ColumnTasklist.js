@@ -15,6 +15,7 @@ const ColumnTasklist = ({
   sideTaskDetails,
   showSideTaskForm,
 }) => {
+  console.log("ColumnTasklist");
   const { projectId } = useParams();
   // const [openTaskProjectForm, setOpenTaskProjectForm] = useState(false);
   const [columnTitle, setColumnTitle] = useState(tasklist.name);
