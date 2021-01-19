@@ -3,10 +3,12 @@ import AuthContext from "../../context/AuthContext";
 import apiServer from "../../config/apiServer";
 import { useForm } from "react-hook-form";
 import "../../css/LoginPage.css";
+import { useHistory } from "react-router-dom";
 
 const Onboard = (props) => {
   const { register, handleSubmit, errors } = useForm();
   const { setAuth } = useContext(AuthContext);
+  let history = useHistory();
   // console.log("Onboard");
   const [errorMessage, setErrorMessage] = useState("");
   const onboard = async ({ teamName }) => {
@@ -19,6 +21,7 @@ const Onboard = (props) => {
         });
         //sets initial token
         localStorage.setItem("token", res.data.token);
+        history.push("/");
         setErrorMessage("");
         //for Refresh
         setAuth(res.data.token);
