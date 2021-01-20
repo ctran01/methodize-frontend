@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef } from "react";
 import AuthContext from "../../context/AuthContext";
 import "../../css/Navbar.css";
 import UserAvatar from "./UserAvatar";
@@ -12,50 +12,19 @@ import { Context as UserContext } from "../../context/store/UserStore";
 const TopNavBarHome = () => {
   const { logout } = useContext(AuthContext);
   const [userState] = useContext(UserContext);
-  // console.log("TopNavBarHome");
-  // const [anchorEl, setAnchorEl] = useState(null);
+  const ref = useRef();
+
   const [anchorEle, setAnchorEle] = useState(null);
-  // const [openProject, setOpenProject] = useState(false);
-  // const [openTask, setOpenTask] = useState(false);
-  // const userId = localStorage.getItem("userId");
-
-  // useEffect(()=>{
-  //   (async()=>{
-  //     const user = await apiServer.get("/user")
-  //   })();
-  // },[])
-
-  // const clickOpenTask = () => {
-  //   setOpenTask(true);
-  //   handleNewClose();
-  // };
-
-  // const clickCloseTask = () => {
-  //   setOpenTask(false);
-  // };
-
-  // const clickOpenProject = () => {
-  //   setOpenProject(true);
-  //   handleNewClose();
-  // };
-  // const clickCloseProject = () => {
-  //   setOpenProject(false);
-  // };
-
-  // const handleNewClick = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-
-  // const handleNewClose = () => {
-  //   setAnchorEl(null);
-  // };
 
   const handleProfClick = (event) => {
+    console.log(event.target);
     setAnchorEle(event.currentTarget);
   };
   const handleProfClose = () => {
     setAnchorEle(null);
   };
+
+  console.log(ref.current, "ref");
   return (
     <div className="top-nav-bar-container" style={{}}>
       <div
@@ -106,6 +75,7 @@ const TopNavBarHome = () => {
           keepMounted
           open={Boolean(anchorEle)}
           onClose={handleProfClose}
+          ref={ref}
         >
           <MenuItem onClick={logout}>Logout</MenuItem>
         </Menu>

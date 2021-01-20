@@ -10,7 +10,7 @@ import apiServer from "../../config/apiServer";
 //Task item list for home and task page
 
 const TaskItemHome = ({ task, showSideTaskDetails, sideTaskDetails }) => {
-  console.log("TaskItemHome");
+  // console.log("TaskItemHome");
 
   const date = moment(
     task.due_date.substring(0, 10).replace("-", ""),

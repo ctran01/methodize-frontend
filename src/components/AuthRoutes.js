@@ -23,7 +23,7 @@ const AuthRoutes = () => {
   const [userState, userdispatch] = useContext(UserContext);
   const [projectState, projectdispatch] = useContext(ProjectContext);
   const [teamState, teamdispatch] = useContext(TeamContext);
-  console.log("AuthRoutes");
+  // console.log("AuthRoutes");
   //Maybe grab all information here and state goes down to child components?
   const getUserInfo = async () => {
     const id = localStorage.getItem("userId");
