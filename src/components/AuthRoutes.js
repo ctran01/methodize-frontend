@@ -8,6 +8,7 @@ import NewTasksPage from "./Pages/NewTasks";
 import "../css/Navbar.css";
 import LeftNavBar from "./NavigationBar/LeftNavBar";
 import NotFoundPage from "./Pages/NotFoundPage";
+import Onboard from "./LandingPage/Onboard";
 
 import { Context as UserContext } from "../context/store/UserStore";
 import { Context as TaskContext } from "../context/store/TaskStore";

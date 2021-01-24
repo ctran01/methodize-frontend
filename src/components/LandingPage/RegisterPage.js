@@ -5,11 +5,15 @@ import logo from "../../assets/logo.png";
 import "../../css/LoginPage.css";
 import apiServer from "../../config/apiServer";
 import { MdKeyboardBackspace } from "react-icons/md";
+import { useHistory } from "react-router-dom";
+
 const RegisterPage = () => {
   const { register, handleSubmit, errors } = useForm();
   const { setAuth, setEmail, setUserId, setUser } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  let history = useHistory();
+
   // console.log("RegisterPage");
   const onSubmit = async ({ name, email, password }) => {
     setLoading(true);
@@ -21,7 +25,6 @@ const RegisterPage = () => {
       window.location.href = "/register/onboard";
       setErrorMessage("");
       setUser(res.data);
-      setAuth(res.data.token);
       setEmail(res.data.email);
       setUserId(res.data.id);
     } catch (err) {
