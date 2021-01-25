@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useCallback } from "react";
 import { Modal } from "@material-ui/core";
 import TopNavBarTask from "../NavigationBar/TopNavBarTask";
 import "../../css/Task.css";
@@ -20,9 +20,9 @@ const TasksPage = () => {
     // setTasks(res.data);
     setLoading(false);
   };
-  const openModal = () => {
+  const openModal = useCallback(() => {
     setOpen(true);
-  };
+  }, [open]);
 
   const closeModal = () => {
     setOpen(false);

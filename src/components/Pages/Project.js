@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import apiServer from "../../config/apiServer";
 import Loader from "../Loader";
@@ -27,23 +27,23 @@ const ProjectPage = ({ sidebar }) => {
   const [sideTasklistForm, setSideTasklistForm] = useState(false);
   const [sideTaskDetails, setSideTaskDetails] = useState(false);
 
-  const showSideTaskForm = () => {
+  const showSideTaskForm = useCallback(() => {
     setSideTaskDetails(false);
     setSideTasklistForm(false);
     setSideTaskForm(!sideTaskForm);
-  };
+  }, [sideTaskForm]);
 
-  const showSideTasklistForm = () => {
+  const showSideTasklistForm = useCallback(() => {
     setSideTaskDetails(false);
     setSideTaskForm(false);
     setSideTasklistForm(!sideTasklistForm);
-  };
+  }, [sideTasklistForm]);
 
-  const showSideTaskDetails = () => {
+  const showSideTaskDetails = useCallback(() => {
     setSideTasklistForm(false);
     setSideTaskForm(false);
     setSideTaskDetails(!sideTaskDetails);
-  };
+  }, [sideTaskDetails]);
 
   //Task through get /project/id/taskslists. Set here so we can refer to it in the ondragend funnction
   const [loading, setLoading] = useState(true);

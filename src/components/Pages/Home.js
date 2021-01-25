@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useCallback } from "react";
 
 import { Context as UserContext } from "../../context/store/UserStore";
 import { Context as TaskContext } from "../../context/store/TaskStore";
@@ -23,23 +23,24 @@ const HomePage = () => {
   const [sideTaskForm, setSideTaskForm] = useState(false);
   const [sideProjectForm, setSideProjectForm] = useState(false);
   const [sideTaskDetails, setSideTaskDetails] = useState(false);
-  const showSideTaskForm = () => {
+
+  const showSideTaskForm = useCallback(() => {
     setSideTaskDetails(false);
     setSideProjectForm(false);
     setSideTaskForm(!sideTaskForm);
-  };
+  }, [sideTaskForm]);
 
-  const showSideProjectForm = () => {
+  const showSideProjectForm = useCallback(() => {
     setSideTaskDetails(false);
     setSideTaskForm(false);
     setSideProjectForm(!sideProjectForm);
-  };
+  }, [sideProjectForm]);
 
-  const showSideTaskDetails = () => {
+  const showSideTaskDetails = useCallback(() => {
     setSideTaskForm(false);
     setSideProjectForm(false);
     setSideTaskDetails(!sideTaskDetails);
-  };
+  }, [sideTaskDetails]);
 
   const uncompletedTasklist = taskState.tasks.filter(
     (task) => task.completed === false

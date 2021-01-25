@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useCallback } from "react";
 import TopNavBarTask from "../NavigationBar/TopNavBarTask";
 import { Context as TaskContext } from "../../context/store/TaskStore";
 import apiServer from "../../config/apiServer";
@@ -16,14 +16,15 @@ const NewTasks = () => {
 
   const [sideTaskDetails, setSideTaskDetails] = useState(false);
 
-  const showSideTaskForm = () => {
+  const showSideTaskForm = useCallback(() => {
     setSideTaskDetails(false);
     setSideTaskForm(!sideTaskForm);
-  };
-  const showSideTaskDetails = () => {
+  }, [sideTaskForm]);
+
+  const showSideTaskDetails = useCallback(() => {
     setSideTaskForm(false);
     setSideTaskDetails(!sideTaskDetails);
-  };
+  }, [sideTaskDetails]);
 
   const getUserTasks = async () => {
     const id = localStorage.getItem("userId");
