@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useCallback } from "react";
 import { Redirect, useParams } from "react-router-dom";
 import TopNavBar from "../NavigationBar/TopNavBar";
 import apiServer from "../../config/apiServer";
@@ -28,9 +28,9 @@ const TeamPage = () => {
   const [teamState, teamdispatch] = useContext(TeamContext);
   let history = useHistory();
 
-  const showSideProjectForm = () => {
+  const showSideProjectForm = useCallback(() => {
     setSideProjectForm(!sideProjectForm);
-  };
+  }, [sideProjectForm]);
 
   const getTeam = async () => {
     try {
