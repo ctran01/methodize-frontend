@@ -11,7 +11,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { BiCheck } from "react-icons/bi";
 
 const PopOutTaskDetails = ({ showSideTaskDetails, sideTaskDetails }) => {
-  console.log("PopOutTaskDetails");
+  // console.log("PopOutTaskDetails");
   const [taskState, taskdispatch] = useContext(TaskContext);
   const { selectedTask: task } = taskState;
   const [projectState] = useContext(ProjectContext);

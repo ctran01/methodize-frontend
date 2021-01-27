@@ -14,7 +14,7 @@ const TaskDetailsForm = ({
   setTasks,
   setTasklistTasks,
 }) => {
-  console.log("TaskDetailsForm");
+  // console.log("TaskDetailsForm");
   const { register, handleSubmit } = useForm();
   const [taskState, taskdispatch] = useContext(TaskContext);
   const createdDate = moment(

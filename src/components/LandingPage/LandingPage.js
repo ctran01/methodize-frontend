@@ -30,9 +30,6 @@ const LandingPage = () => {
     }
   };
 
-  const throwError = () => {
-    throw new Error("This is an error");
-  };
   return (
     <div
       style={{

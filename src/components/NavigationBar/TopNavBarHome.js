@@ -17,14 +17,12 @@ const TopNavBarHome = () => {
   const [anchorEle, setAnchorEle] = useState(null);
 
   const handleProfClick = (event) => {
-    console.log(event.target);
     setAnchorEle(event.currentTarget);
   };
   const handleProfClose = () => {
     setAnchorEle(null);
   };
 
-  console.log(ref.current, "ref");
   return (
     <div className="top-nav-bar-container" style={{}}>
       <div
