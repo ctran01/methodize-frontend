@@ -182,20 +182,16 @@
   }
   .landing-message {
     width: unset;
+    font-size: x-large;
   }
   .landing-submessage {
     width: unset;
+    font-size: medium;
   }
   .landing-message-button--div {
     justify-content: center;
   }
   .landing-picture {
     max-width: 404px;
-  }
-}
-
-@media only screen and (min-width: 425px) and (min-height: 812px) {
-  .landing-page-background {
-    overflow: scroll;
   }
 }
