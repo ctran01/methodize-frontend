@@ -199,6 +199,7 @@
 @media only screen and (max-width: 600px) {
   .new-home-icon-container {
     width: 168px;
+    height: fit-content;
   }
 }
 
