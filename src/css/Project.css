@@ -262,3 +262,7 @@
   width: 100%;
   overflow: scroll;
 }
+
+/* Mobile */
+@media only screen and (max-width: 600px) {
+}

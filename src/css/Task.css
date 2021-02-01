@@ -159,6 +159,16 @@
   margin-left: 25px;
   margin-right: 63px;
 }
+.task-home-item-name {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0px;
+}
+
+.task-home-item-date {
+  color: grey;
+  margin: 0px;
+}
 
 .task-home-item-inner-container {
   display: flex;
@@ -572,6 +582,27 @@
   margin-left: 35px;
 }
 
+/* mobile */
+@media only screen and (max-width: 600px) {
+  .task-home-item {
+    width: unset;
+  }
+  .task-home-item-inner-container {
+    justify-content: unset;
+  }
+  .task-home-item-inner-left {
+    width: revert;
+  }
+  .task-home-item-name-container {
+    width: unset;
+    margin-right: unset;
+  }
+  .task-home-item-name {
+    font-size: 13px;
+  }
+}
+
+/* tablet */
 @media only screen and (min-width: 768px) {
   .task-detail-menu.active {
     width: 66%;

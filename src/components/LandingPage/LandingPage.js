@@ -41,7 +41,7 @@ const LandingPage = () => {
             </a>
           </div>
           <div className="landing-nav-sessions">
-            <div style={{ marginRight: "20px" }}>
+            <div className="login-button-container">
               <a href="/login">
                 <button className="landing-nav-login--button">Login</button>
               </a>
@@ -57,18 +57,11 @@ const LandingPage = () => {
           </div>
         </div>
         <div className="landing-main">
-          <div className="landing-message">
-            <h2
-              style={{
-                fontSize: "3em",
-                fontWeight: "200",
-                color: "white",
-                width: "57%",
-              }}
-            >
+          <div className="landing-message-container">
+            <h2 className="landing-message">
               The easiest way to manage team, projects, and tasks
             </h2>
-            <h3 style={{ fontWeight: "200", color: "white", width: "46%" }}>
+            <h3 className="landing-submessage">
               Why use Methodize? Methodize gives you everything you need to stay
               in sync, hit deadlines, and reach your goals
             </h3>

@@ -77,18 +77,8 @@ const TaskItemHome = ({ task, showSideTaskDetails, sideTaskDetails }) => {
               <span className={`dot-task-${task.project_id}`}></span>
             </div>
             <div className="task-home-item-name-container">
-              <p
-                style={{
-                  fontSize: "15px",
-                  fontWeight: "500",
-                  margin: "0px",
-                }}
-              >
-                {task.name}
-              </p>
-              <p style={{ color: "grey", margin: "0" }}>
-                {date.format("MMM D")}
-              </p>
+              <p className="task-home-item-name">{task.name}</p>
+              <p className="task-home-item-date">{date.format("MMM D")}</p>
             </div>
           </div>
           <div
