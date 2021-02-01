@@ -602,6 +602,14 @@
   }
 }
 
+@media only screen and (max-width: 600px) {
+  .task-detail-menu.active {
+    position: absolute;
+    width: 81%;
+    height: 88%;
+  }
+}
+
 /* tablet */
 @media only screen and (min-width: 768px) {
   .task-detail-menu.active {

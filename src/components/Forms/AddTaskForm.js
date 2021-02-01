@@ -182,7 +182,7 @@ const TaskForm = ({
             </div>
             <div className="input-container">
               <input
-                className="form-input"
+                className="form-input date-input"
                 type="date"
                 name="due_date"
                 ref={register({ required: true })}
