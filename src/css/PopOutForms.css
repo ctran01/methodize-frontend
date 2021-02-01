@@ -38,12 +38,30 @@
   padding: 10px;
   margin: 10px;
 }
+
+@media only screen and (max-width: 600px) {
+  .project-popout-form {
+    width: 77%;
+    height: 88%;
+    position: absolute;
+  }
+  .popout-form {
+    width: 81%;
+    height: 88%;
+    position: absolute;
+  }
+  .date-input {
+    width: 100%;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .project-popout-form {
     width: 64%;
     height: 88%;
     position: absolute;
   }
+
   .popout-form {
     width: 64%;
     height: 88%;
