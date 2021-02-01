@@ -183,10 +183,7 @@ const PopOutTaskDetailsHome = ({ showSideTaskDetails, sideTaskDetails }) => {
 
   return (
     <>
-      <div
-        className={"task-detail-menu active"}
-        style={{ width: "50%", height: "96%" }}
-      >
+      <div className={"task-detail-menu active"}>
         <div
           style={{
             display: "flex",

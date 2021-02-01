@@ -31,35 +31,8 @@ const LandingPage = () => {
   };
 
   return (
-    <div
-      style={{
-        position: "absolute",
-        top: "0px",
-        left: "0px",
-        right: "0px",
-        bottom: "0px",
-        backgroundImage: `linear-gradient(to top right, #2D3947, #151B26)`,
-        backgroundRepeat: "no-repeat",
-        // backgroundSize: "cover",
-        display: "flex",
-        height: "100%",
-        zIndex: "-2",
-        overflow: "hidden",
-      }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          top: "0px",
-          left: "0px",
-          right: "0px",
-          bottom: "0px",
-          backgroundImage: `url("https://projectimagebucket.s3-us-west-2.amazonaws.com/Methodize_lp-circles-bg.png")`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          zIndex: "-1",
-        }}
-      ></div>
+    <div className="landing-page-background" style={{}}>
+      <div className="landing-page-background-circle-layer" style={{}}></div>
       <div className="landing-container">
         <div className="landing-nav-container">
           <div className="landing-nav-logo" style={{ paddingTop: "7px" }}>

@@ -162,15 +162,7 @@ const LeftNavBar = ({ showSidebar, sidebar }) => {
         </div>
 
         {sidebar ? null : (
-          <div
-            className="menu-icon"
-            style={{
-              paddingTop: "25px",
-              paddingLeft: "20px",
-              paddingBottom: "22px",
-              backgroundColor: "white",
-            }}
-          >
+          <div className="menu-icon">
             <RiMenuFill
               style={{
                 fontSize: "24px",

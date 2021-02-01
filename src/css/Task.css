@@ -312,8 +312,8 @@
 
 .task-detail-menu.active {
   background-color: white;
-  width: 60%;
-  height: 100%;
+  width: 50%;
+  height: 96%;
   display: flex;
   box-shadow: 0 1px 4px 0 rgba(21, 27, 38, 0.08);
   border: 2px solid #e8ecee;
@@ -570,6 +570,14 @@
 
 .comment-text {
   margin-left: 35px;
+}
+
+@media only screen and (min-width: 768px) {
+  .task-detail-menu.active {
+    width: 66%;
+    height: 88%;
+    position: absolute;
+  }
 }
 
 .dot-task-1 {

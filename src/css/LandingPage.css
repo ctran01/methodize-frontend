@@ -119,3 +119,35 @@
 .guest-login-button {
   margin: 50px 0;
 }
+
+.landing-page-background {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-image: linear-gradient(to top right, #2d3947, #151b26);
+  background-repeat: no-repeat;
+  display: flex;
+  height: 100%;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.landing-page-background-circle-layer {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-image: url("https://projectimagebucket.s3-us-west-2.amazonaws.com/Methodize_lp-circles-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+}
+
+@media only screen and (min-width: 425px) and (min-height: 812px) {
+  .landing-page-background {
+    overflow: scroll;
+  }
+}
