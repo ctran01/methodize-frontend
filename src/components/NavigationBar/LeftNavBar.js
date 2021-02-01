@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "../../css/Navbar.css";
 import { RiMenuFoldLine, RiMenuFill } from "react-icons/ri";
@@ -8,17 +8,24 @@ import { Modal } from "@material-ui/core";
 import TeamForm from "../Forms/TeamForm";
 import Home from "../../assets/Home";
 import Tasks from "../../assets/tasks";
-// import Project from "../../assets/project";
 import Team from "../../assets/team.svg";
 import Logo from "../../assets/Logo";
-const LeftNavBar = ({ showSidebar, sidebar }) => {
-  // console.log("LeftNavBar");
-  // const [teams, setTeams] = useState([]);
+import { useMediaQuery } from "react-responsive";
+
+const LeftNavBar = ({ showSidebar, sidebar, setSidebar }) => {
   const [teamState] = useContext(TeamContext);
   const [open, setOpen] = useState(false);
 
   //NOTE : Only other option that worked was setting state either in here or in App.js and call it for global state. ReducerContext does not work
+  const isMobile = useMediaQuery({
+    query: "(max-device-width: 600px)",
+  });
 
+  const checkMobile = () => {
+    if (isMobile) {
+      setSidebar(false);
+    }
+  };
   const openModal = () => {
     setOpen(true);
   };
@@ -27,6 +34,9 @@ const LeftNavBar = ({ showSidebar, sidebar }) => {
     setOpen(false);
   };
 
+  useEffect(() => {
+    checkMobile();
+  }, []);
   const orderedList = teamState.teams.sort(function (a, b) {
     return new Date(a.createdAt) - new Date(b.createdAt);
   });
@@ -53,7 +63,7 @@ const LeftNavBar = ({ showSidebar, sidebar }) => {
     </div>
   );
   return (
-    <div>
+    <div style={{ height: "fit-content" }}>
       <div className="left-nav-bar-container">
         <div className={sidebar ? "nav-menu active" : "nav-menu collapsed"}>
           <div className="left-nav-menu-container">

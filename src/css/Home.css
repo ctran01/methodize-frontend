@@ -194,6 +194,15 @@
     width: auto;
   }
 }
+
+/* mobile */
+@media only screen and (max-width: 600px) {
+  .new-home-icon-container {
+    width: 168px;
+  }
+}
+
+/* tablet */
 @media only screen and (min-width: 768px) {
   .home-projects-container {
     width: 8%;

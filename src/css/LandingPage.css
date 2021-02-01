@@ -58,10 +58,23 @@
   flex-direction: column;
   align-items: center;
 }
-.landing-message {
+.landing-message-container {
   /* max-width: 800px; */
   width: 60%;
 }
+
+.landing-message {
+  font-size: 3em;
+  font-weight: 200;
+  color: white;
+  width: 57%;
+}
+.landing-submessage {
+  font-weight: 200;
+  color: white;
+  width: 46%;
+}
+
 .landing-message-button--div {
   display: flex;
   margin-top: 25px;
@@ -131,7 +144,10 @@
   display: flex;
   height: 100%;
   z-index: -2;
-  overflow: hidden;
+  overflow: scroll;
+}
+.landing-page-background::-webkit-scrollbar {
+  display: none;
 }
 
 .landing-page-background-circle-layer {
@@ -144,6 +160,38 @@
   background-repeat: no-repeat;
   background-size: cover;
   z-index: -1;
+}
+
+.login-button-container {
+  margin-right: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .landing-page-background {
+    overflow: scroll;
+  }
+
+  .login-button-container {
+    margin-right: unset;
+  }
+  .landing-nav-login--button {
+    margin: 0px;
+  }
+  .landing-nav-register--button {
+    margin: 0px;
+  }
+  .landing-message {
+    width: unset;
+  }
+  .landing-submessage {
+    width: unset;
+  }
+  .landing-message-button--div {
+    justify-content: center;
+  }
+  .landing-picture {
+    max-width: 404px;
+  }
 }
 
 @media only screen and (min-width: 425px) and (min-height: 812px) {

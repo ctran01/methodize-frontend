@@ -26,6 +26,7 @@ const AuthRoutes = () => {
   const [teamState, teamdispatch] = useContext(TeamContext);
   // console.log("AuthRoutes");
   //Maybe grab all information here and state goes down to child components?
+
   const getUserInfo = async () => {
     const id = localStorage.getItem("userId");
     const res = await apiServer.get(`/user/${id}`);
@@ -64,7 +65,11 @@ const AuthRoutes = () => {
   return (
     <div className="overlay">
       <BrowserRouter>
-        <LeftNavBar showSidebar={showSidebar} sidebar={sidebar} />
+        <LeftNavBar
+          showSidebar={showSidebar}
+          sidebar={sidebar}
+          setSidebar={setSidebar}
+        />
         <div
           className={
             sidebar
