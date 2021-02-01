@@ -280,8 +280,8 @@
   font-weight: 300;
 }
 
-@media only screen and (min-width: 768px) {
+/* @media only screen and (min-width: 768px) {
   .top-nav-bar-container {
     width: 98%;
   }
-}
+} */

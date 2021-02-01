@@ -611,13 +611,13 @@
 }
 
 /* tablet */
-@media only screen and (min-width: 768px) {
+/* @media only screen and (min-width: 768px) {
   .task-detail-menu.active {
     width: 66%;
     height: 88%;
     position: absolute;
   }
-}
+} */
 
 .dot-task-1 {
   height: 15px;
