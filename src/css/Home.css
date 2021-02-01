@@ -197,15 +197,18 @@
 
 /* mobile */
 @media only screen and (max-width: 600px) {
-  .new-home-item-container {
-    width: 150px;
-  }
+
+  .new-home-icon-container {
+    width: 168px;
+    height: fit-content;
+
   .home-tasks-container--small {
     height: 69%;
     width: 20%;
   }
   .home-tasks--list {
     margin: unset;
+
   }
 }
 
