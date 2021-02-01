@@ -194,6 +194,12 @@
     width: auto;
   }
 }
+@media only screen and (min-width: 768px) {
+  .home-projects-container {
+    width: 8%;
+  }
+}
+
 @media only screen and (max-width: 1400px) {
   .home-projects-container--smaller {
     margin-left: revert;

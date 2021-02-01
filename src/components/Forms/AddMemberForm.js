@@ -50,11 +50,7 @@ const AddMemberForm = ({ teamId, clickClose, open, setTeamUsers }) => {
     <div>
       <Modal open={open} onClose={clickClose}>
         <div className="tasklist-modal-container" style={{ minWidth: "auto" }}>
-          <form
-            className="task-form"
-            style={{}}
-            onSubmit={handleSubmit(onSubmit)}
-          >
+          <form className="task-form" onSubmit={handleSubmit(onSubmit)}>
             <h2 className="form-header">Add a member to the team!</h2>
             <div className="form-top-container">
               <div className="form-top-left">

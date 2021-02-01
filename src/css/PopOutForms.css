@@ -27,3 +27,26 @@
 
 .popout-form-close-icon {
 }
+
+.project-popout-form {
+  background-color: white;
+  width: 30%;
+  height: 96%;
+  display: flex;
+  box-shadow: 0 1px 4px 0 rgba(21, 27, 38, 0.08);
+  border: 2px solid #e8ecee;
+  padding: 10px;
+  margin: 10px;
+}
+@media only screen and (min-width: 768px) {
+  .project-popout-form {
+    width: 64%;
+    height: 88%;
+    position: absolute;
+  }
+  .popout-form {
+    width: 64%;
+    height: 88%;
+    position: absolute;
+  }
+}
